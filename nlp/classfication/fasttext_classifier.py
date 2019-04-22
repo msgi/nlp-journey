@@ -9,7 +9,6 @@ class FastTextClassifier:
     """
     利用fasttext来对文本进行分类
     """
-
     def __init__(self, model_path, train=False, file_path=None):
         """
         初始化

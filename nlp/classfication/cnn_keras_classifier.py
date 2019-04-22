@@ -67,8 +67,8 @@ def load_data(positive_data_file, negative_data_file):
 
 def preprocess(positive_data_file, negative_data_file):
     x, y, vocabulary, vocabulary_inv = load_data(positive_data_file, negative_data_file)
-    X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=42)
-    return X_train, X_test, y_train, y_test, vocabulary, vocabulary_inv
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=42)
+    return x_train, x_test, y_train, y_test, vocabulary, vocabulary_inv
 
 
 class CnnKerasClassifier:
@@ -119,7 +119,8 @@ class CnnKerasClassifier:
         dropout = Dropout(self.drop)(flatten)
         output = Dense(units=2, activation='softmax')(dropout)
         model = Model(inputs=inputs, outputs=output)
-        self.checkpoint = ModelCheckpoint('../model/cnn/weights.{epoch:03d}-{val_acc:.4f}.hdf5', monitor='val_acc', verbose=1,
+        self.checkpoint = ModelCheckpoint('../model/cnn/weights.{epoch:03d}-{val_acc:.4f}.hdf5', monitor='val_acc',
+                                          verbose=1,
                                           save_best_only=True, mode='auto')
         adam = Adam(lr=1e-4, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
 
