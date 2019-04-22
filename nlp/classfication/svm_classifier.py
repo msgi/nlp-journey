@@ -38,7 +38,7 @@ class SVMClassifier(object):
     def predict(self, texts):
         """
         根据模型预测某文件的分类
-        :param text: 要分类的文本
+        :param texts: 要分类的文本
         :return: 返回分类
         """
         texts = [clean_en_text(t) for t in texts]
