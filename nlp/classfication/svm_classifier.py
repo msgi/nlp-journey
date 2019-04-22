@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import svm
 import pickle
 import pandas as pd
-from nlp.preprocess.clean_text import clean_zh_text
+from nlp.preprocess.clean_text import clean_zh_text, clean_en_text
 
 
 class SVMClassifier(object):
@@ -26,23 +26,23 @@ class SVMClassifier(object):
         # 先读取训练好的models,如果读取不到,则重新训练
         if not train:
             self.tf_idf_model, self.chi_model, self.clf_model = self.read_model()
-            assert not self.tf_idf_model, '训练的模型不存在,请确认后再试'
-            assert not self.chi_model, '训练的模型不存在,请确认后再试'
-            assert not self.clf_model, '训练的模型不存在,请确认后再试'
+            assert self.tf_idf_model is not None, '训练的模型不存在,请确认后再试1'
+            assert self.chi_model is not None, '训练的模型不存在,请确认后再试2'
+            assert self.clf_model is not None, '训练的模型不存在,请确认后再试3'
         else:
             assert train_path is not None, '训练模式下, 训练数据不能为None'
             self.train_path = train_path
             self.tf_idf_model, self.chi_model, self.clf_model = self.train_model(0.2)
             self.save_model()
 
-    def predict(self, text):
+    def predict(self, texts):
         """
         根据模型预测某文件的分类
         :param text: 要分类的文本
         :return: 返回分类
         """
-        text = [clean_zh_text(t) for t in text]
-        tf_vector = self.tf_idf_model.transform(text)
+        texts = [clean_en_text(t) for t in texts]
+        tf_vector = self.tf_idf_model.transform(texts)
         chi_vector = self.chi_model.transform(tf_vector)
         out = self.clf_model.predict(chi_vector)
         print('----------推理结果------：', out)
@@ -82,7 +82,7 @@ class SVMClassifier(object):
 
     @staticmethod
     def __select_features(data_set):
-        data_set[0] = [clean_zh_text(data) for data in data_set[0]]
+        data_set[0] = [clean_en_text(data) for data in data_set[0]]
         tf_idf_model = TfidfVectorizer(ngram_range=(1, 1), binary=True, sublinear_tf=True)
         tf_vectors = tf_idf_model.fit_transform(data_set[0])
 
