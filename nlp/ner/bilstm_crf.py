@@ -111,7 +111,7 @@ class BiLSTMNamedEntityRecognition:
         sent, length = self.__preprocess_data(predict_text)
         raw = self.model.predict(sent)[0][-length:]
         result = [np.argmax(row) for row in raw]
-        result_tags = [self.tags[i] for i in result]
+        result_tags = [self.tags[int(i)] for i in result]
 
         per, loc, org = '', '', ''
         for s, t in zip(predict_text, result_tags):
