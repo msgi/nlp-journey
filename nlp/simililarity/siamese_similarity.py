@@ -134,7 +134,9 @@ class SiameseSimilarity:
                                   self.y_train,
                                   batch_size=self.batch_size,
                                   nb_epoch=self.n_epoch,
-                                  validation_data=([self.x_validation['left'], self.x_validation['right']], self.y_validation))
+                                  validation_data=(
+                                      [self.x_validation['left'], self.x_validation['right']], self.y_validation))
+        self.__plot(model_trained)
         model.save(self.model_path)
         pickle.dump((self.embeddings, self.max_seq_length), self.config_path)
         return model
@@ -160,17 +162,19 @@ class SiameseSimilarity:
         questions_cols = ['question1', 'question2']
         train_df = pd.read_csv(os.path.join(self.data_path, 'train.csv'))
         test_df = pd.read_csv(os.path.join(self.data_path, 'test.csv'))
-        max_seq_length = max(train_df.question1.map(lambda x: len(x)).max(),
-                             train_df.question2.map(lambda x: len(x)).max(),
-                             test_df.question1.map(lambda x: len(x)).max(),
-                             test_df.question2.map(lambda x: len(x)).max())
+
+        # 找到最大的句子长度
+        max_seq_length = max(train_df.question1.str.len().max(),
+                             train_df.question2.str.len().max(),
+                             test_df.question1.str.len().max(),
+                             test_df.question2.str.len().max())
         stops = set(stopwords.words('english'))
         for dataset in [train_df, test_df]:
             for index, row in dataset.iterrows():
                 for question in questions_cols:
                     q2n = []
                     for word in text_to_word_list(row[question]):
-                        if word in stops and word not in self.word2vec.vocab:
+                        if word in stops and word not in word2vec.vocab:
                             continue
                         if word not in vocabulary:
                             vocabulary[word] = len(inverse_vocabulary)
@@ -207,3 +211,23 @@ class SiameseSimilarity:
         assert x_train['left'].shape == x_train['right'].shape
         assert len(x_train['left']) == len(y_train)
         return x_train, y_train, x_validation, y_validation, embeddings, max_seq_length
+
+    @staticmethod
+    def __plot(model_trained):
+        # Plot accuracy
+        plt.plot(model_trained.history['acc'])
+        plt.plot(model_trained.history['val_acc'])
+        plt.title('Model Accuracy')
+        plt.ylabel('Accuracy')
+        plt.xlabel('Epoch')
+        plt.legend(['Train', 'Validation'], loc='upper left')
+        plt.show()
+
+        # Plot loss
+        plt.plot(model_trained.history['loss'])
+        plt.plot(model_trained.history['val_loss'])
+        plt.title('Model Loss')
+        plt.ylabel('Loss')
+        plt.xlabel('Epoch')
+        plt.legend(['Train', 'Validation'], loc='upper right')
+        plt.show()
