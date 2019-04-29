@@ -1,25 +1,25 @@
-import pickle
 import platform
 from collections import Counter
 
 import numpy as np
 from keras.layers import Embedding, Bidirectional, LSTM
 from keras.models import Sequential
+from keras.models import load_model
 from keras.preprocessing.sequence import pad_sequences
 from keras_contrib.layers import CRF
+from nlp.utils.basic_log import Log
+
+log = Log('info')
 
 
-def load_data():
-    train = _parse_data(open('data/ner/train.data', 'rb'))
-    test = _parse_data(open('data/ner/test.data', 'rb'))
+def load_data(train_path, test_path):
+    train = _parse_data(train_path)
+    test = _parse_data(test_path)
 
+    # 计算词数
     word_counts = Counter(row[0].lower() for sample in train for row in sample)
     vocab = [w for w, f in iter(word_counts.items()) if f >= 2]
     chunk_tags = ['O', 'B-PER', 'I-PER', 'B-LOC', 'I-LOC', "B-ORG", "I-ORG"]
-
-    # save initial config data
-    with open('../model/config.pkl', 'wb') as out_p:
-        pickle.dump((vocab, chunk_tags), out_p)
 
     train = _process_data(train, vocab, chunk_tags)
     test = _process_data(test, vocab, chunk_tags)
@@ -30,13 +30,10 @@ def _process_data(data, vocab, chunk_tags, max_len=None, one_hot=False):
     if max_len is None:
         max_len = max(len(s) for s in data)
     word2idx = dict((w, i) for i, w in enumerate(vocab))
-    x = [[word2idx.get(w[0].lower(), 1) for w in s] for s in data]  # set to <unk> (index 1) if not in vocab
+    x = [[word2idx.get(w[0].lower(), 1) for w in s] for s in data]
     y_chunk = [[chunk_tags.index(w[1]) for w in s] for s in data]
 
-    print(y_chunk[:20])
-
-    x = pad_sequences(x, max_len)  # left padding
-
+    x = pad_sequences(x, max_len)
     y_chunk = pad_sequences(y_chunk, max_len, value=-1)
 
     if one_hot:
@@ -46,17 +43,15 @@ def _process_data(data, vocab, chunk_tags, max_len=None, one_hot=False):
     return x, y_chunk
 
 
-def _parse_data(fh):
-    if platform.system() == 'Windows':
-        split_text = '\r\n'
-    else:
-        split_text = '\n'
-
-    string = fh.read().decode('utf-8')
-    data = [[row.split() for row in sample.split(split_text)] for
-            sample in
-            string.strip().split(split_text + split_text)]
-    fh.close()
+def _parse_data(file_path):
+    with open(file_path, 'rb') as f:
+        if platform.system() == 'Windows':
+            split_text = '\r\n'
+        else:
+            split_text = '\n'
+        string = f.read().decode('utf-8')
+        data = [[row.split() for row in sample.split(split_text)] for sample in
+                string.strip().split(split_text + split_text)]
     return data
 
 
@@ -64,26 +59,52 @@ def process_data(data, vocab, max_len=100):
     word2idx = dict((w, i) for i, w in enumerate(vocab))
     x = [word2idx.get(w[0].lower(), 1) for w in data]
     length = len(x)
-    x = pad_sequences([x], max_len)  # left padding
+    x = pad_sequences([x], max_len)
     return x, length
 
 
-class NER:
+class BiLSTMNamedEntityRecognition:
+    def __init__(self,
+                 model_path,
+                 embed_dim=200,
+                 bi_rnn_units=200,
+                 epochs=10,
+                 train_path=None,
+                 test_path=None,
+                 train=False):
+        self.model_path = model_path
+        self.embed_dim = embed_dim
 
-    def __init__(self):
-        self.embed_dim = 200
-        self.biRNN_units = 200
-        (self.train_x, self.train_y), (self.test_x, self.test_y), (self.vocab, self.chunk_tags) = load_data()
-        self.epochs = 10
+        if not train:
+            self.model = self.__load_model()
+            assert self.model is not None, '训练模型无法获取'
+        else:
+            self.train_path = train_path
+            self.test_path = test_path
+            self.bi_rnn_units = bi_rnn_units
+            (self.train_x, self.train_y), (self.test_x, self.test_y), (self.vocab, self.chunk_tags) = load_data(
+                self.train_path, self.test_path)
+            self.epochs = epochs
+            self.model = self.train()
 
     def train(self):
+        assert self.train_path is not None, '训练时, train_path不能为None'
         model = self.__build_model()
         model.fit(self.train_x,
                   self.train_y,
                   batch_size=16,
                   epochs=self.epochs,
                   validation_data=[self.test_x, self.test_y])
-        model.save('../model/crf.h5')
+        model.save(self.model_path)
+        return model
+
+    def __load_model(self):
+        try:
+            model = load_model(self.model_path)
+        except FileNotFoundError:
+            log.error('没有找到模型文件')
+            model = None
+        return model
 
     def val(self):
         model, (vocab, chunk_tags) = self.__build_model()
@@ -109,7 +130,7 @@ class NER:
     def __build_model(self):
         model = Sequential()
         model.add(Embedding(len(self.vocab), self.embed_dim, mask_zero=True))
-        model.add(Bidirectional(LSTM(self.biRNN_units // 2, return_sequences=True)))
+        model.add(Bidirectional(LSTM(self.bi_rnn_units // 2, return_sequences=True)))
         crf = CRF(len(self.chunk_tags), sparse_target=True)
         model.add(crf)
         model.summary()

@@ -6,6 +6,9 @@ from sklearn import svm
 import pickle
 import pandas as pd
 from nlp.preprocess.clean_text import clean_zh_text, clean_en_text
+from nlp.utils.basic_log import Log
+
+log = Log('info')
 
 
 class SVMClassifier(object):
@@ -55,6 +58,7 @@ class SVMClassifier(object):
                 chi_model = pickle.load(f)
                 clf_model = pickle.load(f)
         except FileNotFoundError:
+            log.error('没有找到模型文件')
             tf_idf_model = None
             chi_model = None
             clf_model = None
