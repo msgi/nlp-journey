@@ -110,8 +110,8 @@ class BiLSTMNamedEntityRecognition:
         # predict_text = ''
         sent, length = self.__preprocess_data(predict_text)
         raw = self.model.predict(sent)[0][-length:]
-        result = [np.argmax(row) for row in raw]
-        result_tags = [self.tags[int(i)] for i in result]
+        result = np.argmax(raw, axis=1)
+        result_tags = [self.tags[i] for i in result]
 
         per, loc, org = '', '', ''
         for s, t in zip(predict_text, result_tags):
@@ -122,7 +122,7 @@ class BiLSTMNamedEntityRecognition:
             if t in ('B-LOC', 'I-LOC'):
                 loc += ' ' + s if (t == 'B-LOC') else s
         results = ['person:' + per, 'location:' + loc, 'organization:' + org]
-        log.info(results)
+        print(results)
         return results
 
     # 构造模型
