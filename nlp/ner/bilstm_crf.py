@@ -43,7 +43,7 @@ def _parse_data(file_path):
     return data
 
 
-class BiLSTMNamedEntityRecognition:
+class BiLSTMCRFNamedEntityRecognition:
     def __init__(self,
                  model_path,
                  config_path,
