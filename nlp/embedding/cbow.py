@@ -4,7 +4,7 @@ import jieba
 import os
 
 
-class FastTextCBowModel(object):
+class FastTextCBowModel:
 
     def __init__(self, train_file, model_path, user_dict=None, stop_dict=None):
         self.train_file = train_file

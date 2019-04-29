@@ -4,7 +4,7 @@ import jieba
 from gensim.models import word2vec
 
 
-class GensimWord2VecModel(object):
+class GensimWord2VecModel:
 
     def __init__(self, train_file, model_path, user_dict=None, stop_dict=None):
         self.train_file = train_file
