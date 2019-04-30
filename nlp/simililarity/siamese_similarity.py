@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from gensim.models import KeyedVectors
-from keras.layers import Input, Embedding, LSTM, Lambda
+from keras.layers import Input, Embedding, LSTM, Lambda,Bidirectional
 from keras.models import Model
 from keras.models import load_model
 from keras.optimizers import Adadelta
@@ -116,7 +116,7 @@ class SiameseSimilarity:
         encoded_left = embedding_layer(left_input)
         encoded_right = embedding_layer(right_input)
         # 相同的lstm网络
-        shared_lstm = LSTM(self.n_hidden)
+        shared_lstm = Bidirectional(LSTM(self.n_hidden//2))
         left_output = shared_lstm(encoded_left)
         right_output = shared_lstm(encoded_right)
         # 计算距离
