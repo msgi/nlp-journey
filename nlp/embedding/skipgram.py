@@ -17,7 +17,7 @@ class FastTextSkipGramModel:
 
     # 训练模型
     def train(self):
-        return fasttext.skipgram(self.train_file, self.model_path)
+        return fasttext.skipgram(self.train_file, self.model_path,silent=False)
 
     # 返回词的向量
     def vector(self, word):
@@ -50,8 +50,3 @@ def process_data(file, out_file, user_dict=None, stop_dict=None):
     with open(out_file, 'w', encoding='utf-8') as o:
         o.writelines(lines)
 
-
-if __name__ == '__main__':
-    process_data('data/tianlong.txt','data/tianlong_seg.txt')
-    model = FastTextSkipGramModel('data/tianlong_seg.txt', 'model/fasttext/model')
-    print(model.vector('段誉'))
