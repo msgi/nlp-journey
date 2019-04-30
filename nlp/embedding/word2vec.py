@@ -6,7 +6,10 @@ from gensim.models import word2vec
 
 class GensimWord2VecModel:
 
-    def __init__(self, train_file, model_path, user_dict=None, stop_dict=None):
+    def __init__(self, train_file,
+                 model_path,
+                 user_dict=None,
+                 stop_dict=None):
         self.train_file = train_file
         self.model_path = model_path
         self.user_dict = user_dict
@@ -59,6 +62,3 @@ def pre_process(train_file, user_dict, stop_dict):
         sentences = [[s for s in sentence if s not in stop_words] for sentence in sentences]
 
     return sentences
-
-
-

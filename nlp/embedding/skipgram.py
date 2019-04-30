@@ -6,7 +6,10 @@ import os
 
 class FastTextSkipGramModel:
 
-    def __init__(self, train_file, model_path, user_dict=None, stop_dict=None):
+    def __init__(self, train_file,
+                 model_path,
+                 user_dict=None,
+                 stop_dict=None):
         self.train_file = train_file
         self.model_path = model_path
         self.user_dict = user_dict
@@ -17,7 +20,7 @@ class FastTextSkipGramModel:
 
     # 训练模型
     def train(self):
-        return fasttext.skipgram(self.train_file, self.model_path,silent=False)
+        return fasttext.skipgram(self.train_file, self.model_path, silent=False)
 
     # 返回词的向量
     def vector(self, word):
@@ -33,7 +36,6 @@ class FastTextSkipGramModel:
 
 # 预处理数据，分词并去除停用词
 def process_data(file, out_file, user_dict=None, stop_dict=None):
-
     if user_dict:
         jieba.load_userdict(user_dict)
 
@@ -49,4 +51,3 @@ def process_data(file, out_file, user_dict=None, stop_dict=None):
 
     with open(out_file, 'w', encoding='utf-8') as o:
         o.writelines(lines)
-

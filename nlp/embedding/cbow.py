@@ -6,7 +6,10 @@ import os
 
 class FastTextCBowModel:
 
-    def __init__(self, train_file, model_path, user_dict=None, stop_dict=None):
+    def __init__(self, train_file,
+                 model_path,
+                 user_dict=None,
+                 stop_dict=None):
         self.train_file = train_file
         self.model_path = model_path
         self.user_dict = user_dict

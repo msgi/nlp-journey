@@ -25,7 +25,7 @@ log = Log(logging.INFO)
 def text_to_word_list(text):
     text = str(text)
     text = text.lower()
-    # 清理
+    # 清理数据
     text = re.sub(r"[^A-Za-z0-9^,!.\/'+-=]", " ", text)
     text = re.sub(r"what's", "what is ", text)
     text = re.sub(r"\'s", " ", text)
@@ -68,16 +68,32 @@ class SiameseSimilarity:
                  batch_size=64,
                  epochs=1,
                  train=False,
+                 embedding_dim=300,
                  data_path=None,
                  embedding_file=None):
+        """
+        初始化
+        :param model_path: 要保存的或者已经保存的模型路径
+        :param config_path: 要保存的或者已经保存的配置文件路径
+        :param n_hidden: lstm隐藏层维度
+        :param gradient_clipping_norm: adadelta参数
+        :param batch_size:
+        :param epochs:
+        :param train: 是否训练模式，如果是训练模式，则必须提供data_path
+        :param data_path: 存放了train.csv和test.csv的目录
+        :param embedding_file: 训练好的词向量文件
+        """
         self.model_path = model_path
         self.config_path = config_path
+        self.embedding_dim = embedding_dim
         # 加载停用词
         self.stops = set(stopwords.words('english'))
         if not train:
             self.embeddings, self.vocabulary, self.max_seq_length = self.__load_config()
             self.model = self.__load_model()
         else:
+            assert data_path is not None, '训练模式，训练数据必须！'
+            assert embedding_file is not None, '训练模式，训练好的词向量数据必须！'
             self.data_path = data_path
             self.n_hidden = n_hidden
             self.gradient_clipping_norm = gradient_clipping_norm
@@ -86,7 +102,6 @@ class SiameseSimilarity:
             self.embedding_file = embedding_file
             self.x_train, self.y_train, self.x_validation, self.y_validation, self.vocabulary, self.max_seq_length = self.__load_data()
             self.embeddings = self.__load_word2vec(self.vocabulary)
-            self.embedding_dim = self.embeddings.shape[1]
             self.model = self.train()
 
     def __build_model(self):
