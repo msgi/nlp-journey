@@ -7,22 +7,26 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from gensim.models import KeyedVectors
-from keras.layers import Input, Embedding, LSTM, Lambda,Bidirectional
+from keras.layers import Input, Embedding, LSTM, Lambda, Bidirectional
 from keras.models import Model
 from keras.models import load_model
 from keras.optimizers import Adadelta
 from keras.preprocessing.sequence import pad_sequences
 from nltk.corpus import stopwords
 from sklearn.model_selection import train_test_split
-
+import keras.backend as K
 from nlp.utils.basic_log import Log
-from nlp.utils.distances import exponent_neg_manhattan_distance
 import logging
 
 log = Log(logging.INFO)
 
 
-def text_to_word_list(text):
+# 曼哈顿距离
+def exponent_neg_manhattan_distance(left, right):
+    return K.exp(-K.sum(K.abs(left - right), axis=1, keepdims=True))
+
+
+def text_to_list(text):
     text = str(text)
     text = text.lower()
     # 清理数据
@@ -66,7 +70,7 @@ class SiameseSimilarity:
                  n_hidden=50,
                  gradient_clipping_norm=1.25,
                  batch_size=64,
-                 epochs=1,
+                 epochs=2,
                  train=False,
                  embedding_dim=300,
                  data_path=None,
@@ -86,37 +90,40 @@ class SiameseSimilarity:
         self.model_path = model_path
         self.config_path = config_path
         self.embedding_dim = embedding_dim
+        self.n_hidden = n_hidden
+        self.gradient_clipping_norm = gradient_clipping_norm
         # 加载停用词
         self.stops = set(stopwords.words('english'))
         if not train:
-            self.embeddings, self.vocabulary, self.max_seq_length = self.__load_config()
+            self.embeddings, self.word_index, self.max_length = self.__load_config()
             self.model = self.__load_model()
         else:
             assert data_path is not None, '训练模式，训练数据必须！'
             assert embedding_file is not None, '训练模式，训练好的词向量数据必须！'
             self.data_path = data_path
-            self.n_hidden = n_hidden
-            self.gradient_clipping_norm = gradient_clipping_norm
             self.batch_size = batch_size
             self.epochs = epochs
             self.embedding_file = embedding_file
-            self.x_train, self.y_train, self.x_validation, self.y_validation, self.vocabulary, self.max_seq_length = self.__load_data()
-            self.embeddings = self.__load_word2vec(self.vocabulary)
+            self.train_data = os.path.join(self.data_path, 'train.csv')
+            self.test_data = os.path.join(self.data_path, 'test.csv')
+            self.x_train, self.y_train, self.x_val, self.y_val, self.word_index, self.max_length = self.__load_data(
+                self.train_data, self.test_data)
+            self.embeddings = self.__load_word2vec(self.word_index)
             self.model = self.train()
 
     def __build_model(self):
-        left_input = Input(shape=(self.max_seq_length,), dtype='int32')
-        right_input = Input(shape=(self.max_seq_length,), dtype='int32')
+        left_input = Input(shape=(self.max_length,), dtype='int32')
+        right_input = Input(shape=(self.max_length,), dtype='int32')
         embedding_layer = Embedding(len(self.embeddings),
                                     self.embedding_dim,
                                     weights=[self.embeddings],
-                                    input_length=self.max_seq_length,
+                                    input_length=self.max_length,
                                     trainable=False)
         # Embedding
         encoded_left = embedding_layer(left_input)
         encoded_right = embedding_layer(right_input)
         # 相同的lstm网络
-        shared_lstm = Bidirectional(LSTM(self.n_hidden//2))
+        shared_lstm = Bidirectional(LSTM(self.n_hidden // 2))
         left_output = shared_lstm(encoded_left)
         right_output = shared_lstm(encoded_right)
         # 计算距离
@@ -135,38 +142,44 @@ class SiameseSimilarity:
                                   self.y_train,
                                   batch_size=self.batch_size,
                                   epochs=self.epochs,
-                                  validation_data=(
-                                      [self.x_validation['left'], self.x_validation['right']], self.y_validation))
-        model.save(self.model_path)
+                                  validation_data=([self.x_val['left'], self.x_val['right']], self.y_val),
+                                  verbose=2)
+        model.save_weights(self.model_path)
         self.__save_config()
         self.__plot(model_trained)
         return model
 
     def __save_config(self):
         with open(self.config_path, 'wb') as out:
-            pickle.dump((self.embeddings, self.vocabulary, self.max_seq_length), out)
+            pickle.dump((self.embeddings, self.word_index, self.max_length), out)
+        if out:
+            out.close()
 
+    # 推理两个文本的相似度，大于0.5则相似，否则不相似
     def predict(self, text1, text2):
-        x1 = [self.vocabulary[word] for word in text_to_word_list(text1) if self.vocabulary[word] is not None]
-        x2 = [self.vocabulary[word] for word in text_to_word_list(text2) if self.vocabulary[word] is not None]
-        x1 = pad_sequences(x1, maxlen=self.max_seq_length)
-        x2 = pad_sequences(x2, maxlen=self.max_seq_length)
+        x1 = [self.word_index.get(word, 0) for word in text_to_list(text1)]
+        x2 = [self.word_index.get(word, 0) for word in text_to_list(text2)]
+
+        x1 = pad_sequences([x1], maxlen=self.max_length)
+        x2 = pad_sequences([x2], maxlen=self.max_length)
+        # 转为词向量
         return self.model.predict([x1, x2])
 
     def __load_model(self):
         try:
-            model = load_model(self.model_path)
+            model = self.__build_model()
+            model.load_weights(self.model_path)
         except FileNotFoundError:
             model = None
         return model
 
-    def __load_word2vec(self, vocabulary):
+    def __load_word2vec(self, word_index):
         log.info('加载词向量...')
         word2vec = KeyedVectors.load_word2vec_format(self.embedding_file, binary=True)
-        embeddings = 1 * np.random.randn(len(vocabulary) + 1, self.embedding_dim)
+        embeddings = 1 * np.random.randn(len(word_index) + 1, self.embedding_dim)
         embeddings[0] = 0
 
-        for word, index in vocabulary.items():
+        for word, index in word_index.items():
             if word in word2vec.vocab:
                 embeddings[index] = word2vec.word_vec(word)
         return embeddings
@@ -175,55 +188,57 @@ class SiameseSimilarity:
         log.info('加载配置文件（词向量和最大长度）')
         with open(self.config_path, 'rb') as config:
             embeddings, vocabulary, max_seq_length = pickle.load(config)
+        if config:
+            config.close()
         return embeddings, vocabulary, max_seq_length
 
-    def __load_data(self):
+    def __load_data(self, train_csv, test_csv, test_size=0.2):
         log.info('数据预处理...')
-        vocabulary = dict()
-        inverse_vocabulary = ['<unk>']
+        # word:index和index:word
+        word_index = dict()
+        index_word = ['<unk>']
         questions_cols = ['question1', 'question2']
 
         log.info('加载数据集...')
-        train_df = pd.read_csv(os.path.join(self.data_path, 'train.csv'))
-        test_df = pd.read_csv(os.path.join(self.data_path, 'test.csv'))
+        train_df = pd.read_csv(train_csv)
+        test_df = pd.read_csv(test_csv)
 
         # 找到最大的句子长度
         sentences = [df[col].str.split(' ') for df in [train_df, test_df] for col in questions_cols]
         max_seq_length = max([len(s) for ss in sentences for s in ss if isinstance(s, list)])
-        # 预处理
+        # 预处理(统计并将字符串转换为索引)
         for dataset in [train_df, test_df]:
             for index, row in dataset.iterrows():
-                for question in questions_cols:
-                    q2n = []
-                    for word in text_to_word_list(row[question]):
+                for question_col in questions_cols:
+                    question_indexes = []
+                    for word in text_to_list(row[question_col]):
                         if word in self.stops:
                             continue
-                        if word not in vocabulary:
-                            vocabulary[word] = len(inverse_vocabulary)
-                            q2n.append(len(inverse_vocabulary))
-                            inverse_vocabulary.append(word)
+                        if word not in word_index:
+                            word_index[word] = len(index_word)
+                            question_indexes.append(len(index_word))
+                            index_word.append(word)
                         else:
-                            q2n.append(vocabulary[word])
-                    dataset.set_value(index, question, q2n)
+                            question_indexes.append(word_index[word])
+                    dataset.set_value(index, question_col, question_indexes)
 
-        validation_size = 40000
         x = train_df[questions_cols]
         y = train_df['is_duplicate']
-        x_train, x_validation, y_train, y_validation = train_test_split(x, y, test_size=validation_size)
+        x_train, x_val, y_train, y_val = train_test_split(x, y, test_size=test_size)
 
         x_train = {'left': x_train.question1, 'right': x_train.question2}
-        x_validation = {'left': x_validation.question1, 'right': x_validation.question2}
+        x_val = {'left': x_val.question1, 'right': x_val.question2}
 
         y_train = y_train.values
-        y_validation = y_validation.values
+        y_val = y_val.values
 
-        for dataset, side in itertools.product([x_train, x_validation], ['left', 'right']):
+        for dataset, side in itertools.product([x_train, x_val], ['left', 'right']):
             dataset[side] = pad_sequences(dataset[side], maxlen=max_seq_length)
 
         # 校验问题对各自数目是否正确
         assert x_train['left'].shape == x_train['right'].shape
         assert len(x_train['left']) == len(y_train)
-        return x_train, y_train, x_validation, y_validation, vocabulary, max_seq_length
+        return x_train, y_train, x_val, y_val, word_index, max_seq_length
 
     @staticmethod
     def __plot(model_trained):
