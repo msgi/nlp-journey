@@ -26,7 +26,7 @@ class BiLSTMAttentionModel:
 
     def __build_model(self):
         inp = Input(shape=(self.maxlen,))
-        x = Embedding(self.max_features, self.embed_size, weights=[self.embedding_matrix],
+        x = Embedding(self.word_index.shape[0], self.embed_size, weights=[self.embedding_matrix],
                       trainable=False)(inp)
         x = Bidirectional(LSTM(300, return_sequences=True, dropout=0.25,
                                recurrent_dropout=0.25))(x)
@@ -40,7 +40,6 @@ class BiLSTMAttentionModel:
         return model
 
     def train(self):
-
         model = self.__build_model()
         file_path = ".model.hdf5"
         ckpt = ModelCheckpoint(file_path, monitor='val_loss', verbose=1,
