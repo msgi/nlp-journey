@@ -3,12 +3,15 @@ import logging
 import os
 import pickle
 import re
+import time
 
 import keras.backend as K
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from gensim.models import KeyedVectors
+from keras.callbacks import EarlyStopping, ModelCheckpoint, TensorBoard
+from keras.engine.saving import load_model
 from keras.layers import Input, Embedding, LSTM, Lambda, Bidirectional
 from keras.models import Model
 from keras.optimizers import Adadelta
@@ -67,10 +70,10 @@ class SiameseSimilarity:
     def __init__(self,
                  model_path,
                  config_path,
-                 n_hidden=50,
+                 n_hidden=100,
                  gradient_clipping_norm=1.25,
-                 batch_size=64,
-                 epochs=2,
+                 batch_size=128,
+                 epochs=10,
                  train=False,
                  embedding_dim=300,
                  data_path=None,
@@ -109,7 +112,7 @@ class SiameseSimilarity:
             self.x_train, self.y_train, self.x_val, self.y_val, self.word_index, self.max_length = self.__load_data(
                 self.train_data, self.test_data)
             self.embeddings = self.__load_word2vec(self.word_index)
-            self.model = self.train()
+            self.model = self.train(call_back=True)
 
     def __build_model(self):
         left_input = Input(shape=(self.max_length,), dtype='int32')
@@ -136,15 +139,36 @@ class SiameseSimilarity:
         model.compile(loss='mean_squared_error', optimizer=optimizer, metrics=['accuracy'])
         return model
 
-    def train(self):
+    def train(self, weights_only=True, call_back=False):
         model = self.__build_model()
+
+        if call_back:
+            early_stopping = EarlyStopping(monitor='val_loss', patience=30)
+            stamp = 'lstm_%d' % self.n_hidden
+            checkpoint_dir = os.path.join(self.model_path, 'checkpoints/' + str(int(time.time())) + '/')
+            if not os.path.exists(checkpoint_dir):
+                os.makedirs(checkpoint_dir)
+
+            bst_model_path = checkpoint_dir + stamp + '.h5'
+            if weights_only:
+                model_checkpoint = ModelCheckpoint(bst_model_path, save_best_only=True, save_weights_only=True)
+            else:
+                model_checkpoint = ModelCheckpoint(bst_model_path, save_best_only=True)
+            tensor_board = TensorBoard(log_dir=checkpoint_dir + "logs/{}".format(time.time()))
+            callbacks = [early_stopping, model_checkpoint, tensor_board]
+        else:
+            callbacks = None
         model_trained = model.fit([self.x_train['left'], self.x_train['right']],
                                   self.y_train,
                                   batch_size=self.batch_size,
                                   epochs=self.epochs,
                                   validation_data=([self.x_val['left'], self.x_val['right']], self.y_val),
-                                  verbose=1)
-        model.save_weights(self.model_path)
+                                  verbose=1,
+                                  callbacks=callbacks)
+        if weights_only and not call_back:
+            model.save_weights(os.path.join(self.model_path, 'weights_only.h5'))
+        elif not weights_only and not call_back:
+            model.save(os.path.join(self.model_path, 'model.h5'))
         self.__save_config()
         self.__plot(model_trained)
         return model
@@ -157,7 +181,7 @@ class SiameseSimilarity:
 
     # 推理两个文本的相似度，大于0.5则相似，否则不相似
     def predict(self, text1, text2):
-        if isinstance(text1, list) or isinstance(text2,list):
+        if isinstance(text1, list) or isinstance(text2, list):
             x1 = [[self.word_index.get(word, 0) for word in text_to_list(text)] for text in text1]
             x2 = [[self.word_index.get(word, 0) for word in text_to_list(text)] for text in text2]
             x1 = pad_sequences(x1, maxlen=self.max_length)
@@ -170,10 +194,26 @@ class SiameseSimilarity:
         # 转为词向量
         return self.model.predict([x1, x2])
 
-    def __load_model(self):
+    # 保存路径与加载路径相同
+    def __load_model(self, weights_only=True):
         try:
-            model = self.__build_model()
-            model.load_weights(self.model_path)
+            if weights_only:
+                model = self.__build_model()
+                model.load_weights(self.model_path)
+            else:
+                model = load_model(self.model_path)
+        except FileNotFoundError:
+            model = None
+        return model
+
+    # 自定义加载的模型路径
+    def __load_model_by_path(self, model_path, weights_only=True):
+        try:
+            if weights_only:
+                model = self.__build_model()
+                model.load_weights(model_path)
+            else:
+                model = load_model(model_path)
         except FileNotFoundError:
             model = None
         return model

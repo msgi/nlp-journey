@@ -83,6 +83,8 @@ A Knowledge-Grounded Neural Conversation Model. [`论文`](https://arxiv.org/pdf
 
 Neural Generative Question Answering. [`论文`](https://arxiv.org/pdf/1512.01337v1.pdf)
 
+A Sensitivity Analysis of (and Practitioners’ Guide to) Convolutional Neural Networks for Sentence Classification. [`论文`](https://arxiv.org/pdf/1510.03820.pdf)
+
 ### NLP方面的博客
 
 [莫坠青云志](https://tobiaslee.top/)
