@@ -143,7 +143,7 @@ class SiameseSimilarity:
                                   batch_size=self.batch_size,
                                   epochs=self.epochs,
                                   validation_data=([self.x_val['left'], self.x_val['right']], self.y_val),
-                                  verbose=2)
+                                  verbose=1)
         model.save_weights(self.model_path)
         self.__save_config()
         self.__plot(model_trained)
