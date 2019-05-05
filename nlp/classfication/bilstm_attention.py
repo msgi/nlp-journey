@@ -26,7 +26,7 @@ class BiLSTMAttentionModel:
 
     def __build_model(self):
         inp = Input(shape=(self.maxlen,))
-        x = Embedding(self.word_index.shape[0], self.embed_size, weights=[self.embedding_matrix],
+        x = Embedding(len(self.embedding_matrix), self.embed_size, weights=[self.embedding_matrix],
                       trainable=False)(inp)
         x = Bidirectional(LSTM(300, return_sequences=True, dropout=0.25,
                                recurrent_dropout=0.25))(x)
