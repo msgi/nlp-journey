@@ -46,8 +46,9 @@ class BiLSTMAttentionModel:
         file_path = ".model.hdf5"
         ckpt = ModelCheckpoint(file_path, monitor='val_loss', verbose=1,
                                save_best_only=True, mode='min')
-        early = EarlyStopping(monitor="val_loss", mode="min", patience=1)
-        model.fit(self.x_train, self.y_train,
+        early = EarlyStopping(monitor="val_loss", mode="min", patience=10)
+        model.fit(self.x_train,
+                  self.y_train,
                   batch_size=256,
                   epochs=15,
                   validation_data=[self.x_test, self.y_test],
