@@ -2,6 +2,7 @@ import logging
 import os
 import time
 
+
 from gensim.models import KeyedVectors
 from keras import Input, Model
 from keras.callbacks import ModelCheckpoint, EarlyStopping
@@ -28,14 +29,32 @@ class BiLSTMAttentionModel:
         (self.x_train, self.y_train), (self.x_test, self.y_test), self.word_index, self.maxlen = self.__preprocess()
         self.embedding_matrix = self.__load_embedding()
 
+    # 采用注意力机制
     def __build_model(self):
         inp = Input(shape=(self.maxlen,))
         x = Embedding(len(self.embedding_matrix),
                       self.embed_size,
                       weights=[self.embedding_matrix],
                       trainable=False)(inp)
-        x = Bidirectional(GRU(150, return_sequences=True, dropout=0.25, recurrent_dropout=0.25))(x)
+        x = Bidirectional(LSTM(150, return_sequences=True, dropout=0.25, recurrent_dropout=0.25))(x)
         x = Attention()(x)
+        x = Dense(128, activation="relu")(x)
+        x = Dropout(0.25)(x)
+        x = Dense(1, activation="sigmoid")(x)
+        model = Model(inputs=inp, outputs=x)
+        model.compile(loss='binary_crossentropy',
+                      optimizer='adam',
+                      metrics=['accuracy'])
+        return model
+
+    # 没有采用注意力机制
+    def __build_model_no_attention(self):
+        inp = Input(shape=(self.maxlen,))
+        x = Embedding(len(self.embedding_matrix),
+                      self.embed_size,
+                      weights=[self.embedding_matrix],
+                      trainable=False)(inp)
+        x = Bidirectional(LSTM(150, return_sequences=True, dropout=0.25, recurrent_dropout=0.25))(x)
         x = Dense(128, activation="relu")(x)
         x = Dropout(0.25)(x)
         x = Dense(1, activation="sigmoid")(x)
@@ -47,11 +66,11 @@ class BiLSTMAttentionModel:
 
     def train(self):
         model = self.__build_model()
-        checkpoint_dir = os.path.join(self.model_path, 'checkpoints/' + str(int(time.time())) + '/')
+        checkpoint_dir = os.path.join(self.model_path, 'checkpoints/')
         if not os.path.exists(checkpoint_dir):
             os.makedirs(checkpoint_dir)
 
-        bst_model_path = checkpoint_dir + '.h5'
+        bst_model_path = checkpoint_dir + str(int(time.time())) + '.h5'
         checkpoint = ModelCheckpoint(bst_model_path, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
         early = EarlyStopping(monitor="val_loss", mode="min", patience=10)
         model_trained = model.fit(self.x_train,

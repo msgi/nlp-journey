@@ -41,6 +41,10 @@ EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classifi
 > 跟图像一样, 希望采用数据变换的方式来增强文本分类的鲁棒性.\
 > 同义词:随机替换, 随机插入, 随机交换位置, 随机删除
 
+Attention-based-model. [`博客`](http://www.wildml.com/2016/01/attention-and-memory-in-deep-learning-and-nlp/), [`survey`](http://yanran.li/peppypapers/2015/10/07/survey-attention-model-1.html)
+
+![attention](images/attention/attention-based-model.png)
+
 The Illustrated Transformer.[`博客`](https://jalammar.github.io/illustrated-transformer/) [`论文`](https://arxiv.org/pdf/1706.03762.pdf)
 
 * Transformer架构
