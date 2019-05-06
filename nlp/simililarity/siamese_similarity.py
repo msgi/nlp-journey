@@ -18,6 +18,8 @@ from keras.optimizers import Adadelta
 from keras.preprocessing.sequence import pad_sequences
 from nltk.corpus import stopwords
 from sklearn.model_selection import train_test_split
+from nlp.utils.plot_model_history import plot
+from nlp.preprocess.clean_text import text_to_list
 
 from nlp.utils.basic_log import Log
 
@@ -27,43 +29,6 @@ log = Log(logging.INFO)
 # 曼哈顿距离
 def exponent_neg_manhattan_distance(left, right):
     return K.exp(-K.sum(K.abs(left - right), axis=1, keepdims=True))
-
-
-def text_to_list(text):
-    text = str(text)
-    text = text.lower()
-    # 清理数据
-    text = re.sub(r"[^A-Za-z0-9^,!.\/'+-=]", " ", text)
-    text = re.sub(r"what's", "what is ", text)
-    text = re.sub(r"\'s", " ", text)
-    text = re.sub(r"\'ve", " have ", text)
-    text = re.sub(r"can't", "cannot ", text)
-    text = re.sub(r"n't", " not ", text)
-    text = re.sub(r"i'm", "i am ", text)
-    text = re.sub(r"\'re", " are ", text)
-    text = re.sub(r"\'d", " would ", text)
-    text = re.sub(r"\'ll", " will ", text)
-    text = re.sub(r",", " ", text)
-    text = re.sub(r"\.", " ", text)
-    text = re.sub(r"!", " ! ", text)
-    text = re.sub(r"\/", " ", text)
-    text = re.sub(r"\^", " ^ ", text)
-    text = re.sub(r"\+", " + ", text)
-    text = re.sub(r"\-", " - ", text)
-    text = re.sub(r"\=", " = ", text)
-    text = re.sub(r"'", " ", text)
-    text = re.sub(r"(\d+)(k)", r"\g<1>000", text)
-    text = re.sub(r":", " : ", text)
-    text = re.sub(r" e g ", " eg ", text)
-    text = re.sub(r" b g ", " bg ", text)
-    text = re.sub(r" u s ", " american ", text)
-    text = re.sub(r"\0s", "0", text)
-    text = re.sub(r" 9 11 ", "911", text)
-    text = re.sub(r"e - mail", "email", text)
-    text = re.sub(r"j k", "jk", text)
-    text = re.sub(r"\s{2,}", " ", text)
-    text = text.split()
-    return text
 
 
 class SiameseSimilarity:
@@ -170,7 +135,7 @@ class SiameseSimilarity:
         elif not weights_only and not call_back:
             model.save(os.path.join(self.model_path, 'model.h5'))
         self.__save_config()
-        self.__plot(model_trained)
+        plot(model_trained)
         return model
 
     def __save_config(self):
@@ -219,7 +184,6 @@ class SiameseSimilarity:
         return model
 
     def __load_word2vec(self, word_index):
-        log.info('加载词向量...')
         word2vec = KeyedVectors.load_word2vec_format(self.embedding_file, binary=True)
         embeddings = 1 * np.random.randn(len(word_index) + 1, self.embedding_dim)
         embeddings[0] = 0
@@ -284,23 +248,3 @@ class SiameseSimilarity:
         assert x_train['left'].shape == x_train['right'].shape
         assert len(x_train['left']) == len(y_train)
         return x_train, y_train, x_val, y_val, word_index, max_seq_length
-
-    @staticmethod
-    def __plot(model_trained):
-        # Plot accuracy
-        plt.plot(model_trained.history['acc'])
-        plt.plot(model_trained.history['val_acc'])
-        plt.title('Model Accuracy')
-        plt.ylabel('Accuracy')
-        plt.xlabel('Epoch')
-        plt.legend(['Train', 'Validation'], loc='upper left')
-        plt.show()
-
-        # Plot loss
-        plt.plot(model_trained.history['loss'])
-        plt.plot(model_trained.history['val_loss'])
-        plt.title('Model Loss')
-        plt.ylabel('Loss')
-        plt.xlabel('Epoch')
-        plt.legend(['Train', 'Validation'], loc='upper right')
-        plt.show()

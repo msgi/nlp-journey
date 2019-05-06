@@ -2,7 +2,6 @@ import logging as log
 
 
 class Log:
-
     def __init__(self, level):
         self.level = level
         log.basicConfig(format='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s',
