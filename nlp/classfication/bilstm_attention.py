@@ -4,6 +4,7 @@ from gensim.models import KeyedVectors
 from keras import Input, Model
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 from keras.layers import Embedding, Bidirectional, LSTM, Dense, Dropout
+from keras_preprocessing.sequence import pad_sequences
 
 from nlp.layers.attention import Attention
 from keras.datasets import imdb
@@ -30,10 +31,9 @@ class BiLSTMAttentionModel:
                       self.embed_size,
                       weights=[self.embedding_matrix],
                       trainable=False)(inp)
-        x = Bidirectional(LSTM(300, return_sequences=True, dropout=0.25,
-                               recurrent_dropout=0.25))(x)
+        x = Bidirectional(LSTM(150, return_sequences=True, dropout=0.25, recurrent_dropout=0.25))(x)
         x = Attention(self.maxlen)(x)
-        x = Dense(256, activation="relu")(x)
+        x = Dense(128, activation="relu")(x)
         x = Dropout(0.25)(x)
         x = Dense(1, activation="sigmoid")(x)
         model = Model(inputs=inp, outputs=x)
@@ -44,29 +44,24 @@ class BiLSTMAttentionModel:
     def train(self):
         model = self.__build_model()
         file_path = ".model.hdf5"
-        ckpt = ModelCheckpoint(file_path, monitor='val_loss', verbose=1,
-                               save_best_only=True, mode='min')
+        checkpoint = ModelCheckpoint(file_path, monitor='val_loss', verbose=1,
+                                     save_best_only=True, mode='min')
         early = EarlyStopping(monitor="val_loss", mode="min", patience=10)
         model.fit(self.x_train,
                   self.y_train,
                   batch_size=256,
                   epochs=15,
                   validation_data=[self.x_test, self.y_test],
-                  callbacks=[ckpt, early])
+                  callbacks=[checkpoint, early])
 
     @staticmethod
     def __preprocess():
         (train_data, train_labels), (test_data, test_labels) = imdb.load_data(num_words=10000)
-        x_train = train_data
-        x_test = test_data
         word_index = imdb.get_word_index()
 
-        maxlen1 = max([len(x) for x in x_train])
-        maxlen2 = max([len(x) for x in x_test])
-
-        print(maxlen1, maxlen2)
-
-        maxlen = max(maxlen1, maxlen2)
+        maxlen = 200
+        x_train = pad_sequences(train_data, maxlen=maxlen)
+        x_test = pad_sequences(test_data, maxlen=maxlen)
         y_train = np.asarray(train_labels).astype('float32')
         y_test = np.asarray(test_labels).astype('float32')
 
