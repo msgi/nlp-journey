@@ -11,6 +11,7 @@ model.predict('i don\'t like it because it is too boring')
 model.predict('i like it ! its very interesting')
 ```
 
+> fasttext语料格式：文本和标签之间加一个空格， 比如： I like it __label__pos
 
 ### 2) SVM算法
 
