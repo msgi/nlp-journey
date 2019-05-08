@@ -54,9 +54,7 @@ class SVMClassifier(object):
     def read_model(self):
         try:
             with open(self.model_file, 'rb') as f:
-                tf_idf_model = pickle.load(f)
-                chi_model = pickle.load(f)
-                clf_model = pickle.load(f)
+                (tf_idf_model, chi_model, clf_model) = pickle.load(f)
         except FileNotFoundError:
             log.error('没有找到模型文件')
             tf_idf_model = None
@@ -100,6 +98,4 @@ class SVMClassifier(object):
 
     def save_model(self):
         with open(self.model_file, "wb") as file:
-            pickle.dump(self.tf_idf_model, file)
-            pickle.dump(self.chi_model, file)
-            pickle.dump(self.clf_model, file)
+            pickle.dump((self.tf_idf_model,self.chi_model,self.clf_model), file)
