@@ -1,39 +1,3 @@
-### 相关会议
-
-[ACL](https://www.aclweb.org/portal/)
-
- > The Association for Computational Linguistics, NLP最权威的国际专业学会
- 
-[NIPS](https://nips.cc/)
- 
- > Conference and Workshop on Neural Information Processing Systems, 神经信息处理系统大会, 是一个关于机器学习和计算神经科学的国际会议
- 
-![nips](images/paper/nips.png)
-
-[CICLing](https://www.cicling.org/2018/)
-
-> International Conference on Intelligent Text Processing and Computational Linguistics
-
-[PACLIC](http://www.cbs.polyu.edu.hk/2018paclic/)
- 
-> Pacific Asia Conference on Language, Information, and Computation
-
-[UAI](http://auai.org/)
- 
-![AUAI](images/paper/auai.png)
- 
-[AAAI](https://www.aaai.org/)
-
-![aaai](images/paper/aaai.png)
-
-[IJCAI](https://www.ijcai.org/)
-
-![ijcai](images/paper/ijcai.png)
-
-[ICML](https://icml.cc/)
-
-![icml](images/paper/icml.png)
-
 ### 已读论文博客
 
 EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks.[`论文`](https://arxiv.org/pdf/1901.11196.pdf)
@@ -53,7 +17,7 @@ The Illustrated Transformer.[`博客`](https://jalammar.github.io/illustrated-tr
 
 * self-attention细节
 
-###### ![self-attention](images/attention.png)
+![self-attention](images/attention.png)
 
 * encoder细节
 
@@ -98,3 +62,39 @@ A Sensitivity Analysis of (and Practitioners’ Guide to) Convolutional Neural N
 [pytorch-tutorials](https://pytorch.org/tutorials/)
 
 bert分类. [`博客1`](https://www.jiqizhixin.com/articles/2019-03-13-4), [`博客2`](https://www.cnblogs.com/jiangxinyang/p/10241243.html), [`博客3`](https://blog.csdn.net/macanv/article/details/85684284), [`博客4`](http://www.52nlp.cn/bert-paper-%E8%AE%BA%E6%96%87-%E6%96%87%E7%AB%A0-%E4%BB%A3%E7%A0%81%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB)
+
+### 相关会议
+
+[ACL](https://www.aclweb.org/portal/)
+
+ > The Association for Computational Linguistics, NLP最权威的国际专业学会
+ 
+[NIPS](https://nips.cc/)
+ 
+ > Conference and Workshop on Neural Information Processing Systems, 神经信息处理系统大会, 是一个关于机器学习和计算神经科学的国际会议
+ 
+![nips](images/paper/nips.png)
+
+[CICLing](https://www.cicling.org/2018/)
+
+> International Conference on Intelligent Text Processing and Computational Linguistics
+
+[PACLIC](http://www.cbs.polyu.edu.hk/2018paclic/)
+ 
+> Pacific Asia Conference on Language, Information, and Computation
+
+[UAI](http://auai.org/)
+ 
+![AUAI](images/paper/auai.png)
+ 
+[AAAI](https://www.aaai.org/)
+
+![aaai](images/paper/aaai.png)
+
+[IJCAI](https://www.ijcai.org/)
+
+![ijcai](images/paper/ijcai.png)
+
+[ICML](https://icml.cc/)
+
+![icml](images/paper/icml.png)
