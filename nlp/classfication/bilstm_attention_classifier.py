@@ -8,7 +8,7 @@ import jieba
 from gensim.models import KeyedVectors
 from keras import Input, Model
 from keras.callbacks import ModelCheckpoint, EarlyStopping
-from keras.layers import Embedding, Bidirectional, LSTM, Dense, Dropout, GRU
+from keras.layers import Embedding, Bidirectional, LSTM, Dense, Dropout, GRU, BatchNormalization
 from keras_preprocessing.sequence import pad_sequences
 from sklearn.model_selection import train_test_split
 
@@ -71,6 +71,7 @@ class BiLSTMAttentionClassifier:
                       weights=[self.embedding_matrix],
                       trainable=False)(inp)
         x = Bidirectional(LSTM(150, dropout=0.25, recurrent_dropout=0.25))(x)
+        x = BatchNormalization()(x)
         x = Dense(128, activation="relu")(x)
         x = Dropout(0.25)(x)
         x = Dense(1, activation="sigmoid")(x)

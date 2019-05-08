@@ -20,8 +20,13 @@ model.predict('i like it ! its very interesting')
 svm_model = SVMClassifier('model/svm/model.pkl')
 ```
 
+### 3) BiLSTM
 
-### 3) BiLSTM+Attention
+* 双向lstm获取句子的表示，采用简单的全连接层分类，简单的二分类
+
+* 很容易过拟合
+
+### 4) BiLSTM+Attention
 
 * 双向lstm获取句子的表示，然后用attention机制，最后采用简单的全连接层分类，简单的二分类
 
