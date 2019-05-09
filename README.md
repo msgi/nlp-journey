@@ -9,19 +9,7 @@ Attention-based-model. [`博客`](http://www.wildml.com/2016/01/attention-and-me
 
 ![attention](images/attention/attention-based-model.png)
 
-The Illustrated Transformer.[`博客`](https://jalammar.github.io/illustrated-transformer/) [`论文`](https://arxiv.org/pdf/1706.03762.pdf)
-
-* Transformer架构
-
-![transformer](images/transformer.png)
-
-* self-attention细节
-
-![self-attention](images/attention.png)
-
-* encoder细节
-
-![real](images/transformer_resideual_layer_norm_2.png)
+Transformer.[`博客`](https://jalammar.github.io/illustrated-transformer/) [`论文`](https://arxiv.org/pdf/1706.03762.pdf)
 
 Transformer-XL. [`论文`](https://arxiv.org/pdf/1901.02860.pdf)
 
@@ -37,7 +25,6 @@ Attention-Based Bidirectional Long Short-Term Memory Networks for Relation Class
 
 A Question-Focused Multi-Factor Attention Network for Question Answering. [`论文`](https://arxiv.org/pdf/1801.08290.pdf)
 
-![att-mc](images/att-mc.png)
 
 ### 待深入
 
@@ -73,8 +60,6 @@ bert分类. [`博客1`](https://www.jiqizhixin.com/articles/2019-03-13-4), [`博
  
  > Conference and Workshop on Neural Information Processing Systems, 神经信息处理系统大会, 是一个关于机器学习和计算神经科学的国际会议
  
-![nips](images/paper/nips.png)
-
 [CICLing](https://www.cicling.org/2018/)
 
 > International Conference on Intelligent Text Processing and Computational Linguistics
@@ -85,16 +70,8 @@ bert分类. [`博客1`](https://www.jiqizhixin.com/articles/2019-03-13-4), [`博
 
 [UAI](http://auai.org/)
  
-![AUAI](images/paper/auai.png)
- 
 [AAAI](https://www.aaai.org/)
-
-![aaai](images/paper/aaai.png)
 
 [IJCAI](https://www.ijcai.org/)
 
-![ijcai](images/paper/ijcai.png)
-
 [ICML](https://icml.cc/)
-
-![icml](images/paper/icml.png)
