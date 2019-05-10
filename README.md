@@ -25,20 +25,35 @@ Attention-Based Bidirectional Long Short-Term Memory Networks for Relation Class
 
 A Question-Focused Multi-Factor Attention Network for Question Answering. [`论文`](https://arxiv.org/pdf/1801.08290.pdf)
 
+Building Autoencoders in Keras. [`博客`](https://blog.keras.io/building-autoencoders-in-keras.html)
+
+Modern Deep Learning Techniques Applied to Natural Language Processing. [`博客`](https://nlpoverview.com/)
+
+node2vec. [`博客`](https://towardsdatascience.com/node2vec-embeddings-for-graph-data-32a866340fef)
+
 
 ### 待深入
 
-GloVe. [`论文`](https://nlp.stanford.edu/pubs/glove.pdf) [`官网`](https://nlp.stanford.edu/projects/glove/) [`博客`](https://blog.csdn.net/u014665013/article/details/79642083)
-
-A Deep Ensemble Model with Slot Alignment for Sequence-to-Sequence Natural Language Generation. [`论文`](https://arxiv.org/pdf/1805.06553.pdf)
-
-The Design and Implementation of XiaoIce, an Empathetic Social Chatbot. [`论文`](https://arxiv.org/pdf/1812.08989.pdf)
-
-A Knowledge-Grounded Neural Conversation Model. [`论文`](https://arxiv.org/pdf/1702.01932.pdf)
-
-Neural Generative Question Answering. [`论文`](https://arxiv.org/pdf/1512.01337v1.pdf)
-
-A Sensitivity Analysis of (and Practitioners’ Guide to) Convolutional Neural Networks for Sentence Classification. [`论文`](https://arxiv.org/pdf/1510.03820.pdf)
+* GloVe. [`论文`](https://nlp.stanford.edu/pubs/glove.pdf) [`官网`](https://nlp.stanford.edu/projects/glove/) [`博客`](https://blog.csdn.net/u014665013/article/details/79642083)
+* A Deep Ensemble Model with Slot Alignment for Sequence-to-Sequence Natural Language Generation. [`论文`](https://arxiv.org/pdf/1805.06553.pdf)
+* The Design and Implementation of XiaoIce, an Empathetic Social Chatbot. [`论文`](https://arxiv.org/pdf/1812.08989.pdf)
+* A Knowledge-Grounded Neural Conversation Model. [`论文`](https://arxiv.org/pdf/1702.01932.pdf)
+* Neural Generative Question Answering. [`论文`](https://arxiv.org/pdf/1512.01337v1.pdf)
+* A Sensitivity Analysis of (and Practitioners’ Guide to) Convolutional Neural Networks for Sentence Classification. [`论文`](https://arxiv.org/pdf/1510.03820.pdf)
+* ImageNet Classification with Deep Convolutional Neural Networks. [`2012`](http://120.52.51.17/www.cs.toronto.edu/~fritz/absps/imagenet.pdf)
+* Network In Network. [`2013`](https://arxiv.org/pdf/1312.4400.pdf),[`翻译`](https://www.jianshu.com/p/8a3f9f06bbe3)
+* LSTM. [`论文`](http://www.bioinf.jku.at/publications/older/2604.pdf)
+* GRU. [`论文`](https://arxiv.org/pdf/1406.1078v3.pdf)
+* Get To The Point: Summarization with Pointer-Generator Networks. [`论文`](https://arxiv.org/pdf/1704.04368.pdf)
+* Generative Adversarial Text to Image Synthesis. [`论文`](https://arxiv.org/pdf/1605.05396.pdf)
+* Image-to-Image Translation with Conditional Adversarial Networks. [`论文`](https://arxiv.org/pdf/1611.07004.pdf)
+* Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network. [`论文`](https://arxiv.org/pdf/1609.04802.pdf)
+* Unsupervised Learning of Visual Structure using Predictive Generative Networks. [`论文`](https://arxiv.org/pdf/1511.06380.pdf)
+* Learning to Rank Short Text Pairs with Convolutional Deep Neural Networks. [`论文`](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.723.6492&rep=rep1&type=pdf)
+* GAN Dissection: Visualizing and Understanding Generative Adversarial Networks. [`博客`](https://gandissect.csail.mit.edu/?utm_campaign=the_algorithm.unpaid.engagement&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-8kxzmyRmbG-8kGLZmbD-jZcUEpJidf6MnVsJOK62S0aVm88ioDTuQC2FPFAnkZQDBiqBw7)
+* wildml. [`博客`](http://www.wildml.com/)
+* Keras. [`博客`](https://www.pyimagesearch.com/2018/09/10/keras-tutorial-how-to-get-started-with-keras-deep-learning-and-python/)
+* [A Neural Network](https://iamtrask.github.io/2015/07/27/python-network-part2/)
 
 ### NLP方面的博客
 
