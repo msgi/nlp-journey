@@ -1,35 +1,27 @@
 ### 已读论文博客
 
-EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks.[`论文`](https://arxiv.org/pdf/1901.11196.pdf)
+* EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks.[`论文`](https://arxiv.org/pdf/1901.11196.pdf)
 
 > 跟图像一样, 希望采用数据变换的方式来增强文本分类的鲁棒性.\
 > 同义词:随机替换, 随机插入, 随机交换位置, 随机删除
 
-Attention-based-model. [`博客`](http://www.wildml.com/2016/01/attention-and-memory-in-deep-learning-and-nlp/), [`survey`](http://yanran.li/peppypapers/2015/10/07/survey-attention-model-1.html)
+* Attention-based-model. [`博客`](http://www.wildml.com/2016/01/attention-and-memory-in-deep-learning-and-nlp/), [`survey`](http://yanran.li/peppypapers/2015/10/07/survey-attention-model-1.html)
 
 ![attention](images/attention/attention-based-model.png)
 
-Transformer.[`博客`](https://jalammar.github.io/illustrated-transformer/) [`论文`](https://arxiv.org/pdf/1706.03762.pdf)
-
-Transformer-XL. [`论文`](https://arxiv.org/pdf/1901.02860.pdf)
-
-KL divergence. [`博客`](https://www.countbayesie.com/blog/2017/5/9/kullback-leibler-divergence-explained)
+* Transformer.[`博客`](https://jalammar.github.io/illustrated-transformer/) [`论文`](https://arxiv.org/pdf/1706.03762.pdf)
+* Transformer-XL. [`论文`](https://arxiv.org/pdf/1901.02860.pdf)
+* KL divergence. [`博客`](https://www.countbayesie.com/blog/2017/5/9/kullback-leibler-divergence-explained)
 
 ![kl](images/kl.png)
 
-SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient. [`论文`](https://arxiv.org/pdf/1609.05473.pdf)
-
-Convolutional Neural Networks for Sentence Classification. [`论文`](https://arxiv.org/pdf/1408.5882.pdf)
-
-Attention-Based Bidirectional Long Short-Term Memory Networks for Relation Classification. [`论文`](http://www.aclweb.org/anthology/P16-2034)
-
-A Question-Focused Multi-Factor Attention Network for Question Answering. [`论文`](https://arxiv.org/pdf/1801.08290.pdf)
-
-Building Autoencoders in Keras. [`博客`](https://blog.keras.io/building-autoencoders-in-keras.html)
-
-Modern Deep Learning Techniques Applied to Natural Language Processing. [`博客`](https://nlpoverview.com/)
-
-node2vec. [`博客`](https://towardsdatascience.com/node2vec-embeddings-for-graph-data-32a866340fef)
+* SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient. [`论文`](https://arxiv.org/pdf/1609.05473.pdf)
+* Convolutional Neural Networks for Sentence Classification. [`论文`](https://arxiv.org/pdf/1408.5882.pdf)
+* Attention-Based Bidirectional Long Short-Term Memory Networks for Relation Classification. [`论文`](http://www.aclweb.org/anthology/P16-2034)
+* A Question-Focused Multi-Factor Attention Network for Question Answering. [`论文`](https://arxiv.org/pdf/1801.08290.pdf)
+* Building Autoencoders in Keras. [`博客`](https://blog.keras.io/building-autoencoders-in-keras.html)
+* Modern Deep Learning Techniques Applied to Natural Language Processing. [`博客`](https://nlpoverview.com/)
+* node2vec. [`博客`](https://towardsdatascience.com/node2vec-embeddings-for-graph-data-32a866340fef)
 
 
 ### 待深入
