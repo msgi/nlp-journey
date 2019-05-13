@@ -72,8 +72,8 @@ def load_data(pos_file, neg_file):
 
 class CnnClassifier:
     def __init__(self, model_path,
+                 config_file,
                  embedding_dim=256,
-                 config_file=None,
                  train=False,
                  pos_file=None,
                  neg_file=None,

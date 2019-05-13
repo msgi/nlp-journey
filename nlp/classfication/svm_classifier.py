@@ -98,4 +98,4 @@ class SVMClassifier(object):
 
     def save_model(self):
         with open(self.model_file, "wb") as file:
-            pickle.dump((self.tf_idf_model,self.chi_model,self.clf_model), file)
+            pickle.dump((self.tf_idf_model, self.chi_model, self.clf_model), file)

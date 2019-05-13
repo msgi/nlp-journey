@@ -85,12 +85,7 @@ class BiLSTMAttentionClassifier:
     def train(self):
         model = self.__build_model()
         # model = self.__build_model_no_attention()
-        checkpoint_dir = os.path.join(self.model_path, 'checkpoints/')
-        if not os.path.exists(checkpoint_dir):
-            os.makedirs(checkpoint_dir)
-
-        bst_model_path = checkpoint_dir + str(int(time.time())) + '.h5'
-        checkpoint = ModelCheckpoint(bst_model_path,
+        checkpoint = ModelCheckpoint(os.path.join(self.model_path, 'weights.{epoch:03d}-{val_acc:.4f}.h5'),
                                      monitor='val_loss',
                                      save_weights_only=True,
                                      verbose=1,
