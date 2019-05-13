@@ -70,10 +70,12 @@ class SVMClassifier(object):
         data_set = pd.read_csv(self.train_path, sep='##', encoding='utf-8', header=None, engine='python')
         data_set = data_set.dropna()
         chi_features, tf_idf_model, chi_model = self.__select_features(data_set)
-        x_train, x_test, y_train, y_test = train_test_split(chi_features, data_set[1],
+        x_train, x_test, y_train, y_test = train_test_split(chi_features,
+                                                            data_set[1],
                                                             test_size=test_size,
-                                                            random_state=42, shuffle=True)
-        clf_model = svm.SVC(kernel='linear')  # 这里采用的是线性分类模型,如果采用rbf径向基模型,速度会非常慢.
+                                                            random_state=42)
+        clf_model = svm.SVC(kernel='linear',
+                            verbose=True)  # 这里采用的是线性分类模型,如果采用rbf径向基模型,速度会非常慢.
         print(clf_model)
         clf_model.fit(x_train, y_train)
         score = clf_model.score(x_test, y_test)
