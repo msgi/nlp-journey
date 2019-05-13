@@ -8,7 +8,7 @@ import jieba
 from gensim.models import KeyedVectors
 from keras import Input, Model
 from keras.callbacks import ModelCheckpoint, EarlyStopping
-from keras.layers import Embedding, Bidirectional, LSTM, Dense, Dropout, GRU, BatchNormalization
+from keras.layers import Embedding, Bidirectional, LSTM, Dense, Dropout, GRU, BatchNormalization, CuDNNLSTM
 from keras_preprocessing.sequence import pad_sequences
 from sklearn.model_selection import train_test_split
 
@@ -70,7 +70,7 @@ class BiLSTMAttentionClassifier:
                       self.embed_size,
                       weights=[self.embedding_matrix],
                       trainable=False)(inp)
-        x = Bidirectional(LSTM(150, dropout=0.25, recurrent_dropout=0.25))(x)
+        x = Bidirectional(CuDNNLSTM(150, dropout=0.25, recurrent_dropout=0.25))(x)
         x = BatchNormalization()(x)
         x = Dense(128, activation="relu")(x)
         x = Dropout(0.25)(x)
@@ -83,8 +83,8 @@ class BiLSTMAttentionClassifier:
 
     # 训练开始
     def train(self):
-        # model = self.__build_model()
-        model = self.__build_model_no_attention()
+        model = self.__build_model()
+        # model = self.__build_model_no_attention()
         checkpoint_dir = os.path.join(self.model_path, 'checkpoints/')
         if not os.path.exists(checkpoint_dir):
             os.makedirs(checkpoint_dir)
@@ -101,13 +101,13 @@ class BiLSTMAttentionClassifier:
                               patience=10)
         model_trained = model.fit(self.x_train,
                                   self.y_train,
-                                  batch_size=256,
+                                  batch_size=128,
                                   epochs=25,
                                   validation_data=[self.x_test, self.y_test],
                                   callbacks=[checkpoint, early])
         plot(model_trained)
-        # model.save_weights(os.path.join(self.model_path, 'final_model_weights.h5'))
-        model.save_weights(os.path.join(self.model_path, 'final_model_weights_no_attention.h5'))
+        model.save_weights(os.path.join(self.model_path, 'final_model_weights.h5'))
+        # model.save_weights(os.path.join(self.model_path, 'final_model_weights_no_attention.h5'))
         self.__save_config()
         return model
 
@@ -185,11 +185,8 @@ class BiLSTMAttentionClassifier:
             x_predict = [self.word_index.get(x, 0) for t in text for x in t.split()]
         else:
             x_predict = [self.word_index.get(x, 0) for x in text.split()]
-
         print(x_predict)
-
         x_predict = pad_sequences([x_predict], maxlen=self.maxlen)
-
         return self.model.predict(x_predict)
 
     # 推理出结果
