@@ -7,6 +7,7 @@ import numpy as np
 from keras.layers import BatchNormalization
 from keras.layers import Embedding
 from keras.models import Sequential
+from keras_preprocessing.sequence import pad_sequences
 
 from nlp.chatbot.seq2seq import AttentionSeq2Seq
 from .data_preprocess import __PAD__
@@ -17,7 +18,7 @@ from .data_preprocess import preprocess
 
 class ChatBot:
 
-    def __init__(self, train_file, model_path):
+    def __init__(self, train_file, model_path, decoder_vector_path,encoder_vector_path):
         self.train_file = train_file
         self.questions, self.answers = self.__read_file()
 
@@ -30,8 +31,13 @@ class ChatBot:
         self.hidden_dim = 100
         self.layer_shape = (2, 1)
         self.epsilon = 1e-6
-        self.batch_size = 32
+        self.batch_size = 128
         self.epochs = 500
+        self.decoder_vector_path = decoder_vector_path
+        self.encoder_vector_path=encoder_vector_path
+
+        self.decoder_word2vec_model = self.__load_word2vec_model(decoder_vector_path)
+        self.encoder_vec_model = self.__load_word2vec_model(self.encoder_vector_path)
 
         self.enc_sequences, self.enc_word_index, self.enc_index_word = preprocess(self.questions,
                                                                                   self.enc_input_length,
@@ -61,30 +67,25 @@ class ChatBot:
             answers.append(split[1].strip())
         return questions, answers
 
+    # 获取索引表示的输入和embedding表示的输出
     def generate_batch(self, batch_size=None):
-        decoder_word2vec_model = self.__load_word2vec_model('../data/model/decoder_vector.m')
-        dec_useful_words = list(decoder_word2vec_model.wv.vocab.keys())
-
+        dec_useful_words = list(self.decoder_word2vec_model.wv.vocab.keys())
         batch_count = 0
-
         x_train = []
         y = []
-
         num = 0
         while True:
             source_list = self.enc_sequences[num]
             target_str_list = self.dec_sequences[num]
-
             target_list = []
             for data in target_str_list:
                 word = self.dec_index_word[data]
                 if word in dec_useful_words:
-                    word_embedding = decoder_word2vec_model.wv[word]
+                    word_embedding = self.decoder_word2vec_model.wv[word]
                 elif word == __VOCAB__[0]:
                     word_embedding = np.zeros(self.dec_embedding_length)
                 else:
                     word_embedding = np.array([1.0] * self.dec_embedding_length)
-
                 # 归一化
                 std_number = np.std(word_embedding)
                 if (std_number - self.epsilon) < 0:
@@ -116,9 +117,11 @@ class ChatBot:
         if self.batch_size > documents_length:
             print("ERROR--->" + u"语料数据量过少，请再添加一些")
             return None
-        model.fit_generator(generator=self.generate_batch(batch_size=self.batch_size),
-                            steps_per_epoch=int(documents_length / self.batch_size),
-                            epochs=self.epochs, verbose=2, workers=1)
+        model.fit_generator(
+            generator=self.generate_batch(batch_size=self.batch_size),
+            steps_per_epoch=int(documents_length / self.batch_size),
+            epochs=self.epochs,
+            verbose=1)
         model.save_weights(self.model_path)
         return model
 
@@ -154,17 +157,15 @@ class ChatBot:
 
     def get_encoder_embedding(self):
         embedding_list = []
-        vocab_dict = self.enc_index_word
-        vec_model = self.__load_word2vec_model('../data/model/encoder_vector.m')
-
-        for key, value in vocab_dict.items():
+        for key, value in self.enc_index_word.items():
             if key == __PAD__:
                 embedding_list.append(np.array([0.0] * self.enc_embedding_length))
             elif key == __UNK__:
                 embedding_list.append(np.array([1.0] * self.enc_embedding_length))
+            elif value in self.encoder_vec_model.wv.vocab:
+                embedding_list.append(self.encoder_vec_model.wv[value])
             else:
-                embedding_list.append(vec_model.wv[value])
-
+                embedding_list.append(np.array([1.0] * self.enc_embedding_length))
         return np.array(embedding_list)
 
     def predict(self, questions):
@@ -177,8 +178,8 @@ class ChatBot:
         :param enc_embedding: 转换为id的问题
         :return: 字符列表
         """
-        dec_vec_model = self.__load_word2vec_model('../data/model/decoder_vector.m')
-        dec_useful_words = tuple(dec_vec_model.wv.vocab.keys())
+
+        dec_useful_words = tuple(self.decoder_word2vec_model.wv.vocab.keys())
         prediction = self.model.predict_on_batch(enc_embedding)
 
         prediction_words_list = []
@@ -189,13 +190,13 @@ class ChatBot:
                 mse = self.calculate_mse(vec, np.zeros(self.dec_embedding_length))
                 dec_dis_list.append(mse)
                 for dec_word in dec_useful_words:
-                    mse = self.calculate_mse(vec, dec_vec_model.wv[dec_word])
+                    mse = self.calculate_mse(vec, self.decoder_word2vec_model.wv[dec_word])
                     dec_dis_list.append(mse)
                 index = np.argmin(dec_dis_list)
                 if index == 0:
                     word = __VOCAB__[0]
                 else:
-                    word = dec_useful_words[index - 1]
+                    word = dec_useful_words[int(index - 1)]
                 prediction_words.append(word)
             prediction_words_list.append(prediction_words)
 
@@ -226,13 +227,10 @@ class ChatBot:
         enc_padding_ids_list = []
         for text in text_list:
             words_list = list(jieba.cut(text.strip()))
-            enc_ids = [self.enc_index_word.get(word, __UNK__) for word in words_list]
+            enc_ids = [self.enc_word_index.get(word, __UNK__) for word in words_list]
             if len(enc_ids) > self.enc_input_length:
                 enc_ids = enc_ids[:self.enc_input_length]
-            enc_length = len(enc_ids)
-            enc_padding_ids = []
-            enc_padding_ids.extend([0] * (self.enc_input_length - enc_length))
-            enc_padding_ids.extend([int(enc_ids[enc_length - l - 1]) for l in range(enc_length)])
+            enc_padding_ids = pad_sequences(enc_ids, maxlen=self.enc_input_length, value=__PAD__)
             enc_padding_ids_list.append(np.array(enc_padding_ids))
         return np.array(enc_padding_ids_list)
 
