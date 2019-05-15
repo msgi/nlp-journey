@@ -11,8 +11,7 @@ def dot_product(x, kernel):
 
 
 class Attention(Layer):
-    def __init__(self,
-                 W_regularizer=None, u_regularizer=None, b_regularizer=None,
+    def __init__(self, W_regularizer=None, u_regularizer=None, b_regularizer=None,
                  W_constraint=None, u_constraint=None, b_constraint=None,
                  bias=True, **kwargs):
 
