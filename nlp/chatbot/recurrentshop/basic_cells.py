@@ -24,7 +24,6 @@ class GRUCell(RNNCell):
 
     def build_model(self, input_shape):
         output_dim = self.output_dim
-        input_dim = input_shape[-1]
         output_shape = (input_shape[0], output_dim)
         x = Input(batch_shape=input_shape)
         h_tm1 = Input(batch_shape=output_shape)
@@ -43,7 +42,6 @@ class LSTMCell(RNNCell):
 
     def build_model(self, input_shape):
         output_dim = self.output_dim
-        input_dim = input_shape[-1]
         output_shape = (input_shape[0], output_dim)
         x = Input(batch_shape=input_shape)
         h_tm1 = Input(batch_shape=output_shape)
@@ -59,4 +57,4 @@ class LSTMCell(RNNCell):
         o = add([Dense(output_dim)(x), Dense(output_dim, use_bias=False)(h_tm1)])
         o = Activation('sigmoid')(o)
         h = multiply([o, c])
-        return Model([x, h_tm1, c_tm1], [h, h, c])
+        return ([x, h_tm1, c_tm1], [h, h, c])

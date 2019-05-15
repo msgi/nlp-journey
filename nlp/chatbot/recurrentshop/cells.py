@@ -15,7 +15,7 @@ def get_slices(x, n):
 
 class Identity(Layer):
 
-    def call(self, x):
+    def call(self, x, **kwargs):
         return x + 0.
 
 
@@ -105,7 +105,6 @@ class GRUCell(ExtendedRNNCell):
 
     def build_model(self, input_shape):
         output_dim = self.output_dim
-        input_dim = input_shape[-1]
         output_shape = (input_shape[0], output_dim)
         x = Input(batch_shape=input_shape)
         h_tm1 = Input(batch_shape=output_shape)
@@ -147,7 +146,6 @@ class LSTMCell(ExtendedRNNCell):
 
     def build_model(self, input_shape):
         output_dim = self.output_dim
-        input_dim = input_shape[-1]
         output_shape = (input_shape[0], output_dim)
         x = Input(batch_shape=input_shape)
         h_tm1 = Input(batch_shape=output_shape)
