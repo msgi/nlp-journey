@@ -59,6 +59,8 @@ bert分类. [`博客1`](https://www.jiqizhixin.com/articles/2019-03-13-4), [`博
 
 [彗双智能-Keras源码分析](http://wangbn.blogspot.com/)
 
+[对话](https://www.leiphone.com/news/201704/8ofqhd0UEJVjgWHv.html)
+
 
 ### 相关会议
 
