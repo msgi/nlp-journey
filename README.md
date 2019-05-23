@@ -53,18 +53,23 @@
 
 ### NLP方面的博客
 
-[莫坠青云志](https://tobiaslee.top/)
-
-[Bert解读](https://www.cnblogs.com/rucwxb/p/10277217.html)
-
-[pytorch-tutorials](https://pytorch.org/tutorials/)
-
-bert分类. [`博客1`](https://www.jiqizhixin.com/articles/2019-03-13-4), [`博客2`](https://www.cnblogs.com/jiangxinyang/p/10241243.html), [`博客3`](https://blog.csdn.net/macanv/article/details/85684284), [`博客4`](http://www.52nlp.cn/bert-paper-%E8%AE%BA%E6%96%87-%E6%96%87%E7%AB%A0-%E4%BB%A3%E7%A0%81%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB)
-
-[彗双智能-Keras源码分析](http://wangbn.blogspot.com/)
-
-[对话](https://www.leiphone.com/news/201704/8ofqhd0UEJVjgWHv.html)
-
+* [莫坠青云志](https://tobiaslee.top/)
+* [Bert解读](https://www.cnblogs.com/rucwxb/p/10277217.html)
+* [pytorch-tutorials](https://pytorch.org/tutorials/)
+* bert分类. [`博客1`](https://www.jiqizhixin.com/articles/2019-03-13-4), [`博客2`](https://www.cnblogs.com/jiangxinyang/p/10241243.html), [`博客3`](https://blog.csdn.net/macanv/article/details/85684284), [`博客4`](http://www.52nlp.cn/bert-paper-%E8%AE%BA%E6%96%87-%E6%96%87%E7%AB%A0-%E4%BB%A3%E7%A0%81%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB)
+* [彗双智能-Keras源码分析](http://wangbn.blogspot.com/)
+* [对话](https://www.leiphone.com/news/201704/8ofqhd0UEJVjgWHv.html)
+* [动手学深度学习](http://zh.diveintodeeplearning.org)
+* [云栖社区](https://yq.aliyun.com/teams/132/type_blog?spm=a2c4e.11153959.0.0.11fc2dc6TXzTzl)
+* [PaperWeekly](http://www.paperweekly.site/)
+* [机器之心](https://www.jiqizhixin.com/)
+* [码农场](http://www.hankcs.com/)
+* [Github](https://github.com/)
+* [neural-networks-and-deep-learning](http://neuralnetworksanddeeplearning.com/)
+* [cs224n](http://web.stanford.edu/class/cs224n/index.html)
+* [colah](https://colah.github.io/)
+* [seq2seq](https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/)
+* [sicara博客](https://blog.sicara.com/)
 
 ### 使用cuda出现问题的解决方式
 
