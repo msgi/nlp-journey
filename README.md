@@ -70,6 +70,7 @@
 * [colah](https://colah.github.io/)
 * [seq2seq](https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/)
 * [sicara博客](https://blog.sicara.com/)
+* [ZHPMATRIX](https://zhpmatrix.github.io/)
 
 ### 使用cuda出现问题的解决方式
 
