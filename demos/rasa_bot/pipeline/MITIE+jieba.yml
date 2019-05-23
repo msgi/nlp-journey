@@ -1,0 +1,10 @@
+language: "zh"
+
+pipeline:
+- name: "nlp_mitie"
+  model: "data/total_word_feature_extractor_zh.dat"
+- name: "tokenizer_jieba"
+- name: "ner_mitie"
+- name: "ner_synonyms"
+- name: "intent_featurizer_mitie"
+- name: "intent_classifier_sklearn"
