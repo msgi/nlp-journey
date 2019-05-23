@@ -1,3 +1,7 @@
+### 基础学习
+
+[基础学习](note/basic.md)
+
 ### 已读论文博客
 
 * EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks.[`论文`](https://arxiv.org/pdf/1901.11196.pdf)
