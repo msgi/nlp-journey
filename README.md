@@ -67,17 +67,10 @@ sudo ln -sf /usr/local/cuda-9.0/lib64/libcudnn.so.7.0.5 /usr/local/cuda-9.0/lib6
 ### 相关会议
 
 [ACL](https://www.aclweb.org/portal/)
- 
 [NIPS](https://nips.cc/)
- 
 [CICLing](https://www.cicling.org/2018/)
-
 [PACLIC](http://www.cbs.polyu.edu.hk/2018paclic/)
-
 [UAI](http://auai.org/)
- 
 [AAAI](https://www.aaai.org/)
-
 [IJCAI](https://www.ijcai.org/)
-
 [ICML](https://icml.cc/)
