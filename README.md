@@ -44,6 +44,10 @@
 * BERT_with_keras. [`地址`](https://github.com/miroozyx/BERT_with_keras)
 * SeqGAN. [`地址`](https://github.com/tyo-yo/SeqGAN)
 
+### 相关书籍
+
+* 斯坦福大学《语音与语言处理》第三版：NLP必读书籍. [`地址`](http://web.stanford.edu/~jurafsky/slp3/ed3book.pdf)
+
 ### 相关会议
 
 * Association of Computational Linguistics(计算语言学协会). [ACL](https://www.aclweb.org/portal/)
