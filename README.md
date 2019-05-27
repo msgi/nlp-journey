@@ -1,24 +1,10 @@
-### 基础学习
-
-[基础学习](note/basic.md)
-
 ### 已读论文博客
 
 * EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks.[`论文`](https://arxiv.org/pdf/1901.11196.pdf)
-
-> 跟图像一样, 希望采用数据变换的方式来增强文本分类的鲁棒性.\
-> 同义词:随机替换, 随机插入, 随机交换位置, 随机删除
-
 * Attention-based-model. [`博客`](http://www.wildml.com/2016/01/attention-and-memory-in-deep-learning-and-nlp/), [`survey`](http://yanran.li/peppypapers/2015/10/07/survey-attention-model-1.html)
-
-![attention](images/attention/attention-based-model.png)
-
 * Transformer.[`博客`](https://jalammar.github.io/illustrated-transformer/) [`论文`](https://arxiv.org/pdf/1706.03762.pdf)
 * Transformer-XL. [`论文`](https://arxiv.org/pdf/1901.02860.pdf)
 * KL divergence. [`博客`](https://www.countbayesie.com/blog/2017/5/9/kullback-leibler-divergence-explained)
-
-![kl](images/kl.png)
-
 * SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient. [`论文`](https://arxiv.org/pdf/1609.05473.pdf)
 * Convolutional Neural Networks for Sentence Classification. [`论文`](https://arxiv.org/pdf/1408.5882.pdf)
 * Attention-Based Bidirectional Long Short-Term Memory Networks for Relation Classification. [`论文`](http://www.aclweb.org/anthology/P16-2034)
@@ -26,7 +12,6 @@
 * Building Autoencoders in Keras. [`博客`](https://blog.keras.io/building-autoencoders-in-keras.html)
 * Modern Deep Learning Techniques Applied to Natural Language Processing. [`博客`](https://nlpoverview.com/)
 * node2vec. [`博客`](https://towardsdatascience.com/node2vec-embeddings-for-graph-data-32a866340fef)
-
 
 ### 待深入
 
@@ -76,27 +61,18 @@
 
 ```bash
 sudo ldconfig /usr/local/cuda-9.0/lib64
-
 sudo ln -sf /usr/local/cuda-9.0/lib64/libcudnn.so.7.0.5 /usr/local/cuda-9.0/lib64/libcudnn.so.7
 ```
 
 ### 相关会议
 
 [ACL](https://www.aclweb.org/portal/)
-
- > The Association for Computational Linguistics, NLP最权威的国际专业学会
  
 [NIPS](https://nips.cc/)
  
- > Conference and Workshop on Neural Information Processing Systems, 神经信息处理系统大会, 是一个关于机器学习和计算神经科学的国际会议
- 
 [CICLing](https://www.cicling.org/2018/)
 
-> International Conference on Intelligent Text Processing and Computational Linguistics
-
 [PACLIC](http://www.cbs.polyu.edu.hk/2018paclic/)
- 
-> Pacific Asia Conference on Language, Information, and Computation
 
 [UAI](http://auai.org/)
  
