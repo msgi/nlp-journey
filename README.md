@@ -57,6 +57,11 @@
 * [sicara博客](https://blog.sicara.com/)
 * [ZHPMATRIX](https://zhpmatrix.github.io/)
 
+### 相关github项目
+
+* keras-gpt-2. [`地址`](https://github.com/CyberZHG/keras-gpt-2)
+
+
 ### 使用cuda出现问题的解决方式
 
 ```bash
