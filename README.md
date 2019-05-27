@@ -44,20 +44,26 @@
 * BERT_with_keras. [`地址`](https://github.com/miroozyx/BERT_with_keras)
 * SeqGAN. [`地址`](https://github.com/tyo-yo/SeqGAN)
 
+### 相关会议
+
+* Association of Computational Linguistics(计算语言学协会). [ACL](https://www.aclweb.org/portal/)
+* Empirical Methods in Natural Language Processing. [EMNLP]()
+* International Conference on Computational Linguistics. [COLING](https://www.sheffield.ac.uk/dcs/research/groups/nlp/iccl/index#tab00)
+* Neural Information Processing Systems(神经信息处理系统会议). [NIPS](https://nips.cc/)
+* AAAI Conference on Artificial Intelligence. [AAAI](https://www.aaai.org/)
+* International Joint Conferences on AI. [IJCAI](https://www.ijcai.org/)
+* International Conference on Machine Learning(国际机器学习大会). [ICML](https://icml.cc/)
+
 ### NLP方面的博客
 
 * [莫坠青云志](https://tobiaslee.top/)
 * [Bert解读](https://www.cnblogs.com/rucwxb/p/10277217.html)
-* [pytorch-tutorials](https://pytorch.org/tutorials/)
-* bert分类. [`博客1`](https://www.jiqizhixin.com/articles/2019-03-13-4), [`博客2`](https://www.cnblogs.com/jiangxinyang/p/10241243.html), [`博客3`](https://blog.csdn.net/macanv/article/details/85684284), [`博客4`](http://www.52nlp.cn/bert-paper-%E8%AE%BA%E6%96%87-%E6%96%87%E7%AB%A0-%E4%BB%A3%E7%A0%81%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB)
 * [彗双智能-Keras源码分析](http://wangbn.blogspot.com/)
 * [对话](https://www.leiphone.com/news/201704/8ofqhd0UEJVjgWHv.html)
 * [动手学深度学习](http://zh.diveintodeeplearning.org)
 * [云栖社区](https://yq.aliyun.com/teams/132/type_blog?spm=a2c4e.11153959.0.0.11fc2dc6TXzTzl)
-* [PaperWeekly](http://www.paperweekly.site/)
 * [机器之心](https://www.jiqizhixin.com/)
 * [码农场](http://www.hankcs.com/)
-* [Github](https://github.com/)
 * [neural-networks-and-deep-learning](http://neuralnetworksanddeeplearning.com/)
 * [cs224n](http://web.stanford.edu/class/cs224n/index.html)
 * [colah](https://colah.github.io/)
@@ -71,14 +77,3 @@
 sudo ldconfig /usr/local/cuda-9.0/lib64
 sudo ln -sf /usr/local/cuda-9.0/lib64/libcudnn.so.7.0.5 /usr/local/cuda-9.0/lib64/libcudnn.so.7
 ```
-
-### 相关会议
-
-* [ACL](https://www.aclweb.org/portal/)
-* [NIPS](https://nips.cc/)
-* [CICLing](https://www.cicling.org/2018/)
-* [PACLIC](http://www.cbs.polyu.edu.hk/2018paclic/)
-* [UAI](http://auai.org/)
-* [AAAI](https://www.aaai.org/)
-* [IJCAI](https://www.ijcai.org/)
-* [ICML](https://icml.cc/)
