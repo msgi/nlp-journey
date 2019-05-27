@@ -36,6 +36,14 @@
 * Keras. [`博客`](https://www.pyimagesearch.com/2018/09/10/keras-tutorial-how-to-get-started-with-keras-deep-learning-and-python/)
 * [A Neural Network](https://iamtrask.github.io/2015/07/27/python-network-part2/)
 
+### 相关github项目
+
+* keras-gpt-2. [`地址`](https://github.com/CyberZHG/keras-gpt-2)
+* textClassifier. [`地址`](https://github.com/jiangxinyang227/textClassifier)
+* attention-is-all-you-need-keras. [`地址`](https://github.com/msgi/attention-is-all-you-need-keras)
+* BERT_with_keras. [`地址`](https://github.com/miroozyx/BERT_with_keras)
+* SeqGAN. [`地址`](https://github.com/tyo-yo/SeqGAN)
+
 ### NLP方面的博客
 
 * [莫坠青云志](https://tobiaslee.top/)
@@ -56,11 +64,6 @@
 * [seq2seq](https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/)
 * [sicara博客](https://blog.sicara.com/)
 * [ZHPMATRIX](https://zhpmatrix.github.io/)
-
-### 相关github项目
-
-* keras-gpt-2. [`地址`](https://github.com/CyberZHG/keras-gpt-2)
-
 
 ### 使用cuda出现问题的解决方式
 
