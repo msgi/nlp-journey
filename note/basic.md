@@ -5,7 +5,7 @@
 [几种激活函数的比较](https://blog.csdn.net/guorongronghe/article/details/70174476)
 [激活函数ReLU、Leaky ReLU、PReLU和RReLU](https://blog.csdn.net/qq_23304241/article/details/80300149)
 
-![relu](../image/basic/relu.jpeg)
+![relu](../images/relu.jpeg)
 
 * PReLU中的ai是根据数据变化的；
 * Leaky ReLU中的ai是固定的；
