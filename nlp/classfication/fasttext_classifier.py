@@ -1,7 +1,7 @@
 # coding:utf-8
 
 import fasttext
-from nlp.preprocess.clean_text import clean_en_text, clean_zh_text
+from nlp.utils.clean_text import clean_zh_text
 import os
 
 import logging

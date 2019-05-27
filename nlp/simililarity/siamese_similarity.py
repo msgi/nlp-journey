@@ -2,11 +2,9 @@ import itertools
 import logging
 import os
 import pickle
-import re
 import time
 
 import keras.backend as K
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from gensim.models import KeyedVectors
@@ -19,7 +17,7 @@ from keras.preprocessing.sequence import pad_sequences
 from nltk.corpus import stopwords
 from sklearn.model_selection import train_test_split
 from nlp.utils.plot_model_history import plot
-from nlp.preprocess.clean_text import text_to_list
+from nlp.utils.clean_text import text_to_list
 
 from nlp.utils.basic_log import Log
 

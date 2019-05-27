@@ -6,7 +6,7 @@ from collections import Counter
 import numpy as np
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 from keras.engine.saving import load_model
-from keras.layers import Flatten, Dropout, Concatenate
+from keras.layers import Dropout, Concatenate
 from keras.layers import Input, Dense, Embedding, Conv1D, GlobalMaxPooling1D
 from keras.models import Model
 from keras.regularizers import l2
@@ -14,7 +14,7 @@ from keras_preprocessing.sequence import pad_sequences
 from nltk.corpus import stopwords
 from sklearn.model_selection import train_test_split
 
-from nlp.preprocess.clean_text import clean_en_text
+from nlp.utils.clean_text import clean_en_text
 from nlp.utils.plot_model_history import plot
 
 

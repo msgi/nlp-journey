@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import svm
 import pickle
 import pandas as pd
-from nlp.preprocess.clean_text import clean_zh_text, clean_en_text
+from nlp.utils.clean_text import clean_en_text
 from nlp.utils.basic_log import Log
 
 log = Log('info')
