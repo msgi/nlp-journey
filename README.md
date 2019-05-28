@@ -1,3 +1,7 @@
+### 基础
+
+[基础](docs/basic.md)
+
 ### 已读论文博客
 
 * EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks.[`论文`](https://arxiv.org/pdf/1901.11196.pdf)
@@ -74,9 +78,4 @@
 * [ZHPMATRIX](https://zhpmatrix.github.io/)
 * [wildml](http://www.wildml.com/)
 
-### 使用cuda出现问题的解决方式
 
-```bash
-sudo ldconfig /usr/local/cuda-9.0/lib64
-sudo ln -sf /usr/local/cuda-9.0/lib64/libcudnn.so.7.0.5 /usr/local/cuda-9.0/lib64/libcudnn.so.7
-```
