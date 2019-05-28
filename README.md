@@ -1,6 +1,6 @@
 ### 基础
 
-[基础](docs/basic.md)
+[基础知识](docs/basic.md)
 
 ### 已读论文博客
 
