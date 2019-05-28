@@ -57,7 +57,7 @@
 * International Joint Conferences on AI. [IJCAI](https://www.ijcai.org/)
 * International Conference on Machine Learning(国际机器学习大会). [ICML](https://icml.cc/)
 
-### NLP方面的博客
+### 相关博客
 
 * [莫坠青云志](https://tobiaslee.top/)
 * [Bert解读](https://www.cnblogs.com/rucwxb/p/10277217.html)
