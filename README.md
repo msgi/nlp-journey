@@ -19,7 +19,7 @@
 
 ### 待深入
 
-* GloVe. [`官网`](https://nlp.stanford.edu/projects/glove/)
+* GloVe: Global Vectors for Word Representation. [`官网`](https://nlp.stanford.edu/projects/glove/)
 * A Deep Ensemble Model with Slot Alignment for Sequence-to-Sequence Natural Language Generation. [`论文`](https://arxiv.org/pdf/1805.06553.pdf)
 * The Design and Implementation of XiaoIce, an Empathetic Social Chatbot. [`论文`](https://arxiv.org/pdf/1812.08989.pdf)
 * A Knowledge-Grounded Neural Conversation Model. [`论文`](https://arxiv.org/pdf/1702.01932.pdf)
