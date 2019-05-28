@@ -34,7 +34,8 @@
 * GAN Dissection: Visualizing and Understanding Generative Adversarial Networks. [`博客`](https://gandissect.csail.mit.edu/?utm_campaign=the_algorithm.unpaid.engagement&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-8kxzmyRmbG-8kGLZmbD-jZcUEpJidf6MnVsJOK62S0aVm88ioDTuQC2FPFAnkZQDBiqBw7)
 * wildml. [`博客`](http://www.wildml.com/)
 * Keras. [`博客`](https://www.pyimagesearch.com/2018/09/10/keras-tutorial-how-to-get-started-with-keras-deep-learning-and-python/)
-* [A Neural Network](https://iamtrask.github.io/2015/07/27/python-network-part2/)
+* A Neural Network. [`教程`](https://iamtrask.github.io/2015/07/27/python-network-part2/)
+* Event Extraction via Dynamic Multi-Pooling Convolutional Neural. [`论文`](https://pdfs.semanticscholar.org/ca70/480f908ec60438e91a914c1075b9954e7834.pdf)
 
 ### 相关github项目
 
