@@ -12,6 +12,8 @@
 * Building Autoencoders in Keras. [`博客`](https://blog.keras.io/building-autoencoders-in-keras.html)
 * Modern Deep Learning Techniques Applied to Natural Language Processing. [`博客`](https://nlpoverview.com/)
 * node2vec. [`博客`](https://towardsdatascience.com/node2vec-embeddings-for-graph-data-32a866340fef)
+* Keras. [`博客`](https://www.pyimagesearch.com/2018/09/10/keras-tutorial-how-to-get-started-with-keras-deep-learning-and-python/)
+* A Neural Network. [`教程`](https://iamtrask.github.io/2015/07/27/python-network-part2/)
 
 ### 待深入
 
@@ -31,10 +33,6 @@
 * Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network. [`论文`](https://arxiv.org/pdf/1609.04802.pdf)
 * Unsupervised Learning of Visual Structure using Predictive Generative Networks. [`论文`](https://arxiv.org/pdf/1511.06380.pdf)
 * Learning to Rank Short Text Pairs with Convolutional Deep Neural Networks. [`论文`](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.723.6492&rep=rep1&type=pdf)
-* GAN Dissection: Visualizing and Understanding Generative Adversarial Networks. [`博客`](https://gandissect.csail.mit.edu/?utm_campaign=the_algorithm.unpaid.engagement&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-8kxzmyRmbG-8kGLZmbD-jZcUEpJidf6MnVsJOK62S0aVm88ioDTuQC2FPFAnkZQDBiqBw7)
-* wildml. [`博客`](http://www.wildml.com/)
-* Keras. [`博客`](https://www.pyimagesearch.com/2018/09/10/keras-tutorial-how-to-get-started-with-keras-deep-learning-and-python/)
-* A Neural Network. [`教程`](https://iamtrask.github.io/2015/07/27/python-network-part2/)
 * Event Extraction via Dynamic Multi-Pooling Convolutional Neural. [`论文`](https://pdfs.semanticscholar.org/ca70/480f908ec60438e91a914c1075b9954e7834.pdf)
 
 ### 相关github项目
@@ -65,7 +63,6 @@
 * [Bert解读](https://www.cnblogs.com/rucwxb/p/10277217.html)
 * [彗双智能-Keras源码分析](http://wangbn.blogspot.com/)
 * [对话](https://www.leiphone.com/news/201704/8ofqhd0UEJVjgWHv.html)
-* [动手学深度学习](http://zh.diveintodeeplearning.org)
 * [云栖社区](https://yq.aliyun.com/teams/132/type_blog?spm=a2c4e.11153959.0.0.11fc2dc6TXzTzl)
 * [机器之心](https://www.jiqizhixin.com/)
 * [码农场](http://www.hankcs.com/)
@@ -75,6 +72,7 @@
 * [seq2seq](https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/)
 * [sicara博客](https://blog.sicara.com/)
 * [ZHPMATRIX](https://zhpmatrix.github.io/)
+* [wildml](http://www.wildml.com/)
 
 ### 使用cuda出现问题的解决方式
 
