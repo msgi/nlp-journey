@@ -37,6 +37,10 @@
 * Learning to Rank Short Text Pairs with Convolutional Deep Neural Networks. [`论文`](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.723.6492&rep=rep1&type=pdf)
 * Event Extraction via Dynamic Multi-Pooling Convolutional Neural. [`论文`](https://pdfs.semanticscholar.org/ca70/480f908ec60438e91a914c1075b9954e7834.pdf)
 * Low-Memory Neural Network Training:A Technical Report. [`论文`](http://web.stanford.edu/~nims/low_memory_training.pdf)
+* Language Models are Unsupervised Multitask Learners. [`论文`](https://d4mucfpksywv.cloudfront.net/better-language-models/language-models.pdf)
+* Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context. [`论文`](https://arxiv.org/pdf/1901.02860.pdf)
+* BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. [`论文`](https://arxiv.org/pdf/1810.04805.pdf)
+
 
 ### 相关github项目
 
