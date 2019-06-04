@@ -40,13 +40,14 @@
 * Language Models are Unsupervised Multitask Learners. [`论文`](https://d4mucfpksywv.cloudfront.net/better-language-models/language-models.pdf)
 * Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context. [`论文`](https://arxiv.org/pdf/1901.02860.pdf)
 * BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. [`论文`](https://arxiv.org/pdf/1810.04805.pdf)
+* SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient. [`论文`](https://arxiv.org/pdf/1609.05473.pdf)
 
 
 ### 相关github项目
 
 * keras-gpt-2. [`地址`](https://github.com/CyberZHG/keras-gpt-2)
 * textClassifier. [`地址`](https://github.com/jiangxinyang227/textClassifier)
-* attention-is-all-you-need-keras. [`地址`](https://github.com/msgi/attention-is-all-you-need-keras)
+* attention-is-all-you-need-keras. [`地址`](https://github.com/Lsdefine/attention-is-all-you-need-keras)
 * BERT_with_keras. [`地址`](https://github.com/miroozyx/BERT_with_keras)
 * SeqGAN. [`地址`](https://github.com/tyo-yo/SeqGAN)
 
