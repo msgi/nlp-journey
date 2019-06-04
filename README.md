@@ -53,7 +53,10 @@
 
 ### 相关书籍([`百度云`](https://pan.baidu.com/s/1Z_SsbnWRvhyD36ECz3C94Q) 提取码：b2qh)
 
+* Deep Learning.深度学习必读书目 [`原书地址`](https://www.deeplearningbook.org/)
 * 斯坦福大学《语音与语言处理》第三版：NLP必读书籍. [`原书地址`](http://web.stanford.edu/~jurafsky/slp3/ed3book.pdf)
+* Neural Networks and Deep Learning. [`原书地址`](http://neuralnetworksanddeeplearning.com/)
+* 复旦大学《神经网络与深度学习》邱锡鹏教授. [`原书地址`](https://nndl.github.io/)
 
 ### 相关博客
 
@@ -63,7 +66,7 @@
 * [云栖社区](https://yq.aliyun.com/teams/132/type_blog?spm=a2c4e.11153959.0.0.11fc2dc6TXzTzl)
 * [机器之心](https://www.jiqizhixin.com/)
 * [码农场](http://www.hankcs.com/)
-* [neural-networks-and-deep-learning](http://neuralnetworksanddeeplearning.com/)
+
 * [cs224n](http://web.stanford.edu/class/cs224n/index.html)
 * [colah](https://colah.github.io/)
 * [sicara博客](https://blog.sicara.com/)
