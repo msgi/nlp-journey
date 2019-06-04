@@ -118,14 +118,23 @@ class CnnClassifier:
                             epochs=self.epochs,
                             verbose=1,
                             callbacks=[checkpoint, early_stop],
-                            validation_data=(self.x_test, self.y_test))  # starts training
+                            validation_data=(self.x_test, self.y_test))
         plot(history)
         model.save(os.path.join(self.model_path, 'model.h5'))
         self.__save_config()
         return model
 
     def predict(self, text):
-        pass
+        word_indices = None
+        if type(text) == 'str':
+            word_indices = [[self.word_index[t] for t in text.split()]]
+        elif type(text) == 'list':
+            word_indices = [self.word_index[t] for tx in text for t in tx.split()]
+
+        if not word_indices:
+            return self.model.predict(word_indices)
+        else:
+            return []
 
     def __build_model(self):
         inputs = Input(shape=(self.sequence_length,), dtype='int32')
@@ -166,7 +175,7 @@ class CnnClassifier:
 
         x_train = pad_sequences(x_train, maxlen=500)
         x_test = pad_sequences(x_test, x_train.shape[1])
-        print(type(x_train))
+
         word_index = imdb.get_word_index()
         y_train = np.asarray(y_train).astype('float32')
         y_test = np.asarray(y_test).astype('float32')
