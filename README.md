@@ -53,7 +53,7 @@
 
 ### 相关书籍
 
-* 斯坦福大学《语音与语言处理》第三版：NLP必读书籍. [`地址`](http://web.stanford.edu/~jurafsky/slp3/ed3book.pdf)
+* 斯坦福大学《语音与语言处理》第三版：NLP必读书籍. [`地址`](http://web.stanford.edu/~jurafsky/slp3/ed3book.pdf) [`百度云`](https://pan.baidu.com/s/1Z_SsbnWRvhyD36ECz3C94Q) 提取码：b2qh
 
 ### 相关博客
 
