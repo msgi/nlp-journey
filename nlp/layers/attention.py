@@ -14,6 +14,17 @@ class Attention(Layer):
     def __init__(self, W_regularizer=None, u_regularizer=None, b_regularizer=None,
                  W_constraint=None, u_constraint=None, b_constraint=None,
                  bias=True, **kwargs):
+        """
+        自定义的用keras写的attention层
+        :param W_regularizer:
+        :param u_regularizer:
+        :param b_regularizer:
+        :param W_constraint:
+        :param u_constraint:
+        :param b_constraint:
+        :param bias:
+        :param kwargs:
+        """
 
         self.supports_masking = True
         self.init = initializers.get('glorot_uniform')

@@ -10,6 +10,13 @@ class FastTextCBowModel:
                  model_path,
                  user_dict=None,
                  stop_dict=None):
+        """
+        用facebook的fasttext训练词向量（cbow方式）
+        :param train_file: 训练的文本，文件内容是分好词的
+        :param model_path: 要存储的模型路径
+        :param user_dict: 用户自定义词典
+        :param stop_dict: 停用词典
+        """
         self.train_file = train_file
         self.model_path = model_path
         self.user_dict = user_dict
