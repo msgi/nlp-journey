@@ -1,6 +1,13 @@
 ### 基础
 
-[基础知识](docs/basic.md)
+[常见问题](docs/basic.md)
+
+### 经典书目([`百度云`](https://pan.baidu.com/s/1Z_SsbnWRvhyD36ECz3C94Q) 提取码：b2qh)
+
+* Deep Learning.深度学习必读. [`原书地址`](https://www.deeplearningbook.org/)
+* 斯坦福大学《语音与语言处理》第三版：NLP必读. [`原书地址`](http://web.stanford.edu/~jurafsky/slp3/ed3book.pdf)
+* Neural Networks and Deep Learning. 入门必读. [`原书地址`](http://neuralnetworksanddeeplearning.com/)
+* 复旦大学《神经网络与深度学习》邱锡鹏教授. [`原书地址`](https://nndl.github.io/)
 
 ### 已读论文博客
 
@@ -9,7 +16,6 @@
 * Transformer.[`博客`](https://jalammar.github.io/illustrated-transformer/) [`论文`](https://arxiv.org/pdf/1706.03762.pdf)
 * Transformer-XL. [`论文`](https://arxiv.org/pdf/1901.02860.pdf)
 * KL divergence. [`博客`](https://www.countbayesie.com/blog/2017/5/9/kullback-leibler-divergence-explained)
-* SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient. [`论文`](https://arxiv.org/pdf/1609.05473.pdf)
 * Convolutional Neural Networks for Sentence Classification. [`论文`](https://arxiv.org/pdf/1408.5882.pdf)
 * Attention-Based Bidirectional Long Short-Term Memory Networks for Relation Classification. [`论文`](http://www.aclweb.org/anthology/P16-2034)
 * A Question-Focused Multi-Factor Attention Network for Question Answering. [`论文`](https://arxiv.org/pdf/1801.08290.pdf)
@@ -42,7 +48,6 @@
 * BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. [`论文`](https://arxiv.org/pdf/1810.04805.pdf)
 * SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient. [`论文`](https://arxiv.org/pdf/1609.05473.pdf)
 
-
 ### 相关github项目
 
 * keras-gpt-2. [`地址`](https://github.com/CyberZHG/keras-gpt-2)
@@ -50,13 +55,6 @@
 * attention-is-all-you-need-keras. [`地址`](https://github.com/Lsdefine/attention-is-all-you-need-keras)
 * BERT_with_keras. [`地址`](https://github.com/miroozyx/BERT_with_keras)
 * SeqGAN. [`地址`](https://github.com/tyo-yo/SeqGAN)
-
-### 相关书籍([`百度云`](https://pan.baidu.com/s/1Z_SsbnWRvhyD36ECz3C94Q) 提取码：b2qh)
-
-* Deep Learning.深度学习必读. [`原书地址`](https://www.deeplearningbook.org/)
-* 斯坦福大学《语音与语言处理》第三版：NLP必读. [`原书地址`](http://web.stanford.edu/~jurafsky/slp3/ed3book.pdf)
-* Neural Networks and Deep Learning. 入门必读. [`原书地址`](http://neuralnetworksanddeeplearning.com/)
-* 复旦大学《神经网络与深度学习》邱锡鹏教授. [`原书地址`](https://nndl.github.io/)
 
 ### 相关博客
 
@@ -66,7 +64,6 @@
 * [云栖社区](https://yq.aliyun.com/teams/132/type_blog?spm=a2c4e.11153959.0.0.11fc2dc6TXzTzl)
 * [机器之心](https://www.jiqizhixin.com/)
 * [码农场](http://www.hankcs.com/)
-
 * [cs224n](http://web.stanford.edu/class/cs224n/index.html)
 * [colah](https://colah.github.io/)
 * [sicara博客](https://blog.sicara.com/)
