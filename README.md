@@ -2,7 +2,7 @@
 
 [常见问题](docs/basic.md)
 
-### 经典书目([`百度云`](https://pan.baidu.com/s/1Z_SsbnWRvhyD36ECz3C94Q) 提取码：b2qh)
+### 经典书目([`百度云`](https://pan.baidu.com/s/1sE_20nHCfej6f9yRaisz7Q) 提取码：b5qq)
 
 * Deep Learning.深度学习必读. [`原书地址`](https://www.deeplearningbook.org/)
 * 斯坦福大学《语音与语言处理》第三版：NLP必读. [`原书地址`](http://web.stanford.edu/~jurafsky/slp3/ed3book.pdf)
