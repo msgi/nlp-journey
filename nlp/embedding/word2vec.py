@@ -1,5 +1,4 @@
 # coding: utf-8
-
 import jieba
 from gensim.models import word2vec
 
@@ -10,6 +9,13 @@ class GensimWord2VecModel:
                  model_path,
                  user_dict=None,
                  stop_dict=None):
+        """
+        用gensim word2vec 训练词向量
+        :param train_file: 分好词的文本
+        :param model_path: 模型保存的路劲
+        :param user_dict: 自定义词典
+        :param stop_dict: 停用词表
+        """
         self.train_file = train_file
         self.model_path = model_path
         self.user_dict = user_dict
@@ -20,7 +26,7 @@ class GensimWord2VecModel:
             self.save(self.model_path)
 
     def train(self):
-        sentences = pre_process(self.train_file, self.user_dict, self.stop_dict)
+        sentences = process_data(self.train_file, self.user_dict, self.stop_dict)
         model = word2vec.Word2Vec(sentences, min_count=2, window=3, size=300, workers=4)
         return model
 
@@ -42,18 +48,16 @@ class GensimWord2VecModel:
         return model
 
 
-def pre_process(train_file, user_dict, stop_dict):
-    # 结巴分词加载自定义词典
+def process_data(train_file, user_dict, stop_dict):
+    # 结巴分词加载自定义词典(要符合jieba自定义词典规范)
     if user_dict:
-        print(user_dict)
         jieba.load_userdict(user_dict)
 
-    # 加载停用词表
+    # 加载停用词表(每行一个停用词)
     stop_words = []
     if stop_dict:
         with open(stop_dict, 'r', encoding='utf-8') as file:
-            stop_words = file.readlines()
-            stop_words = [stop_word.strip() for stop_word in stop_words]
+            stop_words = [stop_word.strip() for stop_word in file.readlines()]
 
     # 读取文件内容并分词, 去掉停用词
     with open(train_file, 'r', encoding='utf-8') as file:

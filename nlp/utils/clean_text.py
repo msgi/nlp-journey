@@ -30,7 +30,7 @@ def clean_zh_text(text):
     return text
 
 
-def text_to_list(text):
+def clean_to_list(text):
     text = str(text)
     text = text.lower()
     # 清理数据

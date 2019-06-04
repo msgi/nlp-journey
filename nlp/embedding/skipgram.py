@@ -1,7 +1,6 @@
 # _*_ encoding: utf-8 _*_
-import fasttext
-import jieba
 import os
+import fasttext
 
 
 class FastTextSkipGramModel:
@@ -10,6 +9,13 @@ class FastTextSkipGramModel:
                  model_path,
                  user_dict=None,
                  stop_dict=None):
+        """
+        使用fasttext训练词向量（skip-gram方式）
+        :param train_file: 分好词的文本
+        :param model_path: 模型保存的路劲
+        :param user_dict: 自定义词典
+        :param stop_dict: 停用词表
+        """
         self.train_file = train_file
         self.model_path = model_path
         self.user_dict = user_dict
@@ -20,6 +26,7 @@ class FastTextSkipGramModel:
 
     # 训练模型
     def train(self):
+        # silent设为False, 训练过程会打印日志信息
         return fasttext.skipgram(self.train_file, self.model_path, silent=False)
 
     # 返回词的向量
@@ -32,22 +39,3 @@ class FastTextSkipGramModel:
             return fasttext.load_model(self.model_path)
         else:
             return None
-
-
-# 预处理数据，分词并去除停用词
-def process_data(file, out_file, user_dict=None, stop_dict=None):
-    if user_dict:
-        jieba.load_userdict(user_dict)
-
-    stop_words = []
-    if stop_dict:
-        with open(stop_dict, 'r', encoding='utf-8') as s:
-            stop_words = s.readlines()
-
-    with open(file, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-        lines = [jieba.lcut(line.strip()) for line in lines]
-        lines = [' '.join([l for l in line if l not in stop_words]) for line in lines]
-
-    with open(out_file, 'w', encoding='utf-8') as o:
-        o.writelines(lines)

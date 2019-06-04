@@ -16,14 +16,6 @@ class Attention(Layer):
                  bias=True, **kwargs):
         """
         自定义的用keras写的attention层
-        :param W_regularizer:
-        :param u_regularizer:
-        :param b_regularizer:
-        :param W_constraint:
-        :param u_constraint:
-        :param b_constraint:
-        :param bias:
-        :param kwargs:
         """
 
         self.supports_masking = True

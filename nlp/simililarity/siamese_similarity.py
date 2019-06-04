@@ -17,7 +17,7 @@ from keras.preprocessing.sequence import pad_sequences
 from nltk.corpus import stopwords
 from sklearn.model_selection import train_test_split
 from nlp.utils.plot_model_history import plot
-from nlp.utils.clean_text import text_to_list
+from nlp.utils.clean_text import clean_to_list
 
 from nlp.utils.basic_log import Log
 
@@ -145,13 +145,13 @@ class SiameseSimilarity:
     # 推理两个文本的相似度，大于0.5则相似，否则不相似
     def predict(self, text1, text2):
         if isinstance(text1, list) or isinstance(text2, list):
-            x1 = [[self.word_index.get(word, 0) for word in text_to_list(text)] for text in text1]
-            x2 = [[self.word_index.get(word, 0) for word in text_to_list(text)] for text in text2]
+            x1 = [[self.word_index.get(word, 0) for word in clean_to_list(text)] for text in text1]
+            x2 = [[self.word_index.get(word, 0) for word in clean_to_list(text)] for text in text2]
             x1 = pad_sequences(x1, maxlen=self.max_length)
             x2 = pad_sequences(x2, maxlen=self.max_length)
         else:
-            x1 = [self.word_index.get(word, 0) for word in text_to_list(text1)]
-            x2 = [self.word_index.get(word, 0) for word in text_to_list(text2)]
+            x1 = [self.word_index.get(word, 0) for word in clean_to_list(text1)]
+            x2 = [self.word_index.get(word, 0) for word in clean_to_list(text2)]
             x1 = pad_sequences([x1], maxlen=self.max_length)
             x2 = pad_sequences([x2], maxlen=self.max_length)
         # 转为词向量
@@ -218,7 +218,7 @@ class SiameseSimilarity:
             for index, row in dataset.iterrows():
                 for question_col in questions_cols:
                     question_indexes = []
-                    for word in text_to_list(row[question_col]):
+                    for word in clean_to_list(row[question_col]):
                         if word in self.stops:
                             continue
                         if word not in word_index:

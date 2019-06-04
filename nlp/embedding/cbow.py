@@ -1,7 +1,6 @@
 # _*_ encoding: utf-8 _*_
-import fasttext
-import jieba
 import os
+import fasttext
 
 
 class FastTextCBowModel:
@@ -39,29 +38,3 @@ class FastTextCBowModel:
             return fasttext.load_model(self.model_path)
         else:
             return None
-
-
-# 预处理数据，分词并去除停用词
-def process_data(file, out_file, user_dict=None, stop_dict=None):
-
-    if user_dict:
-        jieba.load_userdict(user_dict)
-
-    stop_words = []
-    if stop_dict:
-        with open(stop_dict, 'r', encoding='utf-8') as s:
-            stop_words = s.readlines()
-
-    with open(file, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-        lines = [jieba.lcut(line.strip()) for line in lines]
-        lines = [' '.join([l for l in line if l not in stop_words]) for line in lines]
-
-    with open(out_file, 'w', encoding='utf-8') as o:
-        o.writelines(lines)
-
-
-if __name__ == '__main__':
-    process_data('data/tianlong.txt','data/tianlong_seg.txt')
-    model = FastTextCBowModel('data/tianlong_seg.txt', 'model/fasttext/model')
-    print(model.vector('段誉'))
