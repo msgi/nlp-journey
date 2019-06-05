@@ -26,6 +26,7 @@
 * Building Autoencoders in Keras. [`博文`](https://blog.keras.io/building-autoencoders-in-keras.html)
 * Modern Deep Learning Techniques Applied to Natural Language Processing. [`博文`](https://nlpoverview.com/)
 * Node2vec embeddings for graph data. [`博文`](https://towardsdatascience.com/node2vec-embeddings-for-graph-data-32a866340fef)
+* Bert解读. [`博文`](https://www.cnblogs.com/rucwxb/p/10277217.html)
 
 ### 待读论文
 
@@ -63,17 +64,13 @@
 ### 相关博客
 
 * [莫坠青云志](https://tobiaslee.top/)
-* [Bert解读](https://www.cnblogs.com/rucwxb/p/10277217.html)
 * [彗双智能-Keras源码分析](http://wangbn.blogspot.com/)
-* [云栖社区](https://yq.aliyun.com/teams/132/type_blog?spm=a2c4e.11153959.0.0.11fc2dc6TXzTzl)
 * [机器之心](https://www.jiqizhixin.com/)
-* [码农场](http://www.hankcs.com/)
-* [cs224n](http://web.stanford.edu/class/cs224n/index.html)
 * [colah](https://colah.github.io/)
-* [sicara博客](https://blog.sicara.com/)
 * [ZHPMATRIX](https://zhpmatrix.github.io/)
 * [wildml](http://www.wildml.com/)
 * [最全Tensorflow2.0 入门教程](https://zhuanlan.zhihu.com/p/59507137)
+* [徐阿衡](http://www.shuang0420.com/)
 
 ### 相关会议
 
