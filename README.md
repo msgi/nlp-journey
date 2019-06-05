@@ -9,21 +9,25 @@
 * Neural Networks and Deep Learning. 入门必读. [`原书地址`](http://neuralnetworksanddeeplearning.com/)
 * 复旦大学《神经网络与深度学习》邱锡鹏教授. [`原书地址`](https://nndl.github.io/)
 
-### 已读论文博客
+### 已读论文
 
 * EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks.[`论文`](https://arxiv.org/pdf/1901.11196.pdf)
-* Attention-based-model. [`博客`](http://www.wildml.com/2016/01/attention-and-memory-in-deep-learning-and-nlp/)
-* Transformer.[`博客`](https://jalammar.github.io/illustrated-transformer/) [`论文`](https://arxiv.org/pdf/1706.03762.pdf)
+* Transformer. [`论文`](https://arxiv.org/pdf/1706.03762.pdf)
 * Transformer-XL. [`论文`](https://arxiv.org/pdf/1901.02860.pdf)
-* KL divergence. [`博客`](https://www.countbayesie.com/blog/2017/5/9/kullback-leibler-divergence-explained)
 * Convolutional Neural Networks for Sentence Classification. [`论文`](https://arxiv.org/pdf/1408.5882.pdf)
 * Attention-Based Bidirectional Long Short-Term Memory Networks for Relation Classification. [`论文`](http://www.aclweb.org/anthology/P16-2034)
 * A Question-Focused Multi-Factor Attention Network for Question Answering. [`论文`](https://arxiv.org/pdf/1801.08290.pdf)
-* Building Autoencoders in Keras. [`博客`](https://blog.keras.io/building-autoencoders-in-keras.html)
-* Modern Deep Learning Techniques Applied to Natural Language Processing. [`博客`](https://nlpoverview.com/)
-* Node2vec embeddings for graph data. [`博客`](https://towardsdatascience.com/node2vec-embeddings-for-graph-data-32a866340fef)
 
-### 待深入
+### 已读博文
+
+* Transformer.[`博文`](https://jalammar.github.io/illustrated-transformer/)
+* Attention-based-model. [`博文`](http://www.wildml.com/2016/01/attention-and-memory-in-deep-learning-and-nlp/)
+* KL divergence. [`博文`](https://www.countbayesie.com/blog/2017/5/9/kullback-leibler-divergence-explained)
+* Building Autoencoders in Keras. [`博文`](https://blog.keras.io/building-autoencoders-in-keras.html)
+* Modern Deep Learning Techniques Applied to Natural Language Processing. [`博文`](https://nlpoverview.com/)
+* Node2vec embeddings for graph data. [`博文`](https://towardsdatascience.com/node2vec-embeddings-for-graph-data-32a866340fef)
+
+### 待读论文
 
 * GloVe: Global Vectors for Word Representation. [`官网`](https://nlp.stanford.edu/projects/glove/)
 * A Deep Ensemble Model with Slot Alignment for Sequence-to-Sequence Natural Language Generation. [`论文`](https://arxiv.org/pdf/1805.06553.pdf)
