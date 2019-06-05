@@ -69,6 +69,7 @@
 * [sicara博客](https://blog.sicara.com/)
 * [ZHPMATRIX](https://zhpmatrix.github.io/)
 * [wildml](http://www.wildml.com/)
+* [最全Tensorflow2.0 入门教程](https://zhuanlan.zhihu.com/p/59507137)
 
 ### 相关会议
 
