@@ -13,3 +13,7 @@ sudo ln -sf /usr/local/cuda-9.0/lib64/libcudnn.so.7.0.5 /usr/local/cuda-9.0/lib6
 import sys
 sys.path.append('/project_path/module')
 ```
+
+### CNN的feature map计算方式
+
+![cnn](../images/cnn_feature_map.png)
