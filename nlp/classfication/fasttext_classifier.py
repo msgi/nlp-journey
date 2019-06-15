@@ -1,7 +1,7 @@
 # coding:utf-8
 
 import fasttext
-from nlp.utils.clean_text import clean_zh_text
+from nlp.utils.clean_text import clean_zh_text, clean_en_text
 import os
 
 import logging
@@ -72,7 +72,7 @@ def clean(file_path):
         lines_clean = []
         for line in lines:
             line_list = line.split('__label__')
-            lines_clean.append(clean_zh_text(line_list[0]) + ' __label__' + line_list[1])
+            lines_clean.append(clean_en_text(line_list[0]) + ' __label__' + line_list[1])
 
     with open(file_path, 'w', encoding='utf-8') as f:
         f.writelines(lines_clean)
