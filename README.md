@@ -69,7 +69,6 @@
 * [colah](https://colah.github.io/)
 * [ZHPMATRIX](https://zhpmatrix.github.io/)
 * [wildml](http://www.wildml.com/)
-* [最全Tensorflow2.0 入门教程](https://zhuanlan.zhihu.com/p/59507137)
 * [徐阿衡](http://www.shuang0420.com/)
 * [零基础入门深度学习](https://www.zybuluo.com/hanbingtao/note/433855)
 
