@@ -4,8 +4,21 @@
 
 ### 已实现算法
 
-- [x] fasttext构建词向量
-- [x] fasttext实现分类
+**构建词向量**
+
+- [x] fasttext(skipgram+cbow)
+- [x] gensim(word2vec)
+
+**分类算法**
+
+- [x] svm
+- [x] fasttext
+- [x] textcnn
+- [x] bilstm+attention
+- [x] bilstm+cnn
+- [ ] rcnn
+- [ ] han
+
 
 ### 经典书目([`百度云`](https://pan.baidu.com/s/1sE_20nHCfej6f9yRaisz7Q) 提取码：b5qq)
 
