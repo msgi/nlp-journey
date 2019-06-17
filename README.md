@@ -2,6 +2,11 @@
 
 [常见问题](docs/basic.md)
 
+### 已实现算法
+
+- [x] fasttext构建词向量
+- [x] fasttext实现分类
+
 ### 经典书目([`百度云`](https://pan.baidu.com/s/1sE_20nHCfej6f9yRaisz7Q) 提取码：b5qq)
 
 * Deep Learning.深度学习必读. [`原书地址`](https://www.deeplearningbook.org/)
