@@ -2,31 +2,6 @@
 
 [常见问题](docs/basic.md)
 
-### 已实现算法
-
-**构建词向量**
-
-- [x] fasttext(skipgram+cbow)
-- [x] gensim(word2vec)
-
-**分类算法**
-
-- [x] svm
-- [x] fasttext
-- [x] textcnn
-- [x] bilstm+attention
-- [x] bilstm+cnn
-- [ ] rcnn
-- [ ] han
-
-**NER**
-
-- [x] bilstm+crf
-
-**文本相似度**
-
-- [x] siamese
-
 ### 经典书目([`百度云`](https://pan.baidu.com/s/1sE_20nHCfej6f9yRaisz7Q) 提取码：b5qq)
 
 * Deep Learning.深度学习必读. [`原书地址`](https://www.deeplearningbook.org/)
@@ -78,6 +53,31 @@
 * Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context. [`论文`](https://arxiv.org/pdf/1901.02860.pdf)
 * BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. [`论文`](https://arxiv.org/pdf/1810.04805.pdf)
 * SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient. [`论文`](https://arxiv.org/pdf/1609.05473.pdf)
+
+### 已实现算法
+
+**构建词向量**
+
+- [x] fasttext(skipgram+cbow)
+- [x] gensim(word2vec)
+
+**分类算法**
+
+- [x] svm
+- [x] fasttext
+- [x] textcnn
+- [x] bilstm+attention
+- [x] bilstm+cnn
+- [ ] rcnn
+- [ ] han
+
+**NER**
+
+- [x] bilstm+crf
+
+**文本相似度**
+
+- [x] siamese
 
 ### 相关github项目
 
