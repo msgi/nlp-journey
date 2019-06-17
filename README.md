@@ -19,6 +19,13 @@
 - [ ] rcnn
 - [ ] han
 
+**NER**
+
+- [x] bilstm+crf
+
+**文本相似度**
+
+- [x] siamese
 
 ### 经典书目([`百度云`](https://pan.baidu.com/s/1sE_20nHCfej6f9yRaisz7Q) 提取码：b5qq)
 
