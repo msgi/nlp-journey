@@ -1,6 +1,8 @@
 ### 基础
 
-[常见问题](docs/basic.md)
+[基础知识](docs/basic.md)
+
+[常见问题](docs/fq.md)
 
 ### 经典书目([`百度云`](https://pan.baidu.com/s/1sE_20nHCfej6f9yRaisz7Q) 提取码：b5qq)
 
