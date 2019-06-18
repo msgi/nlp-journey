@@ -20,6 +20,7 @@
 * Convolutional Neural Networks for Sentence Classification. [`论文`](https://arxiv.org/pdf/1408.5882.pdf)
 * Attention-Based Bidirectional Long Short-Term Memory Networks for Relation Classification. [`论文`](http://www.aclweb.org/anthology/P16-2034)
 * A Question-Focused Multi-Factor Attention Network for Question Answering. [`论文`](https://arxiv.org/pdf/1801.08290.pdf)
+* AutoCross: Automatic Feature Crossing for Tabular Data in Real-World Applications. [`论文`](https://arxiv.org/pdf/1904.12857.pdf)
 
 ### 已读博文
 
