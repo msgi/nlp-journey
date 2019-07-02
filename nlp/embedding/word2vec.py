@@ -5,28 +5,21 @@ from gensim.models import word2vec
 
 class GensimWord2VecModel:
 
-    def __init__(self, train_file,
-                 model_path,
-                 user_dict=None,
-                 stop_dict=None):
+    def __init__(self, train_file, model_path):
         """
         用gensim word2vec 训练词向量
         :param train_file: 分好词的文本
         :param model_path: 模型保存的路劲
-        :param user_dict: 自定义词典
-        :param stop_dict: 停用词表
         """
         self.train_file = train_file
         self.model_path = model_path
-        self.user_dict = user_dict
-        self.stop_dict = stop_dict
         self.model = self.load()
         if not self.model:
             self.model = self.train()
             self.save(self.model_path)
 
     def train(self):
-        sentences = process_data(self.train_file, self.user_dict, self.stop_dict)
+        sentences = process_data(self.train_file)
         model = word2vec.Word2Vec(sentences, min_count=2, window=3, size=300, workers=4)
         return model
 
@@ -48,7 +41,7 @@ class GensimWord2VecModel:
         return model
 
 
-def process_data(train_file, user_dict, stop_dict):
+def process_data(train_file, user_dict=None, stop_dict=None):
     # 结巴分词加载自定义词典(要符合jieba自定义词典规范)
     if user_dict:
         jieba.load_userdict(user_dict)
