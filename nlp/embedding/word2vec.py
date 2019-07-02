@@ -1,6 +1,7 @@
 # coding: utf-8
 import jieba
 from gensim.models import word2vec
+from nlp.utils.pre_process import process_data
 
 
 class GensimWord2VecModel:
@@ -39,23 +40,3 @@ class GensimWord2VecModel:
         except FileNotFoundError:
             model = None
         return model
-
-
-def process_data(train_file, user_dict=None, stop_dict=None):
-    # 结巴分词加载自定义词典(要符合jieba自定义词典规范)
-    if user_dict:
-        jieba.load_userdict(user_dict)
-
-    # 加载停用词表(每行一个停用词)
-    stop_words = []
-    if stop_dict:
-        with open(stop_dict, 'r', encoding='utf-8') as file:
-            stop_words = [stop_word.strip() for stop_word in file.readlines()]
-
-    # 读取文件内容并分词, 去掉停用词
-    with open(train_file, 'r', encoding='utf-8') as file:
-        sentences = file.readlines()
-        sentences = [jieba.lcut(sentence.strip()) for sentence in sentences]
-        sentences = [[s for s in sentence if s not in stop_words] for sentence in sentences]
-
-    return sentences
