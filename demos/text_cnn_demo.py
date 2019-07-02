@@ -1,7 +1,7 @@
-from nlp.classfication.text_cnn_classifier import CnnClassifier
+from nlp.classfication.text_cnn_classifier import TextCnnClassifier
 
 if __name__ == '__main__':
-    classifier = CnnClassifier('model/cnn',
+    classifier = TextCnnClassifier('model/cnn',
                                config_file='model/cnn/config.pkl',
                                train=True,
                                pos_file='data/rt-polaritydata/rt-polarity.pos',

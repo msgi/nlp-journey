@@ -70,7 +70,7 @@ def load_data(pos_file, neg_file):
     return x_train, y_train, x_test, y_test, word_index
 
 
-class CnnClassifier:
+class TextCnnClassifier:
     def __init__(self, model_path,
                  config_file,
                  embedding_dim=256,
@@ -119,9 +119,9 @@ class CnnClassifier:
                             verbose=1,
                             callbacks=[checkpoint, early_stop],
                             validation_data=(self.x_test, self.y_test))
-        plot(history)
         model.save(os.path.join(self.model_path, 'model.h5'))
         self.__save_config()
+        plot(history)
         return model
 
     def predict(self, text):

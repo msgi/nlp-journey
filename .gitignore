@@ -5,4 +5,4 @@ data/
 model/
 logs/
 runs/
-
+.vscode/

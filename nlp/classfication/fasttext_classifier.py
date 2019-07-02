@@ -3,10 +3,11 @@
 import fasttext
 from nlp.utils.clean_text import clean_zh_text, clean_en_text
 import os
-
+from nlp.utils.basic_log import Log
 import logging
 
-logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
+
+log = Log(logging.INFO)
 
 
 class FastTextClassifier:
@@ -34,8 +35,7 @@ class FastTextClassifier:
         """
         训练:参数可以针对性修改,进行调优,目前采用的参数都是默认参数,可能不适合具体领域场景
         """
-        model = fasttext.supervised(self.train_path, self.model_path, label_prefix="__label__", silent=False,
-                                    encoding='utf-8', lr=0.01)
+        model = fasttext.supervised(self.train_path, self.model_path, label_prefix="__label__", lr=0.01)
 
         test_result = model.test(self.test_path)
         print('准确率: ', test_result.precision)
