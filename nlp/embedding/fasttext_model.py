@@ -7,21 +7,15 @@ class FastTextModel:
 
     def __init__(self, train_file,
                  model_path,
-                 model_type='skipgram',
-                 user_dict=None,
-                 stop_dict=None):
+                 model_type='skipgram'):
         """
-        用facebook的fasttext训练词向量（cbow方式）
+        用facebook的fasttext训练词向量（默认skipgram方式, 如果采用cbow方式，model_type设为'cbow'）
         :param train_file: 训练的文本，文件内容是分好词的
         :param model_path: 要存储的模型路径
-        :param user_dict: 用户自定义词典
-        :param stop_dict: 停用词典
         """
         self.train_file = train_file
         self.model_path = model_path
         self.model_type = model_type
-        self.user_dict = user_dict
-        self.stop_dict = stop_dict
         self.model = self.load()
         if not self.model:
             self.model = self.train()
