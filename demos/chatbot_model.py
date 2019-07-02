@@ -1,4 +1,4 @@
-from nlp.chatbot.bot.chatbot import ChatBot
+from nlp.chatbot.bot.chatbot_admin import ChatBot
 
 if __name__ == '__main__':
     train_file = 'data/corpus/train.txt'
