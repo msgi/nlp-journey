@@ -6,7 +6,6 @@ import os
 from nlp.utils.basic_log import Log
 import logging
 
-
 log = Log(logging.INFO)
 
 
@@ -15,7 +14,9 @@ class FastTextClassifier:
     利用fasttext来对文本进行分类
     """
 
-    def __init__(self, model_path, train=False, file_path=None):
+    def __init__(self, model_path,
+                 train=False,
+                 file_path=None):
         """
         初始化
         :param file_path: 训练数据路径
@@ -33,9 +34,15 @@ class FastTextClassifier:
 
     def train(self):
         """
-        训练:参数可以针对性修改,进行调优,目前采用的参数都是默认参数,可能不适合具体领域场景
+        训练:参数可以针对性修改,进行调优
         """
-        model = fasttext.supervised(self.train_path, self.model_path, label_prefix="__label__", lr=0.01)
+        model = fasttext.supervised(self.train_path,
+                                    self.model_path,
+                                    label_prefix="__label__",
+                                    epoch=100,
+                                    dim=256,
+                                    silent=False,
+                                    lr=0.01)
 
         test_result = model.test(self.test_path)
         print('准确率: ', test_result.precision)
@@ -47,7 +54,10 @@ class FastTextClassifier:
         :param text: 待分类的数据
         :return: 分类后的结果
         """
-        output = self.model.predict([text])
+        if isinstance(text, list):
+            output = self.model.predict(text)
+        else:
+            output = self.model.predict([text])
         print('predict:', output)
         return output
 

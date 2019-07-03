@@ -7,8 +7,9 @@ import pickle
 import pandas as pd
 from nlp.utils.clean_text import clean_en_text
 from nlp.utils.basic_log import Log
+import logging
 
-log = Log('info')
+log = Log(logging.INFO)
 
 
 class SVMClassifier(object):
@@ -36,6 +37,7 @@ class SVMClassifier(object):
             assert train_path is not None, '训练模式下, 训练数据不能为None'
             self.train_path = train_path
             self.tf_idf_model, self.chi_model, self.clf_model = self.train_model()
+            self.save_model()
 
     def predict(self, texts):
         """
@@ -83,20 +85,18 @@ class SVMClassifier(object):
         clf_model.fit(x_train, y_train)
         score = clf_model.score(x_test, y_test)
         print('测试准确率:', score)
-
-        self.save_model()
         return tf_idf_model, chi_model, clf_model
 
     @staticmethod
     def __select_features(data_set):
-        datas = [clean_en_text(data) for data in data_set[0]]
+        dataset = [clean_en_text(data) for data in data_set[0]]
         tf_idf_model = TfidfVectorizer(ngram_range=(1, 1),
                                        binary=True, 
                                        sublinear_tf=True)
-        tf_vectors = tf_idf_model.fit_transform(datas)
+        tf_vectors = tf_idf_model.fit_transform(dataset)
 
         # 选出前1/5的词用来做特征
-        k = int(tf_vectors.shape[1] / 5)
+        k = int(tf_vectors.shape[1] / 6)
         chi_model = SelectKBest(chi2, k=k)
         chi_features = chi_model.fit_transform(tf_vectors, data_set[1])
         print('tf-idf:\t\t' + str(tf_vectors.shape[1]))

@@ -27,6 +27,7 @@ class BiLSTMAttentionClassifier:
                  model_path,
                  config_path,
                  train=False,
+                 attention=True,
                  file_path=None,
                  embed_size=300):
         self.embed_size = embed_size
@@ -38,6 +39,7 @@ class BiLSTMAttentionClassifier:
             self.model = self.__load_model()
             assert self.model is not None, '模型导入失败'
         else:
+            self.attention = attention
             self.file_path = file_path
             (self.x_train, self.y_train), (self.x_test, self.y_test), self.word_index, self.maxlen = self.__preprocess()
             # 加载词向量过程比较长，可以预先将需要的词向量写入配置文件中，训练的时候直接加载即可
@@ -83,8 +85,10 @@ class BiLSTMAttentionClassifier:
 
     # 训练开始
     def train(self):
-        model = self.__build_model()
-        # model = self.__build_model_no_attention()
+        if self.attention:
+            model = self.__build_model()
+        else:
+            model = self.__build_model_no_attention()
         checkpoint = ModelCheckpoint(os.path.join(self.model_path, 'weights.{epoch:03d}-{val_acc:.4f}.h5'),
                                      monitor='val_loss',
                                      save_weights_only=True,
@@ -101,8 +105,10 @@ class BiLSTMAttentionClassifier:
                                   validation_data=[self.x_test, self.y_test],
                                   callbacks=[checkpoint, early])
         plot(model_trained)
-        model.save_weights(os.path.join(self.model_path, 'final_model_weights.h5'))
-        # model.save_weights(os.path.join(self.model_path, 'final_model_weights_no_attention.h5'))
+        if self.attention:
+            model.save_weights(os.path.join(self.model_path, 'final_model_weights.h5'))
+        else:
+            model.save_weights(os.path.join(self.model_path, 'final_model_weights_no_attention.h5'))
         self.__save_config()
         return model
 

@@ -5,21 +5,24 @@
 ### 1) fasttext简单分类（速度快，可作为基准）
 
 ```python
+from nlp.classfication.fasttext_classifier import FastTextClassifier
 train_path = 'data/imdb'
-model = FastTextClassifier('model/fasttext/model')
-model.predict('i don\'t like it because it is too boring')
-model.predict('i like it ! its very interesting')
+model = FastTextClassifier('./model/fasttext/classifier', train=True, file_path=train_path)
 ```
 
-> fasttext语料格式：文本和标签之间加一个空格， 比如： I like it __label__pos
+> fasttext语料格式：文本和标签之间加一个空格， 比如： I like it __label__pos \
+> 在imdb数据集上，能够达到88%的准确率（epoch=100,dim=256, lr=0.01）
 
 ### 2) SVM算法
 
 * 运用线性分类模型进行分类, 在文件svm_sklearn.py里.
 
 ```python
-svm_model = SVMClassifier('model/svm/model.pkl')
+from nlp.classfication.svm_classifier import SVMClassifier
+svm_model = SVMClassifier('model/svm/model.pkl', 'data/imdb/aclImdb.txt', train=True)
 ```
+
+> 在imdb数据集上取得了90%的准确率
 
 ### 3) BiLSTM
 
@@ -56,12 +59,5 @@ print(model.predict_result('this is very bad movie, i hate it'))
 
 
 * 实验结果
-
-    | 算法             | 实验（1） | 实验（2） | 实验（3） | 实验（4） |
-    | ---------------- | :-------- | --------- | --------- | --------- |
-    | fasttext         |           |           |           |           |
-    | svm              |           |           |           |           |
-    | bilstm           |           |           |           |           |
-    | bilstm+attention |           |           |           |           |
 
     
