@@ -24,7 +24,7 @@
 
 ### 已读博文
 
-* Transformer.[`博文`](https://jalammar.github.io/illustrated-transformer/)
+* The Illustrated Transformer.[`博文`](https://jalammar.github.io/illustrated-transformer/)
 * Attention-based-model. [`博文`](http://www.wildml.com/2016/01/attention-and-memory-in-deep-learning-and-nlp/)
 * KL divergence. [`博文`](https://www.countbayesie.com/blog/2017/5/9/kullback-leibler-divergence-explained)
 * Building Autoencoders in Keras. [`博文`](https://blog.keras.io/building-autoencoders-in-keras.html)

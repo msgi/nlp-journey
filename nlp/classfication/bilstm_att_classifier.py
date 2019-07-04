@@ -49,17 +49,17 @@ class BiLSTMAttentionClassifier:
 
     # 采用注意力机制
     def __build_model(self):
-        inp = Input(shape=(self.maxlen,))
-        x = Embedding(len(self.embedding_matrix),
+        input = Input(shape=(self.maxlen,))
+        output = Embedding(len(self.embedding_matrix),
                       self.embed_size,
                       weights=[self.embedding_matrix],
-                      trainable=False)(inp)
-        x = Bidirectional(LSTM(150, return_sequences=True, dropout=0.25, recurrent_dropout=0.25))(x)
-        x = Attention()(x)
-        x = Dense(128, activation="relu")(x)
-        x = Dropout(0.25)(x)
-        x = Dense(1, activation="sigmoid")(x)
-        model = Model(inputs=inp, outputs=x)
+                      trainable=False)(input)
+        output = Bidirectional(LSTM(150, return_sequences=True, dropout=0.25, recurrent_dropout=0.25))(output)
+        output = Attention()(output)
+        output = Dense(128, activation="relu")(output)
+        output = Dropout(0.25)(output)
+        output = Dense(1, activation="sigmoid")(output)
+        model = Model(inputs=input, outputs=output)
         model.compile(loss='binary_crossentropy',
                       optimizer='adam',
                       metrics=['accuracy'])
@@ -67,17 +67,17 @@ class BiLSTMAttentionClassifier:
 
     # 没有采用注意力机制
     def __build_model_no_attention(self):
-        inp = Input(shape=(self.maxlen,))
-        x = Embedding(len(self.embedding_matrix),
+        input = Input(shape=(self.maxlen,))
+        output = Embedding(len(self.embedding_matrix),
                       self.embed_size,
                       weights=[self.embedding_matrix],
-                      trainable=False)(inp)
-        x = Bidirectional(CuDNNLSTM(150, dropout=0.25, recurrent_dropout=0.25))(x)
-        x = BatchNormalization()(x)
-        x = Dense(128, activation="relu")(x)
-        x = Dropout(0.25)(x)
-        x = Dense(1, activation="sigmoid")(x)
-        model = Model(inputs=inp, outputs=x)
+                      trainable=False)(input)
+        output = Bidirectional(CuDNNLSTM(150, dropout=0.25, recurrent_dropout=0.25))(output)
+        output = BatchNormalization()(output)
+        output = Dense(128, activation="relu")(output)
+        output = Dropout(0.25)(output)
+        output = Dense(1, activation="sigmoid")(output)
+        model = Model(inputs=input, outputs=output)
         model.compile(loss='binary_crossentropy',
                       optimizer='adam',
                       metrics=['accuracy'])
@@ -89,7 +89,7 @@ class BiLSTMAttentionClassifier:
             model = self.__build_model()
         else:
             model = self.__build_model_no_attention()
-        checkpoint = ModelCheckpoint(os.path.join(self.model_path, 'weights.{epoch:03d}-{val_acc:.4f}.h5'),
+        checkpoint = ModelCheckpoint(os.path.join(self.model_path, 'weights.{epoch:03d}.h5'),
                                      monitor='val_loss',
                                      save_weights_only=True,
                                      verbose=1,

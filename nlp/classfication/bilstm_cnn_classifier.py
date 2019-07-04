@@ -24,12 +24,15 @@ class BiLSTMCnnClassifier:
         pass
 
     def __build_model(self):
-        document = Input(shape=(None,), dtype="int32")
+        input = Input(shape=(None,), dtype="int32")
         left_context = Input(shape=(None,), dtype="int32")
         right_context = Input(shape=(None,), dtype="int32")
 
-        embedding = Embedding(self.max_tokens + 1, self.embedding_dim, weights=[self.embeddings], trainable=False)
-        doc_embedding = embedding(document)
+        embedding = Embedding(self.max_tokens + 1,
+                              self.embedding_dim,
+                              weights=[self.embeddings],
+                              trainable=False)
+        doc_embedding = embedding(input)
         l_embedding = embedding(left_context)
         r_embedding = embedding(right_context)
 
@@ -44,9 +47,9 @@ class BiLSTMCnnClassifier:
 
         output = Dense(self.num_classes, input_dim=self.hidden_dim_2, activation="softmax")(pool_rnn)
 
-        model = Model(inputs=[document, left_context, right_context], outputs=output)
+        model = Model(inputs=[input, left_context, right_context], outputs=output)
         model.compile(optimizer="adadelta", loss="categorical_crossentropy", metrics=["accuracy"])
-        pass
+        return model
 
     def train(self):
         pass
