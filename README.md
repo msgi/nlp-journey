@@ -15,6 +15,7 @@
 ### 必读论文
 
 * EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks.[`论文`](https://arxiv.org/pdf/1901.11196.pdf)
+* A Neural Probabilistic Language Model. [`论文`](https://www.researchgate.net/publication/221618573_A_Neural_Probabilistic_Language_Model)
 * Transformer. [`论文`](https://arxiv.org/pdf/1706.03762.pdf)
 * Transformer-XL. [`论文`](https://arxiv.org/pdf/1901.02860.pdf)
 * Convolutional Neural Networks for Sentence Classification. [`论文`](https://arxiv.org/pdf/1408.5882.pdf)
@@ -52,7 +53,7 @@
 * Building Autoencoders in Keras. [`博文`](https://blog.keras.io/building-autoencoders-in-keras.html)
 * Modern Deep Learning Techniques Applied to Natural Language Processing. [`博文`](https://nlpoverview.com/)
 * Node2vec embeddings for graph data. [`博文`](https://towardsdatascience.com/node2vec-embeddings-for-graph-data-32a866340fef)
-* Bert解读. [`博文`](https://www.cnblogs.com/rucwxb/p/10277217.html)
+* Bert解读. [`博文`](https://www.cnblogs.com/rucwxb/p/10277217.html) [`博文`](https://zhuanlan.zhihu.com/p/49271699)
 
 ### 已实现算法
 
