@@ -12,7 +12,7 @@
 * 复旦大学《神经网络与深度学习》邱锡鹏教授. [`原书地址`](https://nndl.github.io/)
 * CS224d: Deep Learning for Natural Language Processing. [`课件地址`](http://cs224d.stanford.edu/)
 
-### 已读论文
+### 必读论文
 
 * EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks.[`论文`](https://arxiv.org/pdf/1901.11196.pdf)
 * Transformer. [`论文`](https://arxiv.org/pdf/1706.03762.pdf)
@@ -22,7 +22,7 @@
 * A Question-Focused Multi-Factor Attention Network for Question Answering. [`论文`](https://arxiv.org/pdf/1801.08290.pdf)
 * AutoCross: Automatic Feature Crossing for Tabular Data in Real-World Applications. [`论文`](https://arxiv.org/pdf/1904.12857.pdf)
 
-### 已读博文
+### 必读博文
 
 * The Illustrated Transformer.[`博文`](https://jalammar.github.io/illustrated-transformer/)
 * Attention-based-model. [`博文`](http://www.wildml.com/2016/01/attention-and-memory-in-deep-learning-and-nlp/)
@@ -32,7 +32,7 @@
 * Node2vec embeddings for graph data. [`博文`](https://towardsdatascience.com/node2vec-embeddings-for-graph-data-32a866340fef)
 * Bert解读. [`博文`](https://www.cnblogs.com/rucwxb/p/10277217.html)
 
-### 待读论文
+### 选读论文
 
 * GloVe: Global Vectors for Word Representation. [`官网`](https://nlp.stanford.edu/projects/glove/)
 * A Deep Ensemble Model with Slot Alignment for Sequence-to-Sequence Natural Language Generation. [`论文`](https://arxiv.org/pdf/1805.06553.pdf)
