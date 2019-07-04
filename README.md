@@ -21,19 +21,6 @@
 * Attention-Based Bidirectional Long Short-Term Memory Networks for Relation Classification. [`论文`](http://www.aclweb.org/anthology/P16-2034)
 * A Question-Focused Multi-Factor Attention Network for Question Answering. [`论文`](https://arxiv.org/pdf/1801.08290.pdf)
 * AutoCross: Automatic Feature Crossing for Tabular Data in Real-World Applications. [`论文`](https://arxiv.org/pdf/1904.12857.pdf)
-
-### 必读博文
-
-* The Illustrated Transformer.[`博文`](https://jalammar.github.io/illustrated-transformer/)
-* Attention-based-model. [`博文`](http://www.wildml.com/2016/01/attention-and-memory-in-deep-learning-and-nlp/)
-* KL divergence. [`博文`](https://www.countbayesie.com/blog/2017/5/9/kullback-leibler-divergence-explained)
-* Building Autoencoders in Keras. [`博文`](https://blog.keras.io/building-autoencoders-in-keras.html)
-* Modern Deep Learning Techniques Applied to Natural Language Processing. [`博文`](https://nlpoverview.com/)
-* Node2vec embeddings for graph data. [`博文`](https://towardsdatascience.com/node2vec-embeddings-for-graph-data-32a866340fef)
-* Bert解读. [`博文`](https://www.cnblogs.com/rucwxb/p/10277217.html)
-
-### 选读论文
-
 * GloVe: Global Vectors for Word Representation. [`官网`](https://nlp.stanford.edu/projects/glove/)
 * A Deep Ensemble Model with Slot Alignment for Sequence-to-Sequence Natural Language Generation. [`论文`](https://arxiv.org/pdf/1805.06553.pdf)
 * The Design and Implementation of XiaoIce, an Empathetic Social Chatbot. [`论文`](https://arxiv.org/pdf/1812.08989.pdf)
@@ -56,6 +43,16 @@
 * Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context. [`论文`](https://arxiv.org/pdf/1901.02860.pdf)
 * BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. [`论文`](https://arxiv.org/pdf/1810.04805.pdf)
 * SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient. [`论文`](https://arxiv.org/pdf/1609.05473.pdf)
+
+### 必读博文
+
+* The Illustrated Transformer.[`博文`](https://jalammar.github.io/illustrated-transformer/)
+* Attention-based-model. [`博文`](http://www.wildml.com/2016/01/attention-and-memory-in-deep-learning-and-nlp/)
+* KL divergence. [`博文`](https://www.countbayesie.com/blog/2017/5/9/kullback-leibler-divergence-explained)
+* Building Autoencoders in Keras. [`博文`](https://blog.keras.io/building-autoencoders-in-keras.html)
+* Modern Deep Learning Techniques Applied to Natural Language Processing. [`博文`](https://nlpoverview.com/)
+* Node2vec embeddings for graph data. [`博文`](https://towardsdatascience.com/node2vec-embeddings-for-graph-data-32a866340fef)
+* Bert解读. [`博文`](https://www.cnblogs.com/rucwxb/p/10277217.html)
 
 ### 已实现算法
 
