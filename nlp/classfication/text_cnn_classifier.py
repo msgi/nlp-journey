@@ -106,12 +106,16 @@ class TextCnnClassifier:
 
     def train(self):
         model = self.__build_model()
-        checkpoint = ModelCheckpoint(os.path.join(self.model_path, 'weights.{epoch:03d}-{val_acc:.4f}.h5'),
+
+        # 每个epoch之后保存模型
+        checkpoint = ModelCheckpoint(os.path.join(self.model_path, 'weights.{epoch:03d}.h5'),
                                      monitor='val_acc',
                                      verbose=1,
                                      save_best_only=True,
                                      mode='auto')
+        # 连续三次epoch某个观察项没有改善，则提前退出训练，默认观察项是val_acc
         early_stop = EarlyStopping(patience=3, verbose=1)
+
         history = model.fit(self.x_train,
                             self.y_train,
                             batch_size=self.batch_size,
@@ -119,6 +123,8 @@ class TextCnnClassifier:
                             verbose=1,
                             callbacks=[checkpoint, early_stop],
                             validation_data=(self.x_test, self.y_test))
+        
+        # 训练结束后，最后保存一次模型，其实没有必要
         model.save(os.path.join(self.model_path, 'model.h5'))
         self.__save_config()
         plot(history)
