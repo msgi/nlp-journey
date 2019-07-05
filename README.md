@@ -57,12 +57,16 @@
 
 ### 已实现算法
 
-**构建词向量**
+* [构建词向量](nlp/embedding/)
 
 - [x] fasttext(skipgram+cbow)
 - [x] gensim(word2vec)
 
-**分类算法**
+* [数据增强](nlp/augmentation/)
+
+- [x] eda
+
+* [分类算法](nlp/classification/)
 
 - [x] svm
 - [x] fasttext
@@ -72,11 +76,11 @@
 - [ ] rcnn
 - [ ] han
 
-**NER**
+* [NER](nlp/ner/)
 
 - [x] bilstm+crf
 
-**文本相似度**
+* [文本相似度](nlp/similarity/)
 
 - [x] siamese
 
