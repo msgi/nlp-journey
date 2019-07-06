@@ -21,3 +21,11 @@
 
 优点：加快训练速度；解决数据集太小导致的无法训练问题；找到好的初始化参数。
 
+
+
+# 参考内容
+
+* [使用sklearn做单机特征工程](https://www.cnblogs.com/jasonfreak/p/5448385.html)
+
+![features](../images/ml/features.jpg)
+
