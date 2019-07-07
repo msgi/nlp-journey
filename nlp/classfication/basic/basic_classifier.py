@@ -1,13 +1,14 @@
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 from keras.engine.saving import load_model
 from sklearn.model_selection import train_test_split
-from keras.layers import Input, Dense
+from keras.layers import Input, Dense, Embedding, Flatten
 from keras.models import Model
 import os
 from nlp.utils.plot_model_history import plot
 import pickle
 from keras_preprocessing.sequence import pad_sequences
 import numpy as np
+from gensim.models import KeyedVectors
 
 
 class TextClassifier:
@@ -18,21 +19,30 @@ class TextClassifier:
     def __init__(self, model_path,
                  config_path,
                  train=False,
-                 train_path=None):
+                 train_path=None,
+                 vector_path=None):
         self.model_path = model_path
         self.config_path = config_path
         if not train:
-            self.word_index = self.load_config()
+            self.word_index, self.embeddings = self.load_config()
             self.model = self.load_model()
             if not self.model:
                 print('模型找不到：', self.model_path)
         else:
             # assert train_path is not None, '训练模式下，train_path不能为None'
+            self.vector_path = vector_path
             self.x_train, self.y_train, self.x_test, self.y_test, self.word_index, self.index_word = self.load_data()
+            self.embeddings = self.load_vector_model(self.vector_path)
             self.model = self.train()
+            self.save_model()
     def build_model(self, input_shape=(500,)):
         inputs = Input(shape=input_shape)
-        x = Dense(128, activation='relu')(inputs)
+        x = Embedding(len(self.embeddings),
+                      300,
+                      weights=[self.embeddings],
+                      trainable=False)(inputs)
+        x=Flatten()(x)
+        x = Dense(128, activation='relu')(x)
         x = Dense(64, activation='relu')(x)
         predictions = Dense(1, activation='sigmoid')(x)
         model = Model(inputs=inputs, outputs=predictions)
@@ -91,8 +101,7 @@ class TextClassifier:
         if type(text) == 'str':
             word_indices = [[self.word_index[t] for t in text.split()]]
         elif type(text) == 'list':
-            word_indices = [self.word_index[t]
-                            for tx in text for t in tx.split()]
+            word_indices = [self.word_index[t] for tx in text for t in tx.split()]
 
         if not word_indices:
             return self.model.predict(word_indices)
@@ -101,12 +110,12 @@ class TextClassifier:
 
     def load_config(self):
         with open(self.config_path, 'rb') as f:
-            word_index = pickle.load(f)
-        return word_index
+            (word_index,embeddings) = pickle.load(f)
+        return word_index,embeddings
 
     def save_config(self):
         with open(self.config_path, 'wb') as f:
-            pickle.dump(self.word_index, f)
+            pickle.dump((self.word_index,self.embeddings), f)
 
     def summary(self):
         self.build_model().summary()
@@ -120,8 +129,19 @@ class TextClassifier:
         x_test = pad_sequences(x_test, x_train.shape[1])
 
         word_index = imdb.get_word_index()
-        index_word = {index:word for word, index in word_index}
+        index_word = {index:word for word, index in word_index.items()}
 
         y_train = np.asarray(y_train).astype('float32')
         y_test = np.asarray(y_test).astype('float32')
         return x_train, y_train, x_test, y_test, word_index, index_word
+    
+    def load_vector_model(self, trained_vector):
+        word2vec = KeyedVectors.load_word2vec_format(trained_vector, binary=True)
+        embeddings = 1 * np.random.randn(len(self.word_index) + 1, 300)
+        embeddings[0] = 0
+
+        for word, index in self.word_index.items():
+            if word in word2vec.vocab:
+                embeddings[index] = word2vec.word_vec(word)
+        print(embeddings.shape)
+        return embeddings
