@@ -6,6 +6,8 @@ from keras.models import Model
 import os
 from nlp.utils.plot_model_history import plot
 import pickle
+from keras_preprocessing.sequence import pad_sequences
+import numpy as np
 
 
 class TextClassifier:
@@ -19,23 +21,23 @@ class TextClassifier:
                  train_path=None):
         self.model_path = model_path
         self.config_path = config_path
-        self.word_index = self.load_config()
         if not train:
+            self.word_index = self.load_config()
             self.model = self.load_model()
             if not self.model:
                 print('模型找不到：', self.model_path)
         else:
-            assert train_path is not None, '训练模式下，train_path不能为None'
-            x, y = self.preprocess()
-
-    def build_model(self, input_shape=(784,)):
+            # assert train_path is not None, '训练模式下，train_path不能为None'
+            self.x_train, self.y_train, self.x_test, self.y_test, self.word_index, self.index_word = self.load_data()
+            self.model = self.train()
+    def build_model(self, input_shape=(500,)):
         inputs = Input(shape=input_shape)
-        x = Dense(64, activation='relu')(inputs)
+        x = Dense(128, activation='relu')(inputs)
         x = Dense(64, activation='relu')(x)
-        predictions = Dense(10, activation='softmax')(x)
+        predictions = Dense(1, activation='sigmoid')(x)
         model = Model(inputs=inputs, outputs=predictions)
-        model.compile(optimizer='rmsprop',
-                      loss='categorical_crossentropy',
+        model.compile(optimizer='adam',
+                      loss='binary_crossentropy',
                       metrics=['accuracy'])
         return model
 
@@ -58,23 +60,18 @@ class TextClassifier:
             model = None
         return model
 
-    def train(self, x, y,
-              test_size=0.2,
-              batch_size=512,
-              epochs=20):
+    def train(self, batch_size=512, epochs=20):
         model = self.build_model()
         # early_stop配合checkpoint使用，可以得到val_loss最小的模型
         early_stop = self.early_stop()
         checkpoint = self.check_point()
-        x_train, x_val, y_train, y_val = train_test_split(
-            x, y, test_size=test_size, random_state=42)
-        history = model.fit(x_train,
-                            y_train,
+        history = model.fit(self.x_train,
+                            self.y_train,
                             batch_size=batch_size,
                             epochs=epochs,
                             verbose=1,
                             callbacks=[checkpoint, early_stop],
-                            validation_data=(x_val, y_val))
+                            validation_data=(self.x_test, self.y_test))
         plot(history)
         return model
 
@@ -113,3 +110,18 @@ class TextClassifier:
 
     def summary(self):
         self.build_model().summary()
+
+    # 选用keras自带的处理好的数据来做模拟分类
+    def load_data(self):
+        from keras.datasets import imdb
+        (x_train, y_train), (x_test, y_test) = imdb.load_data()
+
+        x_train = pad_sequences(x_train, maxlen=500)
+        x_test = pad_sequences(x_test, x_train.shape[1])
+
+        word_index = imdb.get_word_index()
+        index_word = {index:word for word, index in word_index}
+
+        y_train = np.asarray(y_train).astype('float32')
+        y_test = np.asarray(y_test).astype('float32')
+        return x_train, y_train, x_test, y_test, word_index, index_word
