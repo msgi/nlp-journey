@@ -109,7 +109,7 @@ class TextClassifier:
             with open(self.config_path, 'rb') as f:
                 (word_index, embeddings) = pickle.load(f)
         except FileNotFoundError:
-            word_index, embeddings = None, None
+            word_index, embeddings = None, np.array([])
         return word_index, embeddings
 
     def save_config(self):
