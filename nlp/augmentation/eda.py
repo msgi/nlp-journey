@@ -14,7 +14,6 @@ def load_stopwords(stop_path):
 
 
 class EDA:
-
     def __init__(self, stop_path):
         self.stopwords = load_stopwords(stop_path)
 
@@ -24,9 +23,9 @@ class EDA:
         random.shuffle(random_word_list)
         num_replaced = 0
         for random_word in random_word_list:
-            synonyms = self.get_synonyms(random_word)
-            if len(synonyms) >= 1:
-                synonym = random.choice(synonyms)
+            synonyms_ = self.get_synonyms(random_word)
+            if len(synonyms_) >= 1:
+                synonym = random.choice(synonyms_)
                 new_words = [synonym if word == random_word else word for word in new_words]
                 num_replaced += 1
             if num_replaced >= n:
@@ -47,15 +46,15 @@ class EDA:
         return new_words
 
     def add_word(self, new_words):
-        synonyms = []
+        synonyms_ = []
         counter = 0
-        while len(synonyms) < 1:
+        while len(synonyms_) < 1:
             random_word = new_words[random.randint(0, len(new_words)-1)]
-            synonyms = self.get_synonyms(random_word)
+            synonyms_ = self.get_synonyms(random_word)
             counter += 1
             if counter >= 10:
                 return
-        random_synonym = random.choice(synonyms)
+        random_synonym = random.choice(synonyms_)
         random_idx = random.randint(0, len(new_words)-1)
         new_words.insert(random_idx, random_synonym)
 
