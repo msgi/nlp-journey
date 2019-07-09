@@ -51,9 +51,9 @@ class BiLSTMAttentionClassifier:
     def __build_model(self):
         input = Input(shape=(self.maxlen,))
         output = Embedding(len(self.embedding_matrix),
-                      self.embed_size,
-                      weights=[self.embedding_matrix],
-                      trainable=False)(input)
+                           self.embed_size,
+                           weights=[self.embedding_matrix],
+                           trainable=False)(input)
         output = Bidirectional(LSTM(150, return_sequences=True, dropout=0.25, recurrent_dropout=0.25))(output)
         output = Attention()(output)
         output = Dense(128, activation="relu")(output)
@@ -69,10 +69,10 @@ class BiLSTMAttentionClassifier:
     def __build_model_no_attention(self):
         input = Input(shape=(self.maxlen,))
         output = Embedding(len(self.embedding_matrix),
-                      self.embed_size,
-                      weights=[self.embedding_matrix],
-                      trainable=False)(input)
-        output = Bidirectional(CuDNNLSTM(150, dropout=0.25, recurrent_dropout=0.25))(output)
+                           self.embed_size,
+                           weights=[self.embedding_matrix],
+                           trainable=False)(input)
+        output = Bidirectional(CuDNNLSTM(150))(output)
         output = BatchNormalization()(output)
         output = Dense(128, activation="relu")(output)
         output = Dropout(0.25)(output)

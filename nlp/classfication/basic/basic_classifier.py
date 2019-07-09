@@ -24,23 +24,24 @@ class TextClassifier:
         self.model_path = model_path
         self.config_path = config_path
         if not train:
-            self.word_index, self.embeddings = self.load_config()
+            self.word_index, self.maxlen, self.embeddings = self.load_config()
             self.model = self.load_model()
             if not self.model:
                 print('模型找不到：', self.model_path)
         else:
             self.vector_path = vector_path
             self.x_train, self.y_train, self.x_test, self.y_test, self.word_index = self.load_data()
-            _, self.embeddings = self.load_config()
-            if not self.embeddings.any():
+            self.maxlen = self.x_train.shape[1]
+            _, _, self.embeddings = self.load_config()
+            if len(self.embeddings) == 0:
                 self.embeddings = self.load_vector_model(self.vector_path)
                 self.save_config()
             self.model = self.train()
             self.save_model()
 
     # 全连接的一个简单的网络,仅用来作为基类测试,效果特别差
-    def build_model(self, input_shape=(500,)):
-        inputs = Input(shape=input_shape)
+    def build_model(self):
+        inputs = Input(shape=(self.maxlen,))
         x = Embedding(len(self.embeddings),
                       300,
                       weights=[self.embeddings],
@@ -77,7 +78,7 @@ class TextClassifier:
     def train(self, batch_size=512, epochs=20):
         model = self.build_model()
         # early_stop配合checkpoint使用，可以得到val_loss最小的模型
-        early_stop = EarlyStopping(patience=6, verbose=1)
+        early_stop = EarlyStopping(patience=3, verbose=1)
         checkpoint = ModelCheckpoint(os.path.join(self.model_path, 'weights.{epoch:03d}-{val_loss:.3f}.h5'),
                                      verbose=1,
                                      save_best_only=True)
@@ -107,14 +108,14 @@ class TextClassifier:
     def load_config(self):
         try:
             with open(self.config_path, 'rb') as f:
-                (word_index, embeddings) = pickle.load(f)
+                (word_index, maxlen, embeddings) = pickle.load(f)
         except FileNotFoundError:
-            word_index, embeddings = None, np.array([])
-        return word_index, embeddings
+            word_index, maxlen, embeddings = None, None, np.array([])
+        return word_index, maxlen, embeddings
 
     def save_config(self):
         with open(self.config_path, 'wb') as f:
-            pickle.dump((self.word_index, self.embeddings), f)
+            pickle.dump((self.word_index, self.maxlen, self.embeddings), f)
 
     def summary(self):
         self.build_model().summary()

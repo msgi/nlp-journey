@@ -1,5 +1,5 @@
-from keras import Input, Model
-from keras.layers import Concatenate, Dropout, Dense, Embedding, Conv1D, GlobalMaxPooling1D
+from keras import Model
+from keras.layers import Input, Concatenate, Dropout, Dense, Embedding, Conv1D, GlobalMaxPooling1D
 from keras.regularizers import l2
 
 from .basic_classifier import TextClassifier
@@ -27,7 +27,6 @@ class TextCnnClassifier(TextClassifier):
                               300,
                               weights=[self.embeddings],
                               trainable=False)(inputs)
-
         filter_results = []
         for i, filter_size in enumerate(self.filter_sizes):
             c = Conv1D(self.num_filters,
@@ -43,8 +42,7 @@ class TextCnnClassifier(TextClassifier):
         output = Dense(units=1,
                        activation='sigmoid',
                        name='dense')(dropout)
-        model = Model(inputs=inputs,
-                      outputs=output)
+        model = Model(inputs=inputs, outputs=output)
         model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
         model.summary()
         return model

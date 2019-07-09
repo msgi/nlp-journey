@@ -1,12 +1,12 @@
 import sys
-from nlp.classfication.basic.cnn_classifier import TextCnnClassifier
+from nlp.classfication.basic.han_classifier import TextHanClassifier
 
 sys.path.append('/home/msg/workspace/pythons/nlp-journey')
 
 if __name__ == '__main__':
-    base_classifier = TextCnnClassifier(model_path='./model/cnn/',
-                                        config_path='./model/cnn/config.pkl',
-                                        train=False,
+    base_classifier = TextHanClassifier(model_path='./model/han/',
+                                        config_path='./model/base/config.pkl',
+                                        train=True,
                                         vector_path='./data/GoogleNews-vectors-negative300.bin.gz')
     out = base_classifier.predict(
         ['this is very good movie , i want to watch it again!', 'this is very bad movie , i hate it!'])
