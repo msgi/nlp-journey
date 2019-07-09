@@ -73,9 +73,8 @@
 - [x] fasttext
 - [x] textcnn
 - [x] bilstm+attention
-- [x] bilstm+cnn
-- [ ] rcnn
-- [ ] han
+- [x] rcnn
+- [x] han
 
 * [NER](nlp/ner/)
 
