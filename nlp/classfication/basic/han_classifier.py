@@ -32,4 +32,4 @@ class TextHanClassifier(TextClassifier):
 
     def train(self, batch_size=512, epochs=20):
         # 比较耗费资源，笔记本GPU跑不动，只好减小batch_size
-        super(TextHanClassifier, self).train(128, 2)
+        return super(TextHanClassifier, self).train(128, 2)

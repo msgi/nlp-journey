@@ -94,7 +94,6 @@ class TextClassifier:
 
     def predict(self, text):
         indices = None
-        print(type(text))
         if isinstance(text, str):
             indices = [[self.word_index[t] if t in self.word_index.keys() else 0 for t in text.split()] ]
         elif isinstance(text, list):
