@@ -1,5 +1,5 @@
 import sys
-from nlp.classfication.basic.rcnn_classifier import TextRCNNClassifier
+from nlp.classfication.dl.rcnn_classifier import TextRCNNClassifier
 
 sys.path.append('/home/msg/workspace/pythons/nlp-journey')
 

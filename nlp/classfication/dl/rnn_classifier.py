@@ -14,7 +14,7 @@ class TextRnnClassifier(TextClassifier):
                       300,
                       weights=[self.embeddings],
                       trainable=False)(inputs)
-        x = CuDNNLSTM(300)(x)
+        x = Bidirectional(CuDNNLSTM(150))(x)
         x = BatchNormalization()(x)
         x = Dense(128, activation="relu")(x)
         x = Dropout(0.25)(x)

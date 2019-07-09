@@ -67,17 +67,17 @@ class BiLSTMAttentionClassifier:
 
     # 没有采用注意力机制
     def __build_model_no_attention(self):
-        input = Input(shape=(self.maxlen,))
+        inputs = Input(shape=(self.maxlen,))
         output = Embedding(len(self.embedding_matrix),
                            self.embed_size,
                            weights=[self.embedding_matrix],
-                           trainable=False)(input)
+                           trainable=False)(inputs)
         output = Bidirectional(CuDNNLSTM(150))(output)
         output = BatchNormalization()(output)
         output = Dense(128, activation="relu")(output)
         output = Dropout(0.25)(output)
         output = Dense(1, activation="sigmoid")(output)
-        model = Model(inputs=input, outputs=output)
+        model = Model(inputs=inputs, outputs=output)
         model.compile(loss='binary_crossentropy',
                       optimizer='adam',
                       metrics=['accuracy'])

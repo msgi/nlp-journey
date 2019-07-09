@@ -1,5 +1,5 @@
 import sys
-from nlp.classfication.basic.han_classifier import TextHanClassifier
+from nlp.classfication.dl.han_classifier import TextHanClassifier
 
 sys.path.append('/home/msg/workspace/pythons/nlp-journey')
 

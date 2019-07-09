@@ -1,5 +1,5 @@
 import sys
-from nlp.classfication.basic.cnn_classifier import TextCnnClassifier
+from nlp.classfication.dl.cnn_classifier import TextCnnClassifier
 
 sys.path.append('/home/msg/workspace/pythons/nlp-journey')
 

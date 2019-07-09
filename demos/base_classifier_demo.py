@@ -1,5 +1,5 @@
 import sys
-from nlp.classfication.basic.basic_classifier import TextClassifier
+from nlp.classfication.dl.basic_classifier import TextClassifier
 
 sys.path.append('/home/msg/workspace/pythons/nlp-journey')
 
