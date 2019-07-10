@@ -6,14 +6,21 @@
 
 ### 经典书目([`百度云`](https://pan.baidu.com/s/1sE_20nHCfej6f9yRaisz7Q) 提取码：b5qq)
 
+#### 算法入门
+
+* 算法的乐趣. [`原书地址`](http://www.ituring.com.cn/book/1605) 
+
+#### 深度学习
+
 * Deep Learning.深度学习必读. [`原书地址`](https://www.deeplearningbook.org/)
-* 斯坦福大学《语音与语言处理》第三版：NLP必读. [`原书地址`](http://web.stanford.edu/~jurafsky/slp3/ed3book.pdf)
 * Neural Networks and Deep Learning. 入门必读. [`原书地址`](http://neuralnetworksanddeeplearning.com/)
 * 复旦大学《神经网络与深度学习》邱锡鹏教授. [`原书地址`](https://nndl.github.io/)
 * CS224d: Deep Learning for Natural Language Processing. [`课件地址`](http://cs224d.stanford.edu/)
 
-### 算法入门书目([`百度云`](https://pan.baidu.com/s/1TtbFXwK2vN62b9UhFub9Cg))
-* 算法的乐趣. [`原书地址`](http://www.ituring.com.cn/book/1605) 
+#### 自然语言处理
+
+* 斯坦福大学《语音与语言处理》第三版：NLP必读. [`原书地址`](http://web.stanford.edu/~jurafsky/slp3/ed3book.pdf)
+
 
 ### 必读论文
 
