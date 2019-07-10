@@ -41,7 +41,7 @@ class TextClassifier:
             self.maxlen = self.x_train.shape[1]
             _, _, self.embeddings = self.load_config()
             if len(self.embeddings) == 0:
-                self.embeddings = self.load_vector_model(self.vector_path)
+                self.embeddings = self.load_vector()
                 self.save_config()
             self.model = self.train()
             self.save_model()
@@ -126,8 +126,18 @@ class TextClassifier:
     def summary(self):
         self.build_model().summary()
 
-    def load_vector_model(self, trained_vector):
-        word2vec = KeyedVectors.load_word2vec_format(trained_vector, binary=True)
+    def load_vector(self):
+        return self.load_vector_en()
+
+    def load_vector_zh(self):
+        word2vec = KeyedVectors.load_word2vec_format(self.vector_path, binary=False)
+        return self.load_vectors(word2vec)
+
+    def load_vector_en(self):
+        word2vec = KeyedVectors.load_word2vec_format(self.vector_path, binary=True)
+        return self.load_vectors(word2vec)
+
+    def load_vectors(self, word2vec):
         embeddings = 1 * np.random.randn(len(self.word_index) + 1, 300)
         embeddings[0] = 0
         for word, index in self.word_index.items():
