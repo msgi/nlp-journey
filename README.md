@@ -15,12 +15,11 @@
 * Deep Learning.深度学习必读. [`原书地址`](https://www.deeplearningbook.org/)
 * Neural Networks and Deep Learning. 入门必读. [`原书地址`](http://neuralnetworksanddeeplearning.com/)
 * 复旦大学《神经网络与深度学习》邱锡鹏教授. [`原书地址`](https://nndl.github.io/)
-* CS224d: Deep Learning for Natural Language Processing. [`课件地址`](http://cs224d.stanford.edu/)
 
 #### 自然语言处理
 
 * 斯坦福大学《语音与语言处理》第三版：NLP必读. [`原书地址`](http://web.stanford.edu/~jurafsky/slp3/ed3book.pdf)
-
+* CS224d: Deep Learning for Natural Language Processing. [`课件地址`](http://cs224d.stanford.edu/)
 
 ### 必读论文
 
