@@ -81,6 +81,7 @@
 * Modern Deep Learning Techniques Applied to Natural Language Processing. [`地址`](https://nlpoverview.com/)
 * Node2vec embeddings for graph data. [`地址`](https://towardsdatascience.com/node2vec-embeddings-for-graph-data-32a866340fef)
 * Bert解读. [`地址`](https://www.cnblogs.com/rucwxb/p/10277217.html) [`地址`](https://zhuanlan.zhihu.com/p/49271699)
+* XLNet:运行机制及和Bert的异同比较. [`地址`](https://zhuanlan.zhihu.com/p/70257427)
 * 难以置信！LSTM和GRU的解析从未如此清晰（动图+视频）。[`地址`](https://mp.weixin.qq.com/s?__biz=MzI4MDYzNzg4Mw==&mid=2247488287&idx=2&sn=aa7b045337940886d5a7767f95ab0128&chksm=ebb42bcbdcc3a2ddcfb73fb77bead9655d6608b1a951a8b429fb2c38d56ca92289e97e6decd1&mpshare=1&scene=24&srcid=0930GzGGm3m7uZfJyblgWV3k&key=5b1b221b044835abb8ce952ed69e6acdfe5f30700caa3c560c8fe663354916c6753858e4dbbf1b4d1c2eded3876c67c0983d3d51324c321458405b0cacec9103640c28a7a5c068729172703bf23c0348&ascene=14&uin=Mjk3NzQ2NDczMQ%3D%3D&devicetype=Windows+10&version=62060833&lang=zh_CN&pass_ticket=uQSzwn38HjOIK%2BZwFf5AXCp%2Fk0QiE7budc%2Bl5t1yBFtOXA%2BPvSaFwqUWEwEmyZEd)
 
 ### 已实现算法
