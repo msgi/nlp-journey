@@ -36,8 +36,6 @@
 * Distributed Representations of Sentences and Documents. [`地址`]
 * Enriching Word Vectors with Subword Information. [`地址`](https://arxiv.org/pdf/1607.04606.pdf). [`解读`](https://www.sohu.com/a/114464910_465975)
 * GloVe: Global Vectors for Word Representation. [`官网`](https://nlp.stanford.edu/projects/glove/)
-* Transformer. [`地址`](https://arxiv.org/pdf/1706.03762.pdf)
-* Transformer-XL. [`地址`](https://arxiv.org/pdf/1901.02860.pdf)
 * BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. [`地址`](https://arxiv.org/pdf/1810.04805.pdf)
 * XLNet: Generalized Autoregressive Pretraining for Language Understanding[`地址`](https://arxiv.org/pdf/1906.08237.pdf)
 
@@ -67,6 +65,8 @@
 #### 机器翻译
 
 * Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation. [`地址`](https://arxiv.org/pdf/1406.1078v3.pdf)
+* Transformer (Attention Is All You Need). [`地址`](https://arxiv.org/pdf/1706.03762.pdf)
+* Transformer-XL:Attentive Language Models Beyond a Fixed-Length Context. [`地址`](https://arxiv.org/pdf/1901.02860.pdf)
 
 #### 自动摘要
 
