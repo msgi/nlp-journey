@@ -39,7 +39,7 @@
 #### 文本预训练
 
 * Efficient Estimation of Word Representations in Vector Space. [`地址`](https://arxiv.org/pdf/1301.3781.pdf)
-* Distributed Representations of Sentences and Documents. [`地址`]
+* Distributed Representations of Sentences and Documents. [`地址`](https://arxiv.org/pdf/1405.4053.pdf)
 * Enriching Word Vectors with Subword Information. [`地址`](https://arxiv.org/pdf/1607.04606.pdf). [`解读`](https://www.sohu.com/a/114464910_465975)
 * GloVe: Global Vectors for Word Representation. [`官网`](https://nlp.stanford.edu/projects/glove/)
 * ELMo (Deep contextualized word representations). [`地址`](https://arxiv.org/pdf/1802.05365.pdf)
