@@ -4,6 +4,9 @@ from keras.datasets import imdb
 from keras.layers import Input, Dense, Embedding, Flatten, Lambda
 from keras.models import Model
 import os
+
+from keras.utils import to_categorical
+
 from nlp.utils.plot_model_history import plot
 import pickle
 from keras_preprocessing.sequence import pad_sequences
@@ -34,7 +37,7 @@ class TextClassifier:
         else:
             self.vector_path = vector_path
             self.train_file_path = train_file_path
-            self.x_train, self.y_train, self.x_test, self.y_test, self.word_index = self.load_data()
+            self.x_train, self.y_train, self.x_test, self.y_test, self.word_index= self.load_data()
             self.maxlen = self.x_train.shape[1]
             _, _, self.embeddings = self.load_config()
             if len(self.embeddings) == 0:
@@ -140,18 +143,20 @@ class TextClassifier:
     def load_data(self):
         return self.load_data_from_keras()
 
-    def load_data_from_keras(self):
+    def load_data_from_keras(self, maxlen=500):
         (x_train, y_train), (x_test, y_test) = imdb.load_data()
 
         word_index = imdb.get_word_index()
 
-        x_train = pad_sequences(x_train, maxlen=500)
+        x_train = pad_sequences(x_train, maxlen=maxlen)
         x_test = pad_sequences(x_test, x_train.shape[1])
         y_train = np.asarray(y_train).astype('float32')
         y_test = np.asarray(y_test).astype('float32')
         return x_train, y_train, x_test, y_test, word_index
 
-    def load_data_from_scratch(self, test_size=0.2):
+    # 用自己的数据集做训练（格式：分好词的句子##标签，如：我 很 喜欢 这部 电影#pos）
+    def load_data_from_scratch(self, test_size=0.2, maxlen=100):
+        stopwords = self.load_stopwords()
         with open(self.train_file_path, 'r', encoding='utf-8') as file:
             lines = file.readlines()
         lines = [line.strip() for line in lines]
@@ -165,10 +170,15 @@ class TextClassifier:
         vocab = [k for k, v in counter.items() if v >= 5]
 
         word_index = {k: v for v, k in enumerate(vocab)}
-        maxlen = max([len(words) for words in x])
 
-        x_data = [[word_index[word] for word in words if word in word_index] for words in x]
-        y_data = [1.0 if x == 'pos' else 0.0 for x in y]
+        max_sentence_length = max([len(words) for words in x])
+        maxlen = maxlen if max_sentence_length > maxlen else max_sentence_length
+
+        x_data = [[word_index[word] for word in words if word in word_index.keys() and word not in stopwords] for words
+                  in x]
+        x_data = pad_sequences(x_data, maxlen=maxlen)
+
+        y_data = to_categorical(y)
 
         x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, test_size=test_size)
-        return x_train, y_train, x_test, y_test, word_index, maxlen
+        return x_train, y_train, x_test, y_test, word_index
