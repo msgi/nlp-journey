@@ -1,6 +1,6 @@
 import sys
 from nlp.classfication.bilstm_att_classifier import BiLSTMAttentionClassifier
-sys.path.append('../nlp-journey')
+sys.path.append('/home/msg/workspace/pythons/nlp-journey')
 
 
 if __name__ == '__main__':
