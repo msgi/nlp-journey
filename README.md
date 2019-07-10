@@ -36,6 +36,7 @@
 * Transformer. [`地址`](https://arxiv.org/pdf/1706.03762.pdf)
 * Transformer-XL. [`地址`](https://arxiv.org/pdf/1901.02860.pdf)
 * BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. [`地址`](https://arxiv.org/pdf/1810.04805.pdf)
+* XLNet: Generalized Autoregressive Pretraining for Language Understanding[`地址`](https://arxiv.org/pdf/1906.08237.pdf)
 
 #### 文本分类
 
