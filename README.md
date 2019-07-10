@@ -17,36 +17,59 @@
 
 ### 必读论文
 
+#### 文本增强
+
 * EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks.[`地址`](https://arxiv.org/pdf/1901.11196.pdf)
+
+#### 算法模型
+
+* Long Short-term Memory. [`地址`](http://www.bioinf.jku.at/publications/older/2604.pdf)
+
+#### 语言模型
+
 * A Neural Probabilistic Language Model. [`地址`](https://www.researchgate.net/publication/221618573_A_Neural_Probabilistic_Language_Model)
+* Language Models are Unsupervised Multitask Learners. [`地址`](https://d4mucfpksywv.cloudfront.net/better-language-models/language-models.pdf)
+
+#### 文本预训练
+
+* GloVe: Global Vectors for Word Representation. [`官网`](https://nlp.stanford.edu/projects/glove/)
 * Transformer. [`地址`](https://arxiv.org/pdf/1706.03762.pdf)
 * Transformer-XL. [`地址`](https://arxiv.org/pdf/1901.02860.pdf)
+* BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. [`地址`](https://arxiv.org/pdf/1810.04805.pdf)
+
+#### 文本分类
+
+* A Sensitivity Analysis of (and Practitioners’ Guide to) Convolutional Neural Networks for Sentence Classification. [`地址`](https://arxiv.org/pdf/1510.03820.pdf)
 * Convolutional Neural Networks for Sentence Classification. [`地址`](https://arxiv.org/pdf/1408.5882.pdf)
 * Attention-Based Bidirectional Long Short-Term Memory Networks for Relation Classification. [`地址`](http://www.aclweb.org/anthology/P16-2034)
+
+#### 自动问答
+
 * A Question-Focused Multi-Factor Attention Network for Question Answering. [`地址`](https://arxiv.org/pdf/1801.08290.pdf)
-* AutoCross: Automatic Feature Crossing for Tabular Data in Real-World Applications. [`地址`](https://arxiv.org/pdf/1904.12857.pdf)
-* GloVe: Global Vectors for Word Representation. [`官网`](https://nlp.stanford.edu/projects/glove/)
-* A Deep Ensemble Model with Slot Alignment for Sequence-to-Sequence Natural Language Generation. [`地址`](https://arxiv.org/pdf/1805.06553.pdf)
 * The Design and Implementation of XiaoIce, an Empathetic Social Chatbot. [`地址`](https://arxiv.org/pdf/1812.08989.pdf)
 * A Knowledge-Grounded Neural Conversation Model. [`地址`](https://arxiv.org/pdf/1702.01932.pdf)
 * Neural Generative Question Answering. [`地址`](https://arxiv.org/pdf/1512.01337v1.pdf)
-* A Sensitivity Analysis of (and Practitioners’ Guide to) Convolutional Neural Networks for Sentence Classification. [`地址`](https://arxiv.org/pdf/1510.03820.pdf)
-* ImageNet Classification with Deep Convolutional Neural Networks. [`地址`](http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf)
-* Network In Network. [`地址`](https://arxiv.org/pdf/1312.4400.pdf),[`翻译`](https://www.jianshu.com/p/8a3f9f06bbe3)
-* Long Short-term Memory. [`地址`](http://www.bioinf.jku.at/publications/older/2604.pdf)
-* Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation. [`地址`](https://arxiv.org/pdf/1406.1078v3.pdf)
-* Get To The Point: Summarization with Pointer-Generator Networks. [`地址`](https://arxiv.org/pdf/1704.04368.pdf)
-* Generative Adversarial Text to Image Synthesis. [`地址`](https://arxiv.org/pdf/1605.05396.pdf)
-* Image-to-Image Translation with Conditional Adversarial Networks. [`地址`](https://arxiv.org/pdf/1611.07004.pdf)
-* Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network. [`地址`](https://arxiv.org/pdf/1609.04802.pdf)
-* Unsupervised Learning of Visual Structure using Predictive Generative Networks. [`地址`](https://arxiv.org/pdf/1511.06380.pdf)
-* Learning to Rank Short Text Pairs with Convolutional Deep Neural Networks. [`地址`](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.723.6492&rep=rep1&type=pdf)
-* Event Extraction via Dynamic Multi-Pooling Convolutional Neural. [`地址`](https://pdfs.semanticscholar.org/ca70/480f908ec60438e91a914c1075b9954e7834.pdf)
-* Low-Memory Neural Network Training:A Technical Report. [`地址`](http://web.stanford.edu/~nims/low_memory_training.pdf)
-* Language Models are Unsupervised Multitask Learners. [`地址`](https://d4mucfpksywv.cloudfront.net/better-language-models/language-models.pdf)
-* Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context. [`地址`](https://arxiv.org/pdf/1901.02860.pdf)
-* BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. [`地址`](https://arxiv.org/pdf/1810.04805.pdf)
+
+#### 文本生成
+
+* A Deep Ensemble Model with Slot Alignment for Sequence-to-Sequence Natural Language Generation. [`地址`](https://arxiv.org/pdf/1805.06553.pdf)
 * SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient. [`地址`](https://arxiv.org/pdf/1609.05473.pdf)
+* Generative Adversarial Text to Image Synthesis. [`地址`](https://arxiv.org/pdf/1605.05396.pdf)
+
+#### 机器翻译
+
+* Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation. [`地址`](https://arxiv.org/pdf/1406.1078v3.pdf)
+
+#### 自动摘要
+
+* Get To The Point: Summarization with Pointer-Generator Networks. [`地址`](https://arxiv.org/pdf/1704.04368.pdf)
+
+#### 文本相似性
+* Learning to Rank Short Text Pairs with Convolutional Deep Neural Networks. [`地址`](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.723.6492&rep=rep1&type=pdf)
+
+#### 事件提取
+
+* Event Extraction via Dynamic Multi-Pooling Convolutional Neural. [`地址`](https://pdfs.semanticscholar.org/ca70/480f908ec60438e91a914c1075b9954e7834.pdf)
 
 ### 必读博文
 
