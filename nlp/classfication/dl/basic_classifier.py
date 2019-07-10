@@ -10,6 +10,8 @@ from keras_preprocessing.sequence import pad_sequences
 import numpy as np
 from gensim.models import KeyedVectors
 import keras.backend as K
+from sklearn.model_selection import train_test_split
+from collections import Counter
 
 
 class TextClassifier:
@@ -20,6 +22,7 @@ class TextClassifier:
     def __init__(self, model_path,
                  config_path,
                  train=False,
+                 train_file_path=None,
                  vector_path=None):
         self.model_path = model_path
         self.config_path = config_path
@@ -30,6 +33,7 @@ class TextClassifier:
                 print('模型找不到：', self.model_path)
         else:
             self.vector_path = vector_path
+            self.train_file_path = train_file_path
             self.x_train, self.y_train, self.x_test, self.y_test, self.word_index = self.load_data()
             self.maxlen = self.x_train.shape[1]
             _, _, self.embeddings = self.load_config()
@@ -95,11 +99,11 @@ class TextClassifier:
     def predict(self, text):
         indices = None
         if isinstance(text, str):
-            indices = [[self.word_index[t] if t in self.word_index.keys() else 0 for t in text.split()] ]
+            indices = [[self.word_index[t] if t in self.word_index.keys() else 0 for t in text.split()]]
         elif isinstance(text, list):
             indices = [[self.word_index[t] if t in self.word_index.keys() else 0 for t in tx.split()] for tx in text]
         if indices:
-            indices = pad_sequences(indices,500)
+            indices = pad_sequences(indices, 500)
             return self.model.predict(indices)
         else:
             return []
@@ -132,8 +136,11 @@ class TextClassifier:
         from nltk.corpus import stopwords
         return stopwords.words('english')
 
-    # 选用keras自带的处理好的数据来做模拟分类
+    # 默认选用keras自带的处理好的数据来做模拟分类
     def load_data(self):
+        return self.load_data_from_keras()
+
+    def load_data_from_keras(self):
         (x_train, y_train), (x_test, y_test) = imdb.load_data()
 
         word_index = imdb.get_word_index()
@@ -143,3 +150,25 @@ class TextClassifier:
         y_train = np.asarray(y_train).astype('float32')
         y_test = np.asarray(y_test).astype('float32')
         return x_train, y_train, x_test, y_test, word_index
+
+    def load_data_from_scratch(self, test_size=0.2):
+        with open(self.train_file_path, 'r', encoding='utf-8') as file:
+            lines = file.readlines()
+        lines = [line.strip() for line in lines]
+        lines = [line.split('##') for line in lines]
+        x = [line[0] for line in lines]
+        x = [line.split() for line in x]
+        data = [word for xx in x for word in xx]
+        y = [line[0] for line in lines]
+
+        counter = Counter(data)
+        vocab = [k for k, v in counter.items() if v >= 5]
+
+        word_index = {k: v for v, k in enumerate(vocab)}
+        maxlen = max([len(words) for words in x])
+
+        x_data = [[word_index[word] for word in words if word in word_index] for words in x]
+        y_data = [1.0 if x == 'pos' else 0.0 for x in y]
+
+        x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, test_size=test_size)
+        return x_train, y_train, x_test, y_test, word_index, maxlen
