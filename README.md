@@ -17,10 +17,6 @@
 
 ### 必读论文
 
-#### 文本增强
-
-* EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks.[`地址`](https://arxiv.org/pdf/1901.11196.pdf)
-
 #### 算法模型
 
 * Long Short-term Memory. [`地址`](http://www.bioinf.jku.at/publications/older/2604.pdf)
@@ -29,6 +25,10 @@
 
 * A Neural Probabilistic Language Model. [`地址`](https://www.researchgate.net/publication/221618573_A_Neural_Probabilistic_Language_Model)
 * Language Models are Unsupervised Multitask Learners. [`地址`](https://d4mucfpksywv.cloudfront.net/better-language-models/language-models.pdf)
+
+#### 文本增强
+
+* EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks.[`地址`](https://arxiv.org/pdf/1901.11196.pdf)
 
 #### 文本预训练
 
@@ -44,18 +44,22 @@
 * Convolutional Neural Networks for Sentence Classification. [`地址`](https://arxiv.org/pdf/1408.5882.pdf)
 * Attention-Based Bidirectional Long Short-Term Memory Networks for Relation Classification. [`地址`](http://www.aclweb.org/anthology/P16-2034)
 
+#### 文本生成
+
+* A Deep Ensemble Model with Slot Alignment for Sequence-to-Sequence Natural Language Generation. [`地址`](https://arxiv.org/pdf/1805.06553.pdf)
+* SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient. [`地址`](https://arxiv.org/pdf/1609.05473.pdf)
+* Generative Adversarial Text to Image Synthesis. [`地址`](https://arxiv.org/pdf/1605.05396.pdf)
+
+#### 文本相似性
+
+* Learning to Rank Short Text Pairs with Convolutional Deep Neural Networks. [`地址`](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.723.6492&rep=rep1&type=pdf)
+
 #### 自动问答
 
 * A Question-Focused Multi-Factor Attention Network for Question Answering. [`地址`](https://arxiv.org/pdf/1801.08290.pdf)
 * The Design and Implementation of XiaoIce, an Empathetic Social Chatbot. [`地址`](https://arxiv.org/pdf/1812.08989.pdf)
 * A Knowledge-Grounded Neural Conversation Model. [`地址`](https://arxiv.org/pdf/1702.01932.pdf)
 * Neural Generative Question Answering. [`地址`](https://arxiv.org/pdf/1512.01337v1.pdf)
-
-#### 文本生成
-
-* A Deep Ensemble Model with Slot Alignment for Sequence-to-Sequence Natural Language Generation. [`地址`](https://arxiv.org/pdf/1805.06553.pdf)
-* SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient. [`地址`](https://arxiv.org/pdf/1609.05473.pdf)
-* Generative Adversarial Text to Image Synthesis. [`地址`](https://arxiv.org/pdf/1605.05396.pdf)
 
 #### 机器翻译
 
@@ -64,9 +68,6 @@
 #### 自动摘要
 
 * Get To The Point: Summarization with Pointer-Generator Networks. [`地址`](https://arxiv.org/pdf/1704.04368.pdf)
-
-#### 文本相似性
-* Learning to Rank Short Text Pairs with Convolutional Deep Neural Networks. [`地址`](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.723.6492&rep=rep1&type=pdf)
 
 #### 事件提取
 
