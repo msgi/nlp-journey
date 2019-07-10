@@ -12,6 +12,9 @@
 * 复旦大学《神经网络与深度学习》邱锡鹏教授. [`原书地址`](https://nndl.github.io/)
 * CS224d: Deep Learning for Natural Language Processing. [`课件地址`](http://cs224d.stanford.edu/)
 
+### 算法入门书目([`百度云`](https://pan.baidu.com/s/1TtbFXwK2vN62b9UhFub9Cg))
+* 算法的乐趣. [`原书地址`](http://www.ituring.com.cn/book/1605) 
+
 ### 必读论文
 
 * EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks.[`地址`](https://arxiv.org/pdf/1901.11196.pdf)
