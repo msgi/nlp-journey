@@ -84,8 +84,6 @@
 * Event Extraction via Dynamic Multi-Pooling Convolutional Neural. [`地址`](https://pdfs.semanticscholar.org/ca70/480f908ec60438e91a914c1075b9954e7834.pdf)
 
 #### 深度检索式多轮问答
-* Multi-view Response Selection for Human-Computer Conversation．[`地址`](https://www.aclweb.org/anthology/D16-1036)
-
 * Sequential Matching Network A New Architecture for Multi-turn Response Selection in Retrieval-Based Chatbots．[`地址`](https://arxiv.org/abs/1612.01627)
 * Modeling Multi-turn Conversation with Deep Utterance Aggregation．[`地址`](https://arxiv.org/pdf/1806.09102.pdf)
 * Multi-Turn Response Selection for Chatbots with Deep Attention Matching Network．[`地址`](https://www.aclweb.org/anthology/P18-1103)
