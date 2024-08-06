@@ -124,7 +124,8 @@
 - The Illustrated Transformer.[`url`](https://jalammar.github.io/illustrated-transformer/)
 - Attention-based-model. [`url`](http://www.wildml.com/2016/01/attention-and-memory-in-deep-learning-and-nlp/)
 - Modern Deep Learning Techniques Applied to Natural Language Processing. [`url`](https://nlpoverview.com/)
-- 难以置信！LSTM和GRU的解析从未如此清晰（动图+视频）。[`url`](https://blog.csdn.net/dqcfkyqdxym3f8rb0/article/details/82922386)
+- Illustrated Guide to LSTM’s and GRU’s: A step by step explanation
+.[`url`](https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21)
 - Applying word2vec to Recommenders and Advertising. [`url`](http://mccormickml.com/2018/06/15/applying-word2vec-to-recommenders-and-advertising/)
 
 
