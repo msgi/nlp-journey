@@ -10,7 +10,7 @@
 
 [llm-chat](llm-chat/README.md)
 
-[](llm-chat/imgs/llm-chat.png)
+![](llm-chat/imgs/llm-chat.png)
 
 ## 1. Books
 
