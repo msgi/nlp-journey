@@ -8,7 +8,7 @@
 
 ## 0. llm chat
 
-[llm-chat](llm-chat/README.md)
+[llm-chat](llm-chat/)
 
 ![](llm-chat/imgs/llm-chat.png)
 
