@@ -6,6 +6,11 @@
 [![License](https://img.shields.io/badge/license-Apache%202-blue)](https://github.com/msgi/nlp-journey)
 
 
+
+[llm-chat](llm-chat)
+
+
+
 ## 1. Books
 
 1. Handbook of Graphical Models. [`online`](https://stat.ethz.ch/~maathuis/papers/Handbook.pdf)
