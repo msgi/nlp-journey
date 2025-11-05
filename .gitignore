@@ -156,3 +156,14 @@ checkpoint
 model.ckpt*
 
 input/
+
+.vscode/
+*.mp3
+
+
+
+
+
+
+
+
