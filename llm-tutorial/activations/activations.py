@@ -14,6 +14,7 @@ def sigmoid(x: torch.Tensor) -> torch.Tensor:
     return 1 / (1 + torch.exp(-x))
 
 
+# tanh(x) =
 def tanh(x: torch.Tensor) -> torch.Tensor:
     return (torch.exp(x) - torch.exp(-x)) / (torch.exp(x) + torch.exp(-x))
 
@@ -41,15 +42,13 @@ def swish(x: torch.Tensor) -> torch.Tensor:
 
 # \text{GELU}(x) \approx 0.5 \times x \times \left( 1 + \tanh\left[ \sqrt{\frac{2}{\pi}} \times (x + 0.044715 \times x^3) \right] \right)
 def gelu(x: torch.Tensor) -> torch.Tensor:
-    return 0.5 * x * (1 + torch.tanh(torch.sqrt(torch.tensor(2.0) / torch.pi) * (x + 0.044715 * torch.pow(x, 3.0))))
+    return 0.5 * x * (1 + torch.tanh( torch.sqrt(torch.tensor(2.0) / torch.pi)  * (x + 0.044715 * torch.pow(x, 3.0))))
+    
 
 
 if __name__ == "__main__":
-    data = torch.tensor([[2.0, 3.0, 4.0, -1, -3], [10., 20, 30, -20, -30]])
-
+    data = torch.tensor([[2.0, 3.0, 4.0, -1, -3], [10.0, 20, 30, -20, -30]])
     mat = torch.tensor([1, 2, 3, 4])
 
     print(gelu(data))
     print(softmax(mat))
-    
-    print(type(torch.pi))
