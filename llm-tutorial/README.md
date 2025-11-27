@@ -1,5 +1,23 @@
+## Activations
 
-## LLM Models
+|activation|description|formular|Derivative|
+|---|---|---|---|
+|relu|Rectified Linear Unit|$f(x) = \max(0, x)$|$f'(x) = max(0, 1)$|
+|sigmoid|sigmoid|$\sigma(x) = \frac{1}{1 + e^{-x}}$|$\sigma'(x) = \sigma(x) \cdot (1 - \sigma(x))$|
+|tanh|Hyperbolic Tangent|$\tanh(x) = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}$|$\tanh(x) = 1 - \tanh^2(x)$|
+|softmax|softmax|$\sigma(\mathbf{z})_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}} \quad \text{for } i = 1, \ldots, K$||
+|leaky_relu|leaky_relu|$f(x) = \max(\alpha x, x)$|$f'(x) = \max(\alpha , 1)$|
+|elu|elu|$f(x) = \begin{cases} x & \text{if } x > 0 \\ \alpha(e^x - 1) & \text{if } x \leq 0 \end{cases}$|$\text{ELU}'(x) = \begin{cases} 1 & \text{if } x > 0 \\ \alpha e^x & \text{if } x \leq 0 \end{cases}$|
+|swish|swish|$f(x) = x \cdot \sigma(\beta x), \sigma = sigmoid$|$f'(x) = \sigma(\beta x) + \beta x \cdot \sigma(\beta x) \left(1 - \sigma(\beta x)\right)$|
+|gelu|gelu|$\text{GELU}(x) \approx 0.5x \left(1 + \tanh\left[\sqrt{\frac{2}{\pi}} \left(x + 0.044715x^3\right)\right]\right)$|$\text{GELU}'(x) = 0.5\left(1 + \tanh\left[\sqrt{\frac{2}{\pi}}(x + 0.044715x^3)\right]\right) + 0.5x \cdot \sqrt{\frac{2}{\pi}}(1 + 0.134145x^2) \cdot \left(1 - \tanh^2\left[\sqrt{\frac{2}{\pi}}(x + 0.044715x^3)\right]\right)$|
+
+
+
+
+
+
+
+## LLM Papers
 
 ### DeepSeek
 
