@@ -32,7 +32,7 @@ executing==2.2.1
 fastapi==0.120.3
 faster-whisper==1.2.0
 ffmpy==0.6.4
-filelock==3.20.0
+filelock==3.20.1
 Flask==3.1.2
 flatbuffers==25.9.23
 frozendict==2.4.6
