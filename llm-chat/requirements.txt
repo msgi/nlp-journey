@@ -1,7 +1,7 @@
 accelerate==1.11.0
 aiofiles==24.1.0
 aiohappyeyeballs==2.6.1
-aiohttp==3.13.2
+aiohttp==3.13.3
 aiosignal==1.4.0
 annotated-doc==0.0.3
 annotated-types==0.7.0
