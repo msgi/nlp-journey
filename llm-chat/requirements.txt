@@ -78,7 +78,7 @@ platformdirs==4.5.0
 playsound==1.3.0
 prompt_toolkit==3.0.52
 propcache==0.4.1
-protobuf==6.33.0
+protobuf==6.33.5
 psutil==7.1.2
 ptyprocess==0.7.0
 pure_eval==0.2.3
